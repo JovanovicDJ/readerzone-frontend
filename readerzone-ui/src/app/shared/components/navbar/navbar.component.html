@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <span class="name">ReaderZone</span>
+    <div *ngIf="loggedIn" class="navbar-options">
+        <div>Home</div>
+        <div>Shop</div>
+        <div>My Books</div>
+        <div>My Clubs</div>
+        <div>Profile</div>
+    </div>
+    <div *ngIf="loggedIn" class="navbar-logout">
+        <button class="logout-button" mat-icon-button>
+            <mat-icon [inline]="true">exit_to_app</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="!loggedIn" class="sign-log-buttons">
+        <button mat-raised-button class="sign-log-button">Sign up</button>
+        <button mat-raised-button class="sign-log-button">Log in</button>
+    </div>
+</mat-toolbar>

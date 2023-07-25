@@ -1,0 +1,19 @@
+.main-container-shop {
+    display: flex;
+}
+
+.filters {
+    flex: 1;
+}
+
+.books-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    margin: 5px;
+}
+
+.cart {
+    flex: 1;
+}

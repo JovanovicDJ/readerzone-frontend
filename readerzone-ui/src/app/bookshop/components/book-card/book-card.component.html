@@ -1,0 +1,19 @@
+<mat-card>
+<!-- <div class="card"> -->
+    <div class="image-container">
+        <img src="{{book.image}}" alt="Book Image">
+    </div>
+    <div class="title">
+        {{book.title}}
+    </div>
+    <div class="author">
+        {{book.author}}
+    </div>
+    <div class="price">
+        {{book.price | currency:'EUR'}}
+    </div>
+    <div class="button-container">
+        <button mat-raised-button color="primary">Add to Cart</button>
+    </div>
+</mat-card>
+<!-- </div> -->
