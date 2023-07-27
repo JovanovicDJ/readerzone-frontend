@@ -1,0 +1,36 @@
+mat-card {
+    margin-top: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-container {
+    display: flex;
+}
+
+.image {
+    flex: 1;
+}
+
+img {
+    max-width: 45px;
+    max-height: 45px;
+}
+
+.cart-info {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    background-color: rgb(44, 44, 44);
+    color: white;
+}

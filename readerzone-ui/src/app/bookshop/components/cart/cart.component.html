@@ -1,0 +1,14 @@
+<mat-card>
+    <div class="cart-container">
+        <div class="image">
+            <img src="../../../../assets/cart.png">
+        </div>
+        <div class="cart-info">
+            <div>{{cart.length}} items</div>
+            <div>{{totalPrice | currency:'EUR'}}</div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button mat-raised-button>View Cart</button>
+    </div>
+</mat-card>

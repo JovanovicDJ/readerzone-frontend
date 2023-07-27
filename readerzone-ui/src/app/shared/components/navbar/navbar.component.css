@@ -13,6 +13,10 @@ mat-toolbar {
     flex-grow: 1;
 }
 
+.name:hover {
+    cursor: pointer;
+}
+
 .navbar-options {
     flex-grow: 1;
     font-size: large;

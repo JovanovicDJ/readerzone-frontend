@@ -23,6 +23,12 @@ img {
     width: 80%;
     height: auto;
     display: block;
+    transition: all .2s ease-in-out;
+}
+
+img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .title {
@@ -30,6 +36,11 @@ img {
     font-size: larger;
     font-weight: 500;
     text-align: center;
+}
+
+.title:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .author {
@@ -52,8 +63,14 @@ img {
     bottom: 20px;
 }
 
-.button-container button {
+.button-container .button {
     width: 80%;
     background-color: rgb(44, 44, 44);
     /*or primary color*/
+}
+
+.button-container .button-clicked {
+    background-color: rgb(250, 193, 120);
+    color: black;
+    width: 80%;
 }

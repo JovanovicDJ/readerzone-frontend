@@ -1,0 +1,12 @@
+.book-page {
+    display: flex;
+}
+
+.book-container {
+    flex: 11;
+    margin: 15px;
+}
+
+.cart {
+    flex: 2;
+}

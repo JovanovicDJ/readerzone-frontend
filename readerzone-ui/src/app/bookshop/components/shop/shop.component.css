@@ -3,17 +3,17 @@
 }
 
 .filters {
-    flex: 1;
+    flex: 3;
 }
 
 .books-grid {
-    flex: 3;
+    flex: 5;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 16px;
-    margin: 5px;
+    margin: 15px;
 }
 
 .cart {
-    flex: 1;
+    flex: 2;
 }
