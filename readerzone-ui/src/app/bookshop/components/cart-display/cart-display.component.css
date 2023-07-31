@@ -1,0 +1,171 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.empty-cart {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-cart img {
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 35px;
+}
+
+.empty-cart-image {
+    display: flex;
+    justify-content: center;
+}
+
+.empty-cart .main-text {
+    text-align: center;
+    margin-top: 40px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.empty-cart .secondary-text {
+    text-align: center;
+    margin-top: 20px;
+    color: gray;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    width: 40%;
+}
+
+.button button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    width: 100%;
+}
+
+/***********************/
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    width: 82.5%;
+    height: 50px;
+}
+
+.cart-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-text .title {
+    font-size: x-large;
+    color: black;
+}
+
+.cart-text span {
+    color: gray;
+}
+
+/***********************/
+
+.cart-full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 80%;
+}
+
+.cart-full mat-card {
+    width: 80%;
+}
+
+.table-header {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+}
+
+.header-column {
+    flex: 4;
+}
+
+.remove-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-button button:hover {
+    background-color: red;
+    color: white;
+}
+
+.table-header div {
+    font-size: 18px;
+    color: gray;
+}
+
+.book {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+img {
+    width: 60%;
+    max-height: 195px;
+}
+
+.image-title {
+    flex: 4;
+    width: 200px;
+}
+
+.author {
+    flex: 4;
+}
+
+.author .title {
+    font-size: larger;
+}
+
+.author .name {
+    margin-top: 15px;
+}
+
+.author .name:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.publisher {
+    flex: 4;
+    font-size: large;
+}
+
+.publisher:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.price {
+    flex: 4;
+    font-size: larger;
+}
+
+/***********************/
+
+.checkout-container {
+    width: 100%;
+    margin-bottom: 15px;
+}

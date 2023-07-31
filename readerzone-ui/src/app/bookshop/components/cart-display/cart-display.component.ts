@@ -5,11 +5,11 @@ import { Book } from 'src/app/shared/model/Book';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-cart-display',
+  templateUrl: './cart-display.component.html',
+  styleUrls: ['./cart-display.component.css']
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class CartDisplayComponent implements OnInit, OnDestroy {
 
   cart: Book[] = [];
   private cartSubscription!: Subscription;
@@ -27,12 +27,12 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartSubscription.unsubscribe();
   }
 
-  get totalPrice(): number {
-    return this.cart.reduce((total, book) => total + book.price, 0);
+  goShopping() {
+    this.router.navigate(['/shop']);
   }
 
-  displayCart() {
-    this.router.navigate(['/shop/cart']);
+  removeBook(book: Book) {
+    this.cartService.removeFromCart(book);
   }
 
 }

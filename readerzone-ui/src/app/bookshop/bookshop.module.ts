@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './components/cart/cart.component';
 import { SearchFilterCardComponent } from './components/search-filter-card/search-filter-card.component';
 import { BookComponent } from './components/book/book.component';
+import { CartDisplayComponent } from './components/cart-display/cart-display.component';
 
 
 
@@ -16,7 +17,8 @@ import { BookComponent } from './components/book/book.component';
     BookCardComponent,
     CartComponent,
     SearchFilterCardComponent,
-    BookComponent
+    BookComponent,
+    CartDisplayComponent
   ],
   imports: [
     CommonModule,
