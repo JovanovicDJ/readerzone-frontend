@@ -12,11 +12,18 @@ export class BookComponent implements OnInit {
 
   book!: Book;
 
+  buttonClicked: boolean = false;
+
   constructor(private bookService: BookService,
               private cartService: CartService) { }
 
   ngOnInit(): void {
     this.book = this.bookService.getBook()
+  }
+
+  addToCart() {
+    this.buttonClicked = true;
+    this.cartService.addToCart(this.book);
   }
 
 }

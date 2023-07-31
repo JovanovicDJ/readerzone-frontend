@@ -8,10 +8,16 @@ export class BookService {
 
   private book!: Book;
 
-  constructor() { }
+  constructor() {
+    const storedBook = localStorage.getItem('book');
+    if (storedBook) {
+      this.book = JSON.parse(storedBook);
+    }
+   }
 
   setBook(book: Book) {
     this.book = book;
+    localStorage.setItem('book', JSON.stringify(this.book));
   }
 
   getBook(): Book {

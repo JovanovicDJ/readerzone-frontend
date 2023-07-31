@@ -49,11 +49,31 @@
             </mat-card>
         </ng-container>
         <mat-card class="checkout-container">
-            <div class="delete-cart">
-
+            <div class="clear-cart">
+                <button mat-raised-button (click)="clearCart()">Clear cart</button>
             </div>
             <div class="checkout-details">
-
+                <div class="total-count">
+                    <div class="billing-item">
+                        <span>Sub-total:</span>
+                        <span>{{totalPrice | currency:'EUR'}}</span>
+                    </div>
+                    <div class="billing-item">
+                        <span>Delivery:</span>
+                        <span>Included</span>
+                    </div>
+                    <hr />
+                    <div class="billing-item">
+                        <span>Total:</span>
+                        <span>{{totalPrice | currency:'EUR'}}</span>
+                    </div>
+                    <div class="checkout-button">
+                        <button mat-raised-button>Checkout</button>
+                    </div>
+                    <div class="payment-options">
+                        <img src="../../../../assets/payment-icons.jpg" alt="payment-options">
+                    </div>
+                </div>
             </div>
         </mat-card>
     </div>

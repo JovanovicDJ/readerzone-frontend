@@ -35,4 +35,17 @@ export class CartDisplayComponent implements OnInit, OnDestroy {
     this.cartService.removeFromCart(book);
   }
 
+  clearCart() {
+    console.log(this.cart);
+    for (let i = this.cart.length - 1; i >= 0; i--) {
+      const book = this.cart[i];
+      console.log(book.title);
+      this.cartService.removeFromCart(book);
+    }
+  }
+
+  get totalPrice(): number {
+    return this.cartService.getTotalPrice();
+  }
+
 }

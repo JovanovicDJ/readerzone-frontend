@@ -168,4 +168,58 @@ img {
 .checkout-container {
     width: 100%;
     margin-bottom: 15px;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clear-cart {
+    width: 100%;
+}
+
+.clear-cart button {
+    width: 30%;
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+.checkout-details {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.billing-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.billing-item span {
+    font-size: large;
+}
+
+.checkout-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.checkout-button button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    width: 60%;
+    height: 50px;
+    font-size: large;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.payment-options img {
+    width: 100%;
+    height: 35px;
 }

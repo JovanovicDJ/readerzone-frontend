@@ -28,7 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   get totalPrice(): number {
-    return this.cart.reduce((total, book) => total + book.price, 0);
+    return this.cartService.getTotalPrice();
   }
 
   displayCart() {
