@@ -53,6 +53,18 @@
                 </div>
             </div>
         </mat-card>
+        <mat-card class="recommendations">
+            <div class="recommendations-header">
+                <span><hr /></span>
+                <span>We recommend</span>
+                <span><hr /></span>
+            </div>
+            <div class="recommendations-main">
+                <ng-container *ngFor="let b of books">
+                    <app-book-card [book]="b"></app-book-card>
+                </ng-container>
+            </div>
+        </mat-card>
     </div>
     <div class="cart">
         <app-cart></app-cart>

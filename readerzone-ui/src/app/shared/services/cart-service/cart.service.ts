@@ -9,6 +9,7 @@ export class CartService {
 
   private cart: Book[] = [];
   private cartSubject: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(this.cart);
+  private logoutSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {
     const storedCart = localStorage.getItem('cart');
@@ -41,11 +42,21 @@ export class CartService {
     return this.cartSubject;
   }
 
+  getLogoutSubject(): BehaviorSubject<boolean> {
+    return this.logoutSubject;
+  }
+
   getTotalPrice(): number {
     return this.cart.reduce((total, book) => total + book.price, 0);
   }
 
   private saveCartToLocalStorage(): void {
     localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  clearCart(): void {
+    this.cart = [];
+    this.cartSubject.next(this.cart);
+    this.logoutSubject.next(false);
   }
 }

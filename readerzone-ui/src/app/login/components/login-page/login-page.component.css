@@ -1,0 +1,32 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.login-card {
+    min-width: 25%;    
+    text-align: center;
+  }
+
+.login-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+  
+mat-form-field {
+  display: block;
+  margin-top: 10px;
+}
+
+#login-button {
+  width: 50%;
+  background-color: rgb(44, 44, 44);
+  color: white;
+}
+
+mat-divider {
+  margin-top: 15px !important; 
+  margin-bottom: 15px !important
+}

@@ -3,22 +3,30 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MessageComponent } from './services/message-service/message.service';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,    
   ],
   exports: [
     MaterialModule,
     NavbarComponent,
-    CategoriesListComponent
+    CategoriesListComponent    
   ]
 })
 export class SharedModule { }

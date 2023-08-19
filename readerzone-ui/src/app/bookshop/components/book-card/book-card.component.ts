@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Book } from 'src/app/shared/model/Book';
 import { BookService } from 'src/app/shared/services/book-service/book.service';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
@@ -9,19 +10,28 @@ import { CartService } from 'src/app/shared/services/cart-service/cart.service';
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.css']
 })
-export class BookCardComponent implements OnInit {
+export class BookCardComponent implements OnInit, OnDestroy {
 
   @Input()
   book!: Book;
+
+  private logoutSubscription!: Subscription;
 
   buttonClicked: boolean = false;
 
   constructor(private bookService: BookService,
               private cartService: CartService,
-              private router: Router) { }
+              private router: Router
+              ) { }
 
   ngOnInit(): void {
-  
+    this.logoutSubscription = this.cartService.getLogoutSubject().subscribe((bool) => {
+      this.buttonClicked = bool;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.logoutSubscription.unsubscribe();
   }
 
   onBookClick() {

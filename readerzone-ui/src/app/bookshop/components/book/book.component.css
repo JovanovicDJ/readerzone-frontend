@@ -5,6 +5,8 @@
 .book-container {
     flex: 11;
     margin: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .book {
@@ -112,6 +114,22 @@ img {
     font-size: large;
     text-align: right;
     color: #777;
+}
+
+.recommendations {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendations-header {
+    text-align: center;
+    font-size: large;
+}
+
+.recommendations-main {
+    display: flex;
+    justify-content: space-between;
 }
 
 .cart {
