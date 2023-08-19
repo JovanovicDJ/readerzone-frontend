@@ -7,12 +7,14 @@
 .login-card {
     min-width: 25%;    
     text-align: center;
-  }
+}
 
-.login-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+#login-label {
+  font-family: "Lexend Peta", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
 }
   
 mat-form-field {
@@ -26,7 +28,31 @@ mat-form-field {
   color: white;
 }
 
+#login-button:disabled {
+  background-color: gray;
+  color: white;
+}
+
 mat-divider {
   margin-top: 15px !important; 
   margin-bottom: 15px !important
+}
+
+.forgotten-label {
+  font-family: "Lexend Peta", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.forgotten-link {
+  font-family: "Lexend Peta", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.forgotten-link:hover {
+  color: rgb(51,102,204);
 }

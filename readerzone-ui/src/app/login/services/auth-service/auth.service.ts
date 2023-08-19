@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from 'src/app/shared/model/Customer';
+import { CustomerRegistrationRequest } from 'src/app/shared/model/CustomerRegistrationRequest';
 import { LoginData } from 'src/app/shared/model/LoginData';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
@@ -58,7 +59,7 @@ export class AuthService {
       .getCustomerByEmail(decodedToken[this.EMAIL_ADDRESS_CLAIM_KEY])      
       .subscribe({
         next: (res: Customer) => {          
-          localStorage.setItem('user', JSON.stringify(res));
+          localStorage.setItem('user', JSON.stringify(res));          
           this.userSubject.next(this.user!);       
         },
         error: (err) => {          
@@ -68,6 +69,10 @@ export class AuthService {
     }
     //For Employee and Admin
     (decodedToken[this.ROLE_CLAIM_KEY]);
+  }
+
+  getUserSubject(): BehaviorSubject<User> {
+    return this.userSubject;
   }
 
   logout(): void {
@@ -81,7 +86,13 @@ export class AuthService {
     return this.http.post<string>(url, data);
   }
 
-  getUserSubject(): BehaviorSubject<User> {
-    return this.userSubject;
+  senCustomerRegistrationRequest(data: CustomerRegistrationRequest): Observable<Customer> {
+    let url = `${environment.baseUrl}/${Paths.CustomerRegistration}`;
+    return this.http.post<Customer>(url, data);
+  }
+
+  sendPasswordResetRequest(data: { email: string }): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.ForgotPassword}/${data.email}`;
+    return this.http.get<void>(url);
   }
 }

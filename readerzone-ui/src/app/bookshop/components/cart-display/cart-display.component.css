@@ -67,6 +67,8 @@
 .cart-text .title {
     font-size: x-large;
     color: black;
+    font-family: "Lexend Peta", "Arial", sans-serif;    
+    font-weight: bold;      
 }
 
 .cart-text span {

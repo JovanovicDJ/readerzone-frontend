@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
     <span class="name" (click)="onLogoClick()">ReaderZone</span>
     <div *ngIf="user" class="navbar-options">
-        <div>Home</div>
-        <div>Shop</div>
-        <div>My Books</div>        
-        <div>Profile</div>
+        <button mat-button>Home</button>
+        <button mat-button>Shop</button>
+        <button mat-button>My Books</button>
+        <button mat-button>Profile</button>        
     </div>
     <div *ngIf="user" class="navbar-logout">
         <button (click)="logout()" class="logout-button" mat-icon-button>

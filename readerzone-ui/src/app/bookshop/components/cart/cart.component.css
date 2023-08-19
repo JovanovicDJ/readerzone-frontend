@@ -25,6 +25,13 @@ img {
     flex-direction: column;
 }
 
+.cart-info div {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
 .button-container {
     margin-top: 10px;
 }

@@ -24,6 +24,10 @@ mat-toolbar {
     justify-content: space-between;
 }
 
+.navbar-options button {
+    font-size: large;
+}
+
 .navbar-logout {
     flex-grow: 1;
     display: flex;

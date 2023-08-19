@@ -1,7 +1,7 @@
 <div class="login-container">
     <mat-card class="login-card">
       <form [formGroup]="form">
-        <h3 id="login-label">Log in to your account</h3>
+        <div id="login-label">Log in to your account</div>
   
         <mat-form-field appearance="outline">
           <mat-label>E-mail address</mat-label>
@@ -33,8 +33,8 @@
           Log in
         </button>
         <mat-divider inset></mat-divider>
-        <h4>Forgotten password?</h4>
-        <a (click)="openForgotPasswordDialog()" href="javascript:void(0);">
+        <div class="forgotten-label">Forgotten password?</div>
+        <a class="forgotten-link" (click)="openForgotPasswordDialog()" href="javascript:void(0);">
           Click here!</a
         >
       </form>
