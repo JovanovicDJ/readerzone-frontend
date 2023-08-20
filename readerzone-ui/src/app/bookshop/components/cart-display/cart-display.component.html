@@ -1,0 +1,80 @@
+<div class="cart-container">
+    <div *ngIf="cart.length === 0" class="empty-cart">
+        <div class="empty-cart-image">
+            <img src="../../../../assets/empty-cart.png" alt="empty-cart">
+        </div>
+        <div class="main-text">
+            Your cart is empty
+        </div>
+        <div class="secondary-text">
+            You have no books in your shopping cart. You can go ahead and explore our shop.
+        </div>
+        <div class="button">
+            <button mat-raised-button (click)="goShopping()">Explore our shop</button>
+        </div>
+    </div>
+    
+    <div *ngIf="cart.length !== 0" class="cart-full">
+        <div class="cart-header">
+            <div class="cart-text">
+                <span class="title">Your cart</span>
+                <span>You have {{cart.length}} items in your basket. </span>
+            </div>
+        </div>
+        <mat-card class="table-header">
+            <div class="header-column">Book</div>
+            <div class="header-column">Title&Author</div>
+            <div class="header-column">Publisher</div>
+            <div class="header-column">Price</div>
+            <div class="remove-button"></div>
+        </mat-card>
+        <ng-container *ngFor="let b of cart">
+            <mat-card class="book">
+                <div class="image-title">
+                    <img src="{{b.image}}" alt="book-image">
+                </div>
+                <div class="author">
+                    <div class="title">{{b.title}}</div>
+                    <div class="name">{{b.author}}</div>
+                </div>
+                <div class="publisher">
+                    Harper Collins
+                </div>
+                <div class="price">
+                    {{b.price | currency:"EUR"}}
+                </div>
+                <div class="remove-button">
+                    <button mat-button (click)="removeBook(b)"><mat-icon>clear</mat-icon></button>
+                </div>
+            </mat-card>
+        </ng-container>
+        <mat-card class="checkout-container">
+            <div class="clear-cart">
+                <button mat-raised-button (click)="clearCart()">Clear cart</button>
+            </div>
+            <div class="checkout-details">
+                <div class="total-count">
+                    <div class="billing-item">
+                        <span>Sub-total:</span>
+                        <span>{{totalPrice | currency:'EUR'}}</span>
+                    </div>
+                    <div class="billing-item">
+                        <span>Delivery:</span>
+                        <span>Included</span>
+                    </div>
+                    <hr />
+                    <div class="billing-item">
+                        <span>Total:</span>
+                        <span>{{totalPrice | currency:'EUR'}}</span>
+                    </div>
+                    <div class="checkout-button">
+                        <button mat-raised-button>Checkout</button>
+                    </div>
+                    <div class="payment-options">
+                        <img src="../../../../assets/payment-icons.jpg" alt="payment-options">
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

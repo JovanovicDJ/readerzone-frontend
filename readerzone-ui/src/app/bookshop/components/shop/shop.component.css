@@ -1,0 +1,30 @@
+.main-container-shop {
+    display: flex;
+}
+
+.filters {
+    flex: 3;
+}
+
+.books-grid {
+    flex: 5;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+    margin: 15px;
+}
+
+/* .books-grid {
+    flex: 6;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+app-book-card {
+    width: calc(25% - 25px);
+} */
+
+.cart {
+    flex: 2;
+}

@@ -1,0 +1,42 @@
+<div class="login-container">
+    <mat-card class="login-card">
+      <form [formGroup]="form">
+        <div id="login-label">Log in to your account</div>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail address</mat-label>
+          <input
+            matInput
+            formControlName="Email"            
+            name="email"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            formControlName="Password"
+            type="password"            
+            name="password"
+          />
+        </mat-form-field>
+  
+        <button
+          mat-raised-button
+          type="button"
+          id="login-button"
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="loginRequest()"
+        >
+          Log in
+        </button>
+        <mat-divider inset></mat-divider>
+        <div class="forgotten-label">Forgotten password?</div>
+        <a class="forgotten-link" (click)="openForgotPasswordDialog()" href="javascript:void(0);">
+          Click here!</a
+        >
+      </form>
+  </mat-card>    
+</div>

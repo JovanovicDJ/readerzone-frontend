@@ -1,0 +1,55 @@
+mat-toolbar {
+    background-color: rgb(250, 193, 120) !important;
+    color: black !important;
+    height: 8%;
+    display: flex;
+}
+
+.name {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1;
+}
+
+.name:hover {
+    cursor: pointer;
+}
+
+.navbar-options {
+    flex-grow: 1;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-options button {
+    font-size: large;
+}
+
+.navbar-logout {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-button {
+    font-size: 32px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.sign-log-buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sign-log-button {
+    margin-right: 20px;
+    width: 15%;
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+

@@ -1,0 +1,21 @@
+<mat-card>
+<!-- <div class="card"> -->
+    <div class="image-container">
+        <img src="{{book.image}}" alt="Book Image" (click)="onBookClick()">
+    </div>
+    <div class="title" (click)="onBookClick()">
+        {{book.title}}
+    </div>
+    <div class="author">
+        {{book.author}}
+    </div>
+    <div class="price">
+        {{book.price | currency:'EUR'}}
+    </div>
+    <div class="button-container">
+        <button mat-raised-button color="primary" (click)="addToCart()"
+        class="{{buttonClicked ? 'button-clicked' : 'button' }}"
+        >{{ buttonClicked ? 'Added to Cart' : 'Add to Cart' }}</button>
+    </div>
+</mat-card>
+<!-- </div> -->

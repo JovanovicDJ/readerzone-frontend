@@ -1,0 +1,40 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.register-card {
+    min-width: 35%;    
+    text-align: center;
+}
+
+#register-label {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+  
+mat-form-field {
+  display: block;
+  margin-top: 10px;
+}
+
+#register-button {
+  width: 50%;
+  background-color: rgb(44, 44, 44);
+  color: white;
+}
+
+#register-button:disabled {
+  background-color: gray;
+  color: white;
+}
+
+::ng-deep mat-form-field {
+    width: 100%;
+}
+
+

@@ -1,0 +1,18 @@
+mat-card {
+    margin-top: 15px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.name {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}

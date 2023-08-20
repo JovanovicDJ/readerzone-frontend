@@ -1,0 +1,72 @@
+<div class="book-page">
+    <div class="book-container">
+        <mat-card class="book">
+            <div class="image-container">
+                <img src="{{book.image}}" alt="Book Image">
+            </div>
+            <div class="book-details">
+                <div class="title">{{book.title}}</div>
+                <div class="author">{{book.author}}</div>
+                <div class="price">{{book.price | currency:"EUR"}}</div>
+                <div class="button-container">
+                    <button mat-raised-button (click)="addToCart()"
+                    class="{{buttonClicked ? 'button-clicked' : 'button' }}"
+                    >{{ buttonClicked ? 'Added to Cart' : 'Add to Cart' }}</button>
+                </div>
+                <div class="book-information">
+                    <div class="column">
+                        <div class="row">
+                            <span class="row-title">ISBN:</span>
+                            <span class="row-data">9781838959708</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Publisher:</span>
+                            <span class="row-data">Atlantic Books</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Pub date:</span>
+                            <span class="row-data">15 Jun 2023</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Language:</span>
+                            <span class="row-data">English</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="row">
+                            <span class="row-title">Number of pages:</span>
+                            <span class="row-data">736</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Weight:</span>
+                            <span class="row-data">616g</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Height:</span>
+                            <span class="row-data">130mm</span>
+                        </div>
+                        <div class="row">
+                            <span class="row-title">Width:</span>
+                            <span class="row-data">199mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="recommendations">
+            <div class="recommendations-header">
+                <span><hr /></span>
+                <span>We recommend</span>
+                <span><hr /></span>
+            </div>
+            <div class="recommendations-main">
+                <ng-container *ngFor="let b of books">
+                    <app-book-card [book]="b"></app-book-card>
+                </ng-container>
+            </div>
+        </mat-card>
+    </div>
+    <div class="cart">
+        <app-cart></app-cart>
+    </div>
+</div>
