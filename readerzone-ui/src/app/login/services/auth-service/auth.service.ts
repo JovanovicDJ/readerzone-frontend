@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from 'src/app/shared/model/Customer';
 import { CustomerRegistrationRequest } from 'src/app/shared/model/CustomerRegistrationRequest';
 import { LoginData } from 'src/app/shared/model/LoginData';
+import { ResetPassword } from 'src/app/shared/model/ResetPassword';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { CustomerService } from 'src/app/shared/services/customer-service/customer.service';
@@ -91,8 +92,13 @@ export class AuthService {
     return this.http.post<Customer>(url, data);
   }
 
-  sendPasswordResetRequest(data: { email: string }): Observable<void> {
+  sendForgottenPasswordRequest(data: { email: string }): Observable<void> {
     let url = `${environment.baseUrl}/${Paths.ForgotPassword}/${data.email}`;
     return this.http.get<void>(url);
+  }
+
+  sendResetPasswordRequest(data: ResetPassword): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.ResetPassword}`;
+    return this.http.post<void>(url, data);
   }
 }

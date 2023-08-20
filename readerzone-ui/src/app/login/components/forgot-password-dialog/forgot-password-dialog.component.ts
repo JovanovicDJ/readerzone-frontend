@@ -22,7 +22,7 @@ export class ForgotPasswordDialogComponent implements OnInit {
 
   onConfirmClick(): void {
     this.authService
-      .sendPasswordResetRequest({ email: this.email.value })      
+      .sendForgottenPasswordRequest({ email: this.email.value })      
       .subscribe({
         next: () => {
           this.dialogRef.close(true);

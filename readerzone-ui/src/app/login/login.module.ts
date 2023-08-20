@@ -9,12 +9,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { ForgotPasswordDialogComponent } from './components/forgot-password-dialog/forgot-password-dialog.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
     RegisterPageComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
