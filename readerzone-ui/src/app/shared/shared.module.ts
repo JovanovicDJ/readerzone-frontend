@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MessageComponent } from './services/message-service/message.service';
+import { ImageProbaComponent } from './components/image-proba/image-proba.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     CategoriesListComponent,
-    MessageComponent
+    MessageComponent,
+    ImageProbaComponent
   ],
   imports: [
     CommonModule,

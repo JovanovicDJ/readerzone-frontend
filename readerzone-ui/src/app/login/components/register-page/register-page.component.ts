@@ -51,6 +51,7 @@ export class RegisterPageComponent implements OnInit {
       name: 'Serbia',
       numericCode: '688'
     });
+    console.log($event);
   }
 
   registerRequest() {

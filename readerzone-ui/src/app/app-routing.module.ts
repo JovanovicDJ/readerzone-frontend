@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ImageProbaComponent } from './shared/components/image-proba/image-proba.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then((m) => m.LoginModule)
+  },
+  {
+    path: 'image',
+    component: ImageProbaComponent
   }
 ];
 
