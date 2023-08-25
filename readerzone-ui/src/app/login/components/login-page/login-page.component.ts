@@ -66,9 +66,9 @@ export class LoginPageComponent implements OnInit {
   }
   
   redirectLoggedUser() {
-    if (this.authService.user?.UserAccount.Role === Role.Customer) {
+    if (this.authService.user?.UserAccount.role === Role.Customer) {
       this.router.navigateByUrl('shop');
-    } else if (this.authService.user?.UserAccount.Role === Role.Manager) {
+    } else if (this.authService.user?.UserAccount.role === Role.Manager) {
       this.router.navigateByUrl('shop');  // Manager won't be routered to /shop 
     } else {  //Admin
       this.router.navigateByUrl('shop');  // Admin won't be routered to /shop

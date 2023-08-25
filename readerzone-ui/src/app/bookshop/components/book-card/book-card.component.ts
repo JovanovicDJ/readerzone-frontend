@@ -48,4 +48,9 @@ export class BookCardComponent implements OnInit, OnDestroy {
     return this.book.authors[0].name + ' ' + this.book.authors[0].surname;
   }
 
+  get discountPrice(): number {
+    var discount = this.book.price * this.book.discount / 100;
+    return this.book.price - discount;
+  }
+
 }

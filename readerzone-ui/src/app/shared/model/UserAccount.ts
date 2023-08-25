@@ -1,9 +1,9 @@
 export interface UserAccount {
-    Id: number,
-    Username: string,
-    Email: string,
-    Password: string,
-    Role: string,
-    Active: boolean,
+    id: number,
+    username: string,
+    email: string,
+    password: string,
+    role: string,
+    active: boolean,
     blocked: boolean
 }

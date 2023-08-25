@@ -40,8 +40,13 @@
                 <div class="publisher">
                     Harper Collins
                 </div>
-                <div class="price">
-                    {{b.price | currency:"EUR"}}
+                <div class="price-column">
+                    <div class="{{b.discount === 0 ? 'price' : 'not-price'}}">
+                        {{b.price | currency:'EUR'}}
+                    </div>
+                    <div *ngIf="b.discount !== 0" class="discount-price">
+                        {{getDiscountPrice(b) | currency:'EUR'}}
+                    </div>
                 </div>
                 <div class="remove-button">
                     <button mat-button (click)="removeBook(b)"><mat-icon>clear</mat-icon></button>
@@ -62,10 +67,14 @@
                         <span>Delivery:</span>
                         <span>Included</span>
                     </div>
+                    <div class="billing-item">
+                        <span>Members' discount:</span>
+                        <span class="members-discount">{{membersDiscount}}%</span>
+                    </div>
                     <hr />
                     <div class="billing-item">
                         <span>Total:</span>
-                        <span>{{totalPrice | currency:'EUR'}}</span>
+                        <span>{{finalPrice | currency:'EUR'}}</span>
                     </div>
                     <div class="checkout-button">
                         <button mat-raised-button>Checkout</button>

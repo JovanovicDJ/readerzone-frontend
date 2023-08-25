@@ -6,7 +6,7 @@
             (booksChanged)="onBooksChanged($event)"
             ></app-search-filter-card>
     </div>
-    <div class="books">
+    <div *ngIf="books.length !== 0" class="books">
         <div class="books-grid">
             <ng-container *ngFor="let b of books">
                 <app-book-card [book]="b"></app-book-card>
@@ -18,6 +18,16 @@
             (page)="onPageChange($event)"
             aria-label="Select page">
         </mat-paginator>
+    </div>
+    <div *ngIf="books.length === 0" class="books">
+        <div class="no-books">
+            <div class="no-books-image">
+                <img src="../../../../assets/no-books.png" alt="empty-cart">
+            </div>
+            <div class="no-books-text">
+                Not a single books has been found. Reset those filters and try again.
+            </div>
+        </div>
     </div>
     <div class="cart">
         <app-cart></app-cart>

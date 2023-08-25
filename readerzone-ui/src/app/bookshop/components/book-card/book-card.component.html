@@ -1,7 +1,8 @@
 <mat-card>
-<!-- <div class="card"> -->
+<!-- <div class="card"> -->    
     <div class="image-container">
-        <img src="{{book.imageUrl}}" alt="Book Image" (click)="onBookClick()">
+        <img src="{{book.imageUrl}}" alt="Book Image" (click)="onBookClick()" class="book-image">
+        <img *ngIf="book.discount !== 0" src="../../../../assets/special-offer.png" alt="Discount Image" class="discount-image">
     </div>
     <div class="title" (click)="onBookClick()">
         {{book.title}}
@@ -9,8 +10,11 @@
     <div class="author">
         {{authorNames}}
     </div>
-    <div class="price">
+    <div class="{{book.discount === 0 ? 'price' : 'not-price'}}">
         {{book.price | currency:'EUR'}}
+    </div>
+    <div *ngIf="book.discount !== 0" class="discount-price">
+        {{discountPrice | currency:'EUR'}}
     </div>
     <div class="button-container">
         <button mat-raised-button color="primary" (click)="addToCart()"

@@ -19,8 +19,8 @@ export class ShopComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onBooksChanged(books: Book[]) {
-    this.books = books;
+  onBooksChanged(books: Book[]) {    
+    this.books = books;    
   }
 
   onTotalBooksChanged(totalBooks: number) {

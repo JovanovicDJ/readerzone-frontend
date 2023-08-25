@@ -47,7 +47,17 @@ export class CartService {
   }
 
   getTotalPrice(): number {
-    return this.cart.reduce((total, book) => total + book.price, 0);
+    var total = 0;
+    for (var b of this.cart) {
+      if (b.discount !== 0) {
+        var discount = b.price * b.discount / 100;
+        total += b.price - discount;
+      } else {
+        total += b.price;
+      }
+    }
+    return total;
+    //return this.cart.reduce((total, book) => total + book.price, 0);
   }
 
   private saveCartToLocalStorage(): void {

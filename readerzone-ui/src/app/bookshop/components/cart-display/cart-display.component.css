@@ -27,13 +27,15 @@
     text-align: center;
     margin-top: 40px;
     font-size: larger;
-    font-weight: bolder;
+    font-weight: bolder;    
+    font-family: "Lexend Peta", "Arial", sans-serif; 
 }
 
 .empty-cart .secondary-text {
     text-align: center;
     margin-top: 20px;
     color: gray;
+    font-family: "Lexend Peta", "Arial", sans-serif; 
 }
 
 .button {
@@ -160,9 +162,27 @@ img {
     cursor: pointer;
 }
 
-.price {
+.price-column {
     flex: 4;
+}
+
+.price {
     font-size: larger;
+}
+
+.not-price {
+    font-size: larger;
+    text-decoration: line-through;
+}
+
+.discount-price {
+    margin-top: 5px;
+    color: rgb(255, 0, 0);
+    font-size: larger;
+}
+
+.members-discount {
+    color: rgb(255, 0, 0);
 }
 
 /***********************/
