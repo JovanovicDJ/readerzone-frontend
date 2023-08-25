@@ -29,8 +29,7 @@ export class ImageProbaComponent implements OnInit {
     const formData = new FormData();
     formData.append('imageFile', this.fileInput.nativeElement.files[0]);
     this.http.post<any>(`${environment.baseUrl}/image/upload`, formData).subscribe(
-      (response) => {
-        console.log(response);
+      (response) => {        
         this.placeholder = response.url;
         this.imageSelected = true;
       },

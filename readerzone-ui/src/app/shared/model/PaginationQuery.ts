@@ -1,8 +1,8 @@
 export interface PaginationQuery {
-    PageNumber: number,
-    PageSize: number,
-    SearchKeyword: string,
-    SelectedGenres: Array<string>,
-    MinPrice: number,
-    MaxPrice: number
+    pageNumber: number,
+    pageSize: number,
+    searchKeyword: string,
+    selectedGenres: Array<string>,
+    minPrice: number,
+    maxPrice: number
 }

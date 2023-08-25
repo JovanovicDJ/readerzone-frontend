@@ -40,6 +40,11 @@ export class BookComponent implements OnInit {
     return parsedDate.format('DD.MM.YYYY.');
   }
 
+  get discountPrice(): number {
+    var discount = this.book.price * this.book.discount / 100;
+    return this.book.price - discount;
+  }
+
   ngOnInit(): void {    
     let isbn = this.route.snapshot.paramMap.get('isbn');
     if (isbn !== null) {

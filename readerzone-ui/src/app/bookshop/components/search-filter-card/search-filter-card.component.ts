@@ -43,7 +43,6 @@ export class SearchFilterCardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes['pageNumber']) {
       this.getBooks();
     }
@@ -75,22 +74,19 @@ export class SearchFilterCardComponent implements OnInit, OnChanges {
 
   getBooks() {
     let pq: PaginationQuery = {
-      PageNumber: this.pageNumber,
-      PageSize: this.pageSize,
-      SearchKeyword: this.search.value,
-      SelectedGenres: this.selectedGenres,
-      MinPrice: this.minValue,
-      MaxPrice: this.maxValue
-    };
-    console.log(pq);
+      pageNumber: this.pageNumber,
+      pageSize: this.pageSize,
+      searchKeyword: this.search.value,
+      selectedGenres: this.selectedGenres,
+      minPrice: this.minValue,
+      maxPrice: this.maxValue
+    };    
     this.bookService
       .getBooks(pq)
       .subscribe({
         next: (res: BookPagination) => {
           this.books = res.books;
-          this.totalBooks = res.totalBooks;
-          console.log(this.books);
-          console.log(this.totalBooks);
+          this.totalBooks = res.totalBooks;                    
           this.booksChanged.emit(this.books);
           this.totalBooksChanged.emit(this.totalBooks); 
         },

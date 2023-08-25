@@ -74,16 +74,17 @@ export class CartDisplayComponent implements OnInit, OnDestroy {
     if (this.authService.user === null) {
       return 0;
     }
-    else if (this.authService.user.UserAccount.role === Role.Customer) {
+    else if (this.authService.user.userAccount.role === Role.Customer) {      
       const customer = this.authService.user as Customer;
-      switch(customer.Tier) {
-        case '0': return 1;
-        case '1': return 3;
-        case '2': return 6;
-        case '3': return 10;
+      console.log(customer.tier);
+      switch(customer.tier) {
+        case 0: return 1;
+        case 1: return 3;
+        case 2: return 6;
+        case 3: return 10;
         default: return 0;
       }
-    } else {
+    } else {      
       return 0;
     }
   }

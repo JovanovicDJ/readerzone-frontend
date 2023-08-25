@@ -3,7 +3,7 @@ export interface UserAccount {
     username: string,
     email: string,
     password: string,
-    role: string,
+    role: number,
     active: boolean,
     blocked: boolean
 }

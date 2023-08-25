@@ -190,7 +190,7 @@ img {
 .checkout-container {
     width: 100%;
     margin-bottom: 15px;
-    height: 250px;
+    height: 300px;
     display: flex;
     justify-content: space-between;
 }

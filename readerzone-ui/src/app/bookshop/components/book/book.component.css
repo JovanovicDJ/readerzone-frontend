@@ -69,6 +69,24 @@ img {
     margin-top: 15px;
 }
 
+.not-price {
+    width: 100%;
+    font-size: x-large;
+    color: rgb(95, 95, 255);
+    text-align: left;
+    margin-top: 15px;
+    text-decoration: line-through;
+}
+
+.discount-price {
+    width: 100%;
+    font-size: x-large;
+    color: rgb(95, 95, 255);
+    text-align: left;
+    margin-top: 10px;
+    color: rgb(255, 0, 0);
+}
+
 .button-container {
     margin-top: 20px;
     width: 100%;

@@ -27,8 +27,7 @@ export class ShopComponent implements OnInit {
     this.totalBooks = totalBooks;
   }
 
-  onPageChange(event: PageEvent) {
-    console.log(event.pageIndex);
+  onPageChange(event: PageEvent) {    
     this.pageNumber = event.pageIndex + 1;
   }
 

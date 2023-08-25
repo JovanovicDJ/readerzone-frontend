@@ -7,7 +7,12 @@
             <div class="book-details">
                 <div class="title">{{book.title}}</div>
                 <div class="author">{{authorNames}}</div>
-                <div class="price">{{book.price | currency:"EUR"}}</div>
+                <div class="{{book.discount === 0 ? 'price' : 'not-price'}}">
+                    {{book.price | currency:'EUR'}}
+                </div>
+                <div *ngIf="book.discount !== 0" class="discount-price">
+                    {{discountPrice | currency:'EUR'}}
+                </div>
                 <div class="button-container">
                     <button mat-raised-button (click)="addToCart()"
                     class="{{buttonClicked ? 'button-clicked' : 'button' }}"
