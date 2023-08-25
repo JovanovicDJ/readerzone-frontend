@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Book } from 'src/app/shared/model/Book';
@@ -11,7 +11,7 @@ import { MessageService, MessageType } from 'src/app/shared/services/message-ser
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
-export class BookComponent implements OnInit, OnChanges {
+export class BookComponent implements OnInit {
 
   book!: Book;
 
@@ -40,17 +40,8 @@ export class BookComponent implements OnInit, OnChanges {
     return parsedDate.format('DD.MM.YYYY.');
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['isbn']) {
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa********');
-    }
-  }
-
   ngOnInit(): void {    
     let isbn = this.route.snapshot.paramMap.get('isbn');
-    if (isbn !== null) {
-      this.isbn = isbn;
-    }
     if (isbn !== null) {
       this.bookService
         .getBookByIsbn(isbn)
