@@ -1,4 +1,4 @@
-export interface BookProba {
+export interface BookRequest {
     title: string,
     authorIds: Array<number>,
     isbn: string,

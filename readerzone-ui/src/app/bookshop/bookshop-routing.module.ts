@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ShopComponent
   },
   {
-    path: 'book',
+    path: 'book/:isbn',
     component: BookComponent
   },
   {

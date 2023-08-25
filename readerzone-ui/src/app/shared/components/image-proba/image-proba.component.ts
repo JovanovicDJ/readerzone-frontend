@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BookProba } from '../../model/BookProba';
+import { BookRequest } from '../../model/BookRequest';
 
 @Component({
   selector: 'app-image-proba',
@@ -43,7 +43,7 @@ export class ImageProbaComponent implements OnInit {
   addBook(): void {
     if (this.imageSelected) {          
 
-      let book: BookProba = {
+      let book: BookRequest = {
         title: "Norwegian Wood",
         authorIds: [14],
         isbn: "978-0-307-27029-7",

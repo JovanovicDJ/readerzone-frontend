@@ -3,14 +3,20 @@
 }
 
 .filters {
-    flex: 3;
+    flex: 2;
+}
+
+.books {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
 }
 
 .books-grid {
-    flex: 5;
+    width: 100%;    
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 16px;
+    grid-gap: 12px;
     margin: 15px;
 }
 
@@ -26,5 +32,9 @@ app-book-card {
 } */
 
 .cart {
-    flex: 2;
+    flex: 1;
+}
+
+mat-paginator {
+    align-self: flex-end;
 }

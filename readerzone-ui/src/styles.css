@@ -29,3 +29,25 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: rgb(44, 44, 44) !important;
 }
+
+/******** PrimeNg Slider ********/
+
+.p-slider .p-slider-range {
+  background: #fac178 !important;
+  border: 2px solid #fac178 !important;
+}
+
+.p-slider .p-slider-handle {
+  border: 2px solid #fac178 !important;
+  background: #fac178 !important;
+}
+
+.p-slider .p-slider-handle:hover {
+  background-color: #fac178 !important;
+  border: 2px solid #fac178 !important;
+}
+
+.p-slider .p-slider-handle-active {
+  background-color: #fac178 !important;
+  border: 2px solid #fac178 !important;
+}

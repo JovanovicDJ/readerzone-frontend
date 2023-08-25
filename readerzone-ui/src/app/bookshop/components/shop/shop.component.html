@@ -1,11 +1,23 @@
 <div class="main-container-shop">
     <div class="filters">
-        <app-search-filter-card></app-search-filter-card>
+        <app-search-filter-card 
+            [pageNumber]="pageNumber"
+            (totalBooksChanged)="onTotalBooksChanged($event)"
+            (booksChanged)="onBooksChanged($event)"
+            ></app-search-filter-card>
     </div>
-    <div class="books-grid">
-        <ng-container *ngFor="let b of books">
-            <app-book-card [book]="b"></app-book-card>
-        </ng-container>
+    <div class="books">
+        <div class="books-grid">
+            <ng-container *ngFor="let b of books">
+                <app-book-card [book]="b"></app-book-card>
+            </ng-container>        
+        </div>
+        <mat-paginator 
+            [length]="totalBooks"
+            [pageSize]="pageSize"
+            (page)="onPageChange($event)"
+            aria-label="Select page">
+        </mat-paginator>
     </div>
     <div class="cart">
         <app-cart></app-cart>

@@ -6,4 +6,6 @@ export enum Paths {
     ResetPassword = 'reset/password',
 
     Customer = 'customer',
+
+    Book = 'book',
 }

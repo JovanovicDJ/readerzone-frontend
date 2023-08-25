@@ -47,4 +47,12 @@ export class CartDisplayComponent implements OnInit, OnDestroy {
     return this.cartService.getTotalPrice();
   }
 
+  getAuthorNames(book: Book): string {
+    var fullnames: string[] = [];
+    for (let author of book.authors) {
+      fullnames.push(author.name + ' ' + author.surname);
+    }
+    return fullnames.join(' ,');
+  }
+
 }

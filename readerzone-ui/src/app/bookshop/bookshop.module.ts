@@ -8,8 +8,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { SearchFilterCardComponent } from './components/search-filter-card/search-filter-card.component';
 import { BookComponent } from './components/book/book.component';
 import { CartDisplayComponent } from './components/cart-display/cart-display.component';
-
-
+import { SliderModule } from 'primeng/slider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,10 @@ import { CartDisplayComponent } from './components/cart-display/cart-display.com
   imports: [
     CommonModule,
     BookshopRoutingModule,
-    SharedModule
+    SharedModule,
+    SliderModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class BookshopModule { }

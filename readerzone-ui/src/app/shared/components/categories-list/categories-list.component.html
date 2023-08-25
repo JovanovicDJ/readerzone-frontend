@@ -6,14 +6,14 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Fantasy</mat-checkbox>
-            <mat-checkbox>Science Fiction</mat-checkbox>
-            <mat-checkbox>Mystery/Thriller</mat-checkbox>
-            <mat-checkbox>Romance</mat-checkbox>
-            <mat-checkbox>Historical Fiction</mat-checkbox>
-            <mat-checkbox>Contemporary Fiction</mat-checkbox>
-            <mat-checkbox>Literary Fiction</mat-checkbox>
-            <mat-checkbox>Adventure</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Fantasy')">Fantasy</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Science Fiction')">Science Fiction</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Mystery/Thriller')">Mystery/Thriller</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Romance')">Romance</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Historical Fiction')">Historical Fiction</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Contemporary Fiction')">Contemporary Fiction</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Literary Fiction')">Literary Fiction</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Adventure')">Adventure</mat-checkbox>
         </div>
     </mat-expansion-panel>
 
@@ -24,16 +24,16 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Biography/Memoir</mat-checkbox>
-            <mat-checkbox>Self-Help</mat-checkbox>
-            <mat-checkbox>Health/Fitness</mat-checkbox>
-            <mat-checkbox>History</mat-checkbox>
-            <mat-checkbox>Science</mat-checkbox>
-            <mat-checkbox>Technology</mat-checkbox>
-            <mat-checkbox>Psychology</mat-checkbox>
-            <mat-checkbox>Cooking/Food</mat-checkbox>
-            <mat-checkbox>Travel</mat-checkbox>
-            <mat-checkbox>Philosophy</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Biography/Memoir')">Biography/Memoir</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Self-Help')">Self-Help</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Health/Fitness')">Health/Fitness</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('History')">History</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Science')">Science</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Technology')">Technology</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Psychology')">Psychology</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Cooking/Food')">Cooking/Food</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Travel')">Travel</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Philosophy')">Philosophy</mat-checkbox>
         </div>
     </mat-expansion-panel>
 
@@ -44,9 +44,9 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Picture Books</mat-checkbox>
-            <mat-checkbox>Early Readers</mat-checkbox>
-            <mat-checkbox>Middle-Grade Fiction</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Picture Books')">Picture Books</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Early Readers')">Early Readers</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Middle-Grade Fiction')">Middle-Grade Fiction</mat-checkbox>
         </div>
     </mat-expansion-panel>
 
@@ -57,13 +57,13 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Mathematics</mat-checkbox>
-            <mat-checkbox>Science</mat-checkbox>
-            <mat-checkbox>Social Sciences</mat-checkbox>
-            <mat-checkbox>Literature</mat-checkbox>
-            <mat-checkbox>History</mat-checkbox>
-            <mat-checkbox>Art</mat-checkbox>
-            <mat-checkbox>Business/Economics</mat-checkbox>           
+            <mat-checkbox (change)="toggleCheckbox('Mathematics')">Mathematics</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Science')">Science</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Social Sciences')">Social Sciences</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Literature')">Literature</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('History')">History</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Art')">Art</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Business/Economics')">Business/Economics</mat-checkbox>           
         </div>
     </mat-expansion-panel>
 
@@ -74,11 +74,11 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Christianity</mat-checkbox>
-            <mat-checkbox>Islam</mat-checkbox>
-            <mat-checkbox>Buddhism</mat-checkbox>
-            <mat-checkbox>Hinduism</mat-checkbox>
-            <mat-checkbox>New Age/Spirituality</mat-checkbox>         
+            <mat-checkbox (change)="toggleCheckbox('Christianity')">Christianity</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Islam')">Islam</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Buddhism')">Buddhism</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Hinduism')">Hinduism</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('New Age/Spirituality')">New Age/Spirituality</mat-checkbox>         
         </div>
     </mat-expansion-panel>
 
@@ -89,12 +89,12 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="checkboxes">
-            <mat-checkbox>Graphic Novels/Comics</mat-checkbox>
-            <mat-checkbox>Poetry</mat-checkbox>
-            <mat-checkbox>Anthologies/Short Stories</mat-checkbox>
-            <mat-checkbox>Classic Literature</mat-checkbox>
-            <mat-checkbox>Art/Photography</mat-checkbox>         
-            <mat-checkbox>Music</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Graphic Novels/Comics')">Graphic Novels/Comics</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Poetry')">Poetry</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Anthologies/Short Stories')">Anthologies/Short Stories</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Classic Literature')">Classic Literature</mat-checkbox>
+            <mat-checkbox (change)="toggleCheckbox('Art/Photography')">Art/Photography</mat-checkbox>         
+            <mat-checkbox (change)="toggleCheckbox('Music')">Music</mat-checkbox>
         </div>
     </mat-expansion-panel>
 </mat-accordion>

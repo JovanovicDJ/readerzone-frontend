@@ -31,11 +31,11 @@
         <ng-container *ngFor="let b of cart">
             <mat-card class="book">
                 <div class="image-title">
-                    <img src="{{b.image}}" alt="book-image">
+                    <img src="{{b.imageUrl}}" alt="book-image">
                 </div>
                 <div class="author">
                     <div class="title">{{b.title}}</div>
-                    <div class="name">{{b.author}}</div>
+                    <div class="name">{{getAuthorNames(b)}}</div>
                 </div>
                 <div class="publisher">
                     Harper Collins

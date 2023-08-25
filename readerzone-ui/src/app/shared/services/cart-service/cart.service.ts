@@ -26,7 +26,7 @@ export class CartService {
   }
 
   removeFromCart(book: Book) {
-    const index = this.cart.findIndex((item) => item.title === book.title);
+    const index = this.cart.findIndex((item) => item.isbn === book.isbn);
     if (index !== -1) {
       this.cart.splice(index, 1);
       this.saveCartToLocalStorage();
