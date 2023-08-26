@@ -9,7 +9,9 @@ import { SearchFilterCardComponent } from './components/search-filter-card/searc
 import { BookComponent } from './components/book/book.component';
 import { CartDisplayComponent } from './components/cart-display/cart-display.component';
 import { SliderModule } from 'primeng/slider';
+import { RatingModule } from 'primeng/rating';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CartComponent,
     SearchFilterCardComponent,
     BookComponent,
-    CartDisplayComponent
+    CartDisplayComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     SliderModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RatingModule,
   ]
 })
 export class BookshopModule { }

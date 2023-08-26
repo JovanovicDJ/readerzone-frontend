@@ -24,7 +24,7 @@
         <mat-card class="table-header">
             <div class="header-column">Book</div>
             <div class="header-column">Title&Author</div>
-            <div class="header-column">Publisher</div>
+            <div class="header-column">Publisher</div>            
             <div class="header-column">Price</div>
             <div class="remove-button"></div>
         </mat-card>
@@ -38,8 +38,8 @@
                     <div class="name">{{getAuthorNames(b)}}</div>
                 </div>
                 <div class="publisher">
-                    Harper Collins
-                </div>
+                    {{b.publisher.name}}
+                </div>            
                 <div class="price-column">
                     <div class="{{b.discount === 0 ? 'price' : 'not-price'}}">
                         {{b.price | currency:'EUR'}}
@@ -77,7 +77,7 @@
                         <span>{{finalPrice | currency:'EUR'}}</span>
                     </div>
                     <div class="checkout-button">
-                        <button mat-raised-button>Checkout</button>
+                        <button mat-raised-button (click)="checkout()">Checkout</button>
                     </div>
                     <div class="payment-options">
                         <img src="../../../../assets/payment-icons.jpg" alt="payment-options">

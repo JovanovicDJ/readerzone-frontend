@@ -1,0 +1,61 @@
+.checkout-page {
+    display: flex;
+}
+
+.checkout-container {
+    flex: 11;
+    margin: 15px;
+}
+
+.checkout-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+img {
+    align-items: center;
+    justify-content: center;
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.main-text {
+    margin-top: 40px;
+    font-size: x-large;
+    font-weight: bolder;    
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+}
+
+.secondary-text {
+    margin-top: 40px;
+    font-size: large;       
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+}
+
+form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-part {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+mat-form-field {
+    width: 48%;
+}
+
+.paypal {
+    margin-top: 15px;
+}
+
+.cart {
+    flex: 2;
+}

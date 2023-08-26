@@ -1,4 +1,4 @@
-import { Address } from "cluster";
+import { Address } from "./Address";
 import { UserAccount } from "./UserAccount";
 
 export interface User {

@@ -66,7 +66,22 @@ export class CartService {
 
   clearCart(): void {
     this.cart = [];
+    this.saveCartToLocalStorage();
     this.cartSubject.next(this.cart);
     this.logoutSubject.next(false);
+  }
+
+  saveFinalPriceToLocalStorage(price: number): void {
+    var num = Math.round(price * 100) / 100
+    localStorage.setItem('final-price', num.toString());
+  }
+
+  get finalPrice(): number {
+    const storedEndPrice = localStorage.getItem('final-price');
+    if (storedEndPrice) {
+      return +storedEndPrice;
+    } else {
+      return 0;
+    }
   }
 }

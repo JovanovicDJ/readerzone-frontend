@@ -75,8 +75,7 @@ export class CartDisplayComponent implements OnInit, OnDestroy {
       return 0;
     }
     else if (this.authService.user.userAccount.role === Role.Customer) {      
-      const customer = this.authService.user as Customer;
-      console.log(customer.tier);
+      const customer = this.authService.user as Customer;      
       switch(customer.tier) {
         case 0: return 1;
         case 1: return 3;
@@ -89,4 +88,8 @@ export class CartDisplayComponent implements OnInit, OnDestroy {
     }
   }
 
+  checkout() {
+    this.cartService.saveFinalPriceToLocalStorage(this.finalPrice);
+    this.router.navigate(['/shop/checkout']);
+  }
 }

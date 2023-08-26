@@ -51,3 +51,8 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
   background-color: #fac178 !important;
   border: 2px solid #fac178 !important;
 }
+
+/******** PrimeNg Rating ********/
+.p-rating .p-rating-icon {
+  color: gold !important;
+}

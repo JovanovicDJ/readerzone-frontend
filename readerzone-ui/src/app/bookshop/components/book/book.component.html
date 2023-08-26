@@ -13,6 +13,10 @@
                 <div *ngIf="book.discount !== 0" class="discount-price">
                     {{discountPrice | currency:'EUR'}}
                 </div>
+                <div class="rating">
+                    <div>Rating: <span> {{book.averageRating}}</span></div>
+                    <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+                </div>                
                 <div class="button-container">
                     <button mat-raised-button (click)="addToCart()"
                     class="{{buttonClicked ? 'button-clicked' : 'button' }}"
