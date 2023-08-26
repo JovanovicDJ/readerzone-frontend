@@ -8,4 +8,6 @@ export enum Paths {
     Customer = 'customer',
 
     Book = 'book',
+
+    Order = 'order',
 }

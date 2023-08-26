@@ -5,8 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-
+export class CartService {  
   private cart: Book[] = [];
   private cartSubject: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(this.cart);
   private logoutSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -83,5 +82,13 @@ export class CartService {
     } else {
       return 0;
     }
+  }
+
+  getBooksIsbn(): Array<string> {
+    var isbns: Array<string> = [];    
+    for (var b of this.cart) {
+      isbns.push(b.isbn);
+    }    
+    return isbns;
   }
 }

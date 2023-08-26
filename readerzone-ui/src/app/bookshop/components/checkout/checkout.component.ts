@@ -2,9 +2,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/services/auth-service/auth.service';
+import { Order } from 'src/app/shared/model/Order';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
+import { OrderService } from 'src/app/shared/services/order-service/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -25,7 +27,8 @@ export class CheckoutComponent implements OnInit {
   constructor(private authService: AuthService,
               private messageService: MessageService,
               private cartService: CartService,
-              private router: Router) { }
+              private router: Router,
+              private orderService: OrderService) { }
 
   ngOnInit(): void {
     if (this.authService.user !== null) {
@@ -61,10 +64,32 @@ export class CheckoutComponent implements OnInit {
         }        
       },
       onApprove: (data: any, actions: any) => {        
-        return actions.order.capture().then((details: any) => {                    
-          this.messageService.showMessage('Transaction completed successfully!', MessageType.SUCCESS);
-          this.cartService.clearCart();
-          //this.router.navigateByUrl('shop');
+        return actions.order.capture().then((details: any) => {
+          var data: Order = {
+            name: this.form.get('name')?.value,
+            surname: this.form.get('surname')?.value,
+            email: this.form.get('email')?.value,
+            phoneNumber: this.form.get('phoneNumber')?.value,
+            street: this.form.get('street')?.value,
+            number: this.form.get('number')?.value,
+            city: this.form.get('city')?.value,
+            postalCode: this.form.get('postalCode')?.value,
+            country: this.form.get('country')?.value,
+            price: this.cartService.finalPrice,
+            books: this.cartService.getBooksIsbn()
+          };
+          this.orderService
+            .sendOrderRequest(data)      
+            .subscribe({
+            next: () => {          
+              this.messageService.showMessage('Transaction completed successfully!', MessageType.SUCCESS);
+              this.cartService.clearCart();
+              //this.router.navigateByUrl('shop');              
+            },
+            error: (err) => {          
+              this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+            },
+          });          
         });
       },
       onError: (error: any) => {        
