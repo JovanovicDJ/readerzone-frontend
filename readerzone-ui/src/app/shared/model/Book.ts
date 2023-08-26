@@ -16,7 +16,7 @@ export interface Book {
     height: number,
     width: number,
     price: number,
-    publisher: Publisher,
+    publisher?: Publisher,
     imageUrl: string,
     discount: number,
     averageRating: number

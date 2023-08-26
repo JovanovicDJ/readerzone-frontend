@@ -1,0 +1,27 @@
+<mat-card class="book">
+    <div class="cover">
+        <img src="{{book.book.imageUrl}}" alt="book-image">
+    </div>
+    <div class="author">
+        <div class="title">{{book.book.title}}</div>
+        <div class="name">{{authorNames}}</div>
+    </div>
+    <div class="publisher">
+        {{book.book.publisher?.name}}
+    </div>
+    <div class="rating">
+        {{book.book.averageRating}}
+        <p-rating [(ngModel)]="book.book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+    </div>
+    <div class="status">
+        <mat-form-field appearance="outline">
+            <mat-label>Book status</mat-label>
+            <mat-select [disabled]="isRead" [(value)]="selectedStatus" (selectionChange)="onOptionSelect($event)">               
+              <mat-option [value]="option.value" *ngFor="let option of status">{{ option.viewValue }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="review">
+        <button matTooltip="Review can only be writen for read book." mat-flat-button [disabled]="!isRead && book.review === null">Review</button>
+    </div>
+</mat-card>

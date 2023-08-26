@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then((m) => m.LoginModule)
   },
   {
+    path: 'customer',
+    loadChildren: () => import('./customer/customer.module').then((m) => m.CustomerModule)
+  },
+  {
     path: 'image',
     component: ImageProbaComponent
   }

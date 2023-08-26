@@ -38,7 +38,7 @@
                     <div class="name">{{getAuthorNames(b)}}</div>
                 </div>
                 <div class="publisher">
-                    {{b.publisher.name}}
+                    {{b.publisher?.name}}
                 </div>            
                 <div class="price-column">
                     <div class="{{b.discount === 0 ? 'price' : 'not-price'}}">

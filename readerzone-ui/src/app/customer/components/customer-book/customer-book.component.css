@@ -1,0 +1,73 @@
+.book {
+    display: flex;
+    width: 100%;
+    height: 225px;
+    margin-bottom: 15px;
+}
+
+img {
+    width: 60%;
+    max-height: 195px;
+}
+
+.cover {
+    flex: 1;
+    width: 100px;
+}
+
+.author {
+    flex: 1;
+}
+
+.author .title {
+    font-size: larger;
+}
+
+.author .name {
+    margin-top: 15px;
+}
+
+.author .name:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.publisher {
+    flex: 1;
+    font-size: large;
+}
+
+.publisher:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.rating {
+    flex: 1;
+    font-size: large;
+}
+
+.status {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.review {
+    flex: 1;
+    display: flex;
+    padding-top: 4px;
+}
+
+.review button {
+    width: 100%;
+    height: 58px;
+    background-color: rgb(79, 187, 79);
+    color: white;
+}
+
+.review button:disabled {
+    width: 100%;
+    height: 58px;
+    background-color: gray;
+    color: white;
+}
