@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
               private messageService: MessageService,
               private router: Router,
               private route: ActivatedRoute,
-              private dialog: MatDialog,) { }
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.authService.isUserLoggedId) {

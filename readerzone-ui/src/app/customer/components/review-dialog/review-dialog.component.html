@@ -1,0 +1,41 @@
+<mat-card class="card">
+    <h1 class="title">Write review</h1>
+    <div class="review-container">
+        <div class="book-data">
+            <div class="cover">
+                <img src="{{data.book.imageUrl}}" alt="book-image">
+            </div>
+            <div class="author">
+                <div class="book-title">{{data.book.title}}</div>
+                <div class="name">{{authorNames}}</div>
+            </div>
+        </div>
+        <div class="review-form">
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" [formControl]="title" />
+            </mat-form-field>
+
+            <div class="rating">
+                <div>Your rating: </div>
+                <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+            </div>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Text</mat-label>
+                <textarea matInput [formControl]="text"></textarea>                
+            </mat-form-field>
+
+            <mat-card-actions style="text-align: center">
+                <button mat-button 
+                        class="send-review-button"
+                        (click)="onSendReview()"
+                        >Send review</button>
+                <button mat-button 
+                        color="warn"
+                        (click)="onCancelClick()"
+                        >Cancel</button>
+            </mat-card-actions>
+        </div>
+    </div>  
+</mat-card>

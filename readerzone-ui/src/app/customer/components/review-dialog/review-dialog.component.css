@@ -1,0 +1,86 @@
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    display: block;
+    text-align: center;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.review-container {
+    display: flex;
+}
+
+.book-data {
+    margin-top: 20px;    
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    padding-left: 25px;
+}
+
+.cover {    
+    width: 75%;    
+}
+
+img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 2%;
+}
+
+.author .book-title {
+    margin-top: 15px;
+    font-size: x-large;
+}
+
+.author .name {
+    margin-top: 15px;
+    font-size: larger;
+}
+
+.review-form {
+    margin-top: 20px;
+    display: flex;
+    flex: 5;
+    flex-direction: column;
+    padding-right: 25px;
+}
+
+.rating {
+    display: flex;
+}
+
+.rating div {
+    flex: 1;
+    font-size: large;
+}
+
+p-rating {
+    flex: 3;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 130px;
+    resize: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.send-review-button {
+    background-color: rgb(79, 187, 79);
+    color: white;
+}

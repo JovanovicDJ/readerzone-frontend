@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from 'src/app/shared/model/Customer';
@@ -27,7 +28,8 @@ export class AuthService {
               private jwt: JwtHelperService,
               private customerService: CustomerService,
               private messageService: MessageService,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private router: Router) { }
 
   get token(): string | null {
     return localStorage.getItem('access-token');
@@ -80,6 +82,7 @@ export class AuthService {
     localStorage.clear();
     this.cartService.clearCart();    
     this.userSubject.next(this.user!);
+    this.router.navigate(['/shop']);
   }
 
   sendLoginRequest(data: LoginData): Observable<string> {

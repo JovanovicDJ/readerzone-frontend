@@ -22,6 +22,6 @@
           </mat-form-field>
     </div>
     <div class="review">
-        <button matTooltip="Review can only be writen for read book." mat-flat-button [disabled]="!isRead && book.review === null">Review</button>
+        <button (click)="openReviewDialog()" matTooltip="Review can only be writen for read book." mat-flat-button [disabled]="disableReviewButton">Review</button>
     </div>
 </mat-card>

@@ -1,10 +1,11 @@
 import { Book } from "./Book";
+import { Review } from "./Review";
 
 export interface PurchasedBook {
     id: number,
     bookStatus: number,
     book: Book,
     customerId: number,
-    review?: any,       // Type Review soon
+    review?: Review,
     finalPrice: number
 }

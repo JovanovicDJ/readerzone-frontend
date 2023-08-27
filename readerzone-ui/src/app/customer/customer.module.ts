@@ -7,6 +7,7 @@ import { CustomerBooksComponent } from './components/customer-books/customer-boo
 import { CustomerBookComponent } from './components/customer-book/customer-book.component';
 import { RatingModule } from 'primeng/rating';
 import { CustomerBooksHeaderComponent } from './components/customer-books-header/customer-books-header.component';
+import { ReviewDialogComponent } from './components/review-dialog/review-dialog.component';
 
 
 
@@ -14,7 +15,8 @@ import { CustomerBooksHeaderComponent } from './components/customer-books-header
   declarations: [
     CustomerBooksComponent,
     CustomerBookComponent,
-    CustomerBooksHeaderComponent
+    CustomerBooksHeaderComponent,
+    ReviewDialogComponent
   ],
   imports: [
     CommonModule,
