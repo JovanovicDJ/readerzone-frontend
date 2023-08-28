@@ -17,6 +17,8 @@ export class CustomerBooksComponent implements OnInit {
   readingBooks: PurchasedBook[] = [];
   readBooks: PurchasedBook[] = [];
 
+  loading: boolean = true;
+
   constructor(private authService: AuthService,
               private customerService: CustomerService,
               private messageService: MessageService) { }
@@ -29,7 +31,8 @@ export class CustomerBooksComponent implements OnInit {
           next: (res: CustomerBooksResponse) => {
             this.wantToReadBooks = res.wantToRead;
             this.readingBooks = res.reading;
-            this.readBooks = res.read;            
+            this.readBooks = res.read;
+            this.loading = false;  
           },
           error: (err) => {          
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);

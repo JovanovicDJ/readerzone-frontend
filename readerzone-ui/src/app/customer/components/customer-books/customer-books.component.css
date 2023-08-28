@@ -30,3 +30,9 @@ mat-card {
     font-family: "Lexend Peta", "Arial", sans-serif; 
     margin-top: 10px;
 }
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

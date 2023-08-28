@@ -20,7 +20,7 @@ export class SearchFilterCardComponent implements OnInit, OnChanges {
 
   @Input()
   pageNumber: number = 1;
-  pageSize: number = 12;
+  pageSize: number = 8;
 
   @Output()
   booksChanged = new EventEmitter<Book[]>();

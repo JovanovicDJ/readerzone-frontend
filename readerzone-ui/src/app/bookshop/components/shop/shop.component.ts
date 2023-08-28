@@ -10,8 +10,9 @@ import { Book } from 'src/app/shared/model/Book';
 export class ShopComponent implements OnInit {
 
   books: Book[] = [];
+  loading: boolean = true;
   totalBooks: number = 0;
-  pageSize: number = 12;
+  pageSize: number = 8;
   pageNumber: number = 1;
   
   constructor() { }
@@ -20,7 +21,8 @@ export class ShopComponent implements OnInit {
   }
 
   onBooksChanged(books: Book[]) {    
-    this.books = books;    
+    this.books = books;
+    this.loading = false;
   }
 
   onTotalBooksChanged(totalBooks: number) {

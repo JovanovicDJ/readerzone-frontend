@@ -5,12 +5,12 @@
 
 .profile-card {
     display: flex;
+    flex-direction: column;
     margin-top: 15px;
     width: 90%;    
 }
 
-.main-container {
-    flex: 3;    
+.main-container {        
     padding: 15px;
 }
 
@@ -67,10 +67,7 @@
 }
 
 .side-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-right: 80px;
 }
 
 app-customer-tier {
@@ -79,4 +76,10 @@ app-customer-tier {
 
 .carousel-container {
     width: 100%;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }

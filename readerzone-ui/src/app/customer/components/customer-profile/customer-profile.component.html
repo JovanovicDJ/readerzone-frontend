@@ -1,5 +1,10 @@
 <div class="profile-container">
-    <mat-card class="profile-card">
+    <div *ngIf="loading" class="books">
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>        
+    </div>
+    <mat-card *ngIf="!loading" class="profile-card">
         <div class="main-container">
             <div *ngIf="customer" class="customer-data">
                 <div class="circular-container">
@@ -9,17 +14,25 @@
                     <div class="full-name">{{customer.name}} {{customer.surname}}</div>
                     <div class="username">@{{customer.userAccount.username}}</div>
                 </div>
+                <div class="side-container">
+                    <app-customer-tier *ngIf="customer" [tier]="customer.tier" [points]="customer.points"></app-customer-tier>
+                </div>
                 <div *ngIf="isCustomerLoggedIn" class="edit-button">
                     <button mat-flat-button (click)="openEditDialog()" color="primary"><mat-icon>edit</mat-icon> Edit profile</button>
-                </div>
+                </div>                
             </div>
             <hr/>
-            <div class="carousel-container">
-                <app-book-carousel [numVisible]="2" [books]="booksData" [showStatus]="true" [title]="carouselTitle"></app-book-carousel>
-            </div>
         </div>
-        <div class="side-container">
-            <app-customer-tier *ngIf="customer" [tier]="customer.tier" [points]="customer.points"></app-customer-tier>
+        <div class="carousel-container">
+            <app-book-carousel [numVisible]="3" [books]="booksData" [showStatus]="true" [title]="carouselTitle"></app-book-carousel>
+        </div>
+        <div class="posts-friends">
+            <div class="posts">
+
+            </div>
+            <div class="friends">
+                
+            </div>
         </div>
     </mat-card>
 </div>

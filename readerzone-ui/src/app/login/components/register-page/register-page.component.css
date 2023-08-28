@@ -22,6 +22,10 @@ mat-form-field {
   margin-top: 10px;
 }
 
+mat-form-field:focus {
+  width: 20%;
+}
+
 #register-button {
   width: 50%;
   background-color: rgb(44, 44, 44);

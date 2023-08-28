@@ -18,6 +18,8 @@ export class CustomerProfileComponent implements OnInit {
   customer!: Customer;
   booksData: BookData[] = [];
 
+  loading: boolean = true;
+
   constructor(private authService: AuthService,
               private route: ActivatedRoute,
               private router: Router,
@@ -34,6 +36,7 @@ export class CustomerProfileComponent implements OnInit {
           next: (res: Customer) => {
             this.customer = res;
             console.log(this.customer);
+            this.loading = false;
           },
           error: (err) => {
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);
