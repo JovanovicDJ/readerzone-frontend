@@ -8,14 +8,17 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MessageComponent } from './services/message-service/message.service';
 import { ImageProbaComponent } from './components/image-proba/image-proba.component';
-
+import { BookCarouselComponent } from './components/book-carousel/book-carousel.component';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     CategoriesListComponent,
     MessageComponent,
-    ImageProbaComponent
+    ImageProbaComponent,
+    BookCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -23,12 +26,15 @@ import { ImageProbaComponent } from './components/image-proba/image-proba.compon
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule,    
+    RouterModule,
+    CarouselModule,
+    ButtonModule
   ],
   exports: [
     MaterialModule,
     NavbarComponent,
-    CategoriesListComponent    
+    CategoriesListComponent,
+    BookCarouselComponent
   ]
 })
 export class SharedModule { }

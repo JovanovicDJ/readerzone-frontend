@@ -10,4 +10,6 @@ export enum Paths {
     Book = 'book',
 
     Order = 'order',
+
+    Image = 'image',
 }

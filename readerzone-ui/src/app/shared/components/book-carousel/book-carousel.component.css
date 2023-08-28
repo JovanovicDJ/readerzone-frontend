@@ -1,0 +1,29 @@
+.section-title {
+    margin-top: 40px;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.no-books {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: large;
+}
+
+.product-item-content {
+    border: 1px solid var(--surface-d);
+    border-radius: 3px;
+    margin: .3rem;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.little-book {
+    /* border: 1px solid rgb(150, 150, 150);
+    border-radius: 3px; */
+    text-align: center;
+    margin: 5px;
+    min-height: 300px;    
+}

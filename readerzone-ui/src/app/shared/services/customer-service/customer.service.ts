@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
 import { CustomerBooksResponse } from '../../model/CustomerBooksResponse';
 import { ReviewRequest } from 'src/app/customer/models/ReviewRequest';
+import { BookData } from '../../model/BookData';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class CustomerService {
 
   getCustomerByEmail(email: string): Observable<Customer> {
     let url = `${environment.baseUrl}/${Paths.Customer}/${email}`;
+    return this.http.get<Customer>(url);
+  }
+
+  getCustomerById(id: number): Observable<Customer> {
+    let url = `${environment.baseUrl}/${Paths.Customer}/id/${id}`;
     return this.http.get<Customer>(url);
   }
 
@@ -32,5 +38,15 @@ export class CustomerService {
   sendReview(review: ReviewRequest): Observable<void> {
     let url = `${environment.baseUrl}/${Paths.Customer}/review`;
     return this.http.post<void>(url, review);
+  }
+
+  updateCustomer(data: Object): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Customer}`;
+    return this.http.put<void>(url, data);
+  }
+
+  getBooksDataByCustomerId(id: number): Observable<BookData[]> {
+    let url = `${environment.baseUrl}/${Paths.Customer}/books/data/${id}`;
+    return this.http.get<BookData[]>(url);
   }
 }

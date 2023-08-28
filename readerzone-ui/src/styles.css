@@ -56,3 +56,8 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 .p-rating .p-rating-icon {
   color: gold !important;
 }
+
+/******** PrimeNg Carousel ********/
+.p-carousel .p-carousel-content .p-carousel-prev, .p-carousel .p-carousel-content .p-carousel-next {
+  color: black !important; 
+}

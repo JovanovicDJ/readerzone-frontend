@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'image',
     component: ImageProbaComponent
+  },
+  { 
+    path: '**',
+    loadChildren: () => import('./bookshop/bookshop.module').then((m) => m.BookshopModule)
   }
 ];
 

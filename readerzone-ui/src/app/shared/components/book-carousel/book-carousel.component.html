@@ -1,0 +1,13 @@
+<div class="section-title">{{title}}</div>
+<p-carousel *ngIf="books.length !== 0" [value]="books" styleClass="custom-carousel" [numVisible]="numVisible" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">  <!--[autoplayInterval]="5000"-->
+    <ng-template pTemplate="header">
+    </ng-template>
+    <ng-template let-book pTemplate="item">
+        <mat-card class="little-book">
+            {{book.title}}
+        </mat-card>
+    </ng-template>
+</p-carousel>
+<div class="no-books" *ngIf="books.length === 0">
+    No books yet
+</div>

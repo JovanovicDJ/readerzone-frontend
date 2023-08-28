@@ -31,6 +31,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate(['/shop']);
   }
 
+  profile() {
+    this.router.navigate(['/customer/profile/' + this.authService.user?.id]);
+  }
+
   register() {
     this.router.navigate(['/login/register']);
   }

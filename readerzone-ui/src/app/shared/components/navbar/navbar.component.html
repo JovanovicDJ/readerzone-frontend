@@ -4,7 +4,7 @@
         <button mat-button>Home</button>
         <button mat-button routerLink="/shop">Shop</button>
         <button mat-button routerLink="/customer/books">My Books</button>
-        <button mat-button>Profile</button>        
+        <button mat-button (click)="profile()">Profile</button>        
     </div>
     <div *ngIf="user" class="navbar-logout">
         <button (click)="logout()" class="logout-button" mat-icon-button>

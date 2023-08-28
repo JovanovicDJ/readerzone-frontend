@@ -8,6 +8,9 @@ import { CustomerBookComponent } from './components/customer-book/customer-book.
 import { RatingModule } from 'primeng/rating';
 import { CustomerBooksHeaderComponent } from './components/customer-books-header/customer-books-header.component';
 import { ReviewDialogComponent } from './components/review-dialog/review-dialog.component';
+import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
+import { CustomerTierComponent } from './components/customer-tier/customer-tier.component';
+import { CustomerEditDialogComponent } from './components/customer-edit-dialog/customer-edit-dialog.component';
 
 
 
@@ -16,7 +19,10 @@ import { ReviewDialogComponent } from './components/review-dialog/review-dialog.
     CustomerBooksComponent,
     CustomerBookComponent,
     CustomerBooksHeaderComponent,
-    ReviewDialogComponent
+    ReviewDialogComponent,
+    CustomerProfileComponent,
+    CustomerTierComponent,
+    CustomerEditDialogComponent
   ],
   imports: [
     CommonModule,
