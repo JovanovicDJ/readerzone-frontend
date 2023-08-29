@@ -12,4 +12,6 @@ export enum Paths {
     Order = 'order',
 
     Image = 'image',
+
+    Post = 'post'
 }

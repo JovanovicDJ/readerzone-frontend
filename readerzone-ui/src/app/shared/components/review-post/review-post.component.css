@@ -1,0 +1,128 @@
+.review-post-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+}
+
+.main-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side {
+    display: flex;
+}
+
+.circular-container {
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgb(250, 193, 120);
+}
+  
+.circular-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.customer-name span {
+    color: gray;
+    font-weight: none;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.date-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+    color: #333;
+}
+
+.review-data {
+    margin-top: 30px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 200px;
+    max-height: 250px;    
+    transition: all .2s ease-in-out;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
+
+.product-image:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.book-data {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.author {
+    font-size: larger;
+    text-align: center;
+    color: gray;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.main-text {
+    margin-top: 30px;
+    margin-left: 20px;
+    font-weight: 800;
+}
+
+.book-data button {
+    background-color: rgb(79, 187, 79);
+    color: white;
+    width: 100%;
+    height: 20%;
+    font-size: large;
+    margin-top: 15px;
+}

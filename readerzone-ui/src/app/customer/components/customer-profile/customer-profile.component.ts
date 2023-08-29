@@ -63,7 +63,11 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   get carouselTitle(): string {
-    return this.customer?.name + "'s books";
+    return this.customer.name + "'s books";
+  }
+
+  get postsTitle(): string {
+    return this.customer.name + "'s posts";
   }
 
   openEditDialog() {

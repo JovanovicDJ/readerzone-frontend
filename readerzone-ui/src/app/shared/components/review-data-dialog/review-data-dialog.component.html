@@ -1,0 +1,14 @@
+<mat-card class="review-data-card">
+    <div class="title">
+        {{data.title}}
+    </div>
+    <div class="rating">
+        <p-rating [(ngModel)]="data.rating" [readonly]="true" [cancel]="false"></p-rating>
+    </div>
+    <div class="text">
+        {{data.text}}
+    </div>
+    <div class="close-button">
+        <button (click)="onCloseClick()" mat-stroked-button>Close</button>
+    </div>
+</mat-card>

@@ -1,0 +1,19 @@
+<div class="automatic-post-container">
+    <div class="main-data">
+        <div class="left-side">
+            <div class="circular-container">
+                <img matTooltip="Profile image" src="{{post.customerImageUrl}}" alt="User Photo" class="circular-image">                    
+            </div>
+            <div class="customer-name">
+                <div>{{post.customerName}} {{post.customerSurname}} </div>
+                <span> @{{post.customerUsername}}</span>
+            </div>
+        </div>
+        <div class="date-time">
+            {{postingTime}}
+        </div>
+    </div>
+    <div class="main-text">
+        {{post.text}}
+    </div>
+</div>

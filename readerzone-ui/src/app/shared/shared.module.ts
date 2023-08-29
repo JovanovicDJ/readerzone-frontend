@@ -11,6 +11,12 @@ import { ImageProbaComponent } from './components/image-proba/image-proba.compon
 import { BookCarouselComponent } from './components/book-carousel/book-carousel.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
+import { AutomaticPostComponent } from './components/automatic-post/automatic-post.component';
+import { ReviewPostComponent } from './components/review-post/review-post.component';
+import { ReviewDataDialogComponent } from './components/review-data-dialog/review-data-dialog.component';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,12 @@ import { ButtonModule } from 'primeng/button';
     CategoriesListComponent,
     MessageComponent,
     ImageProbaComponent,
-    BookCarouselComponent
+    BookCarouselComponent,
+    PostsComponent,
+    PostComponent,
+    AutomaticPostComponent,
+    ReviewPostComponent,
+    ReviewDataDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,13 +39,15 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     RouterModule,
     CarouselModule,
-    ButtonModule
+    ButtonModule,
+    RatingModule
   ],
   exports: [
     MaterialModule,
     NavbarComponent,
     CategoriesListComponent,
-    BookCarouselComponent
+    BookCarouselComponent,
+    PostsComponent
   ]
 })
 export class SharedModule { }
