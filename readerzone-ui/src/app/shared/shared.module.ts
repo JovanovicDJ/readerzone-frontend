@@ -17,6 +17,7 @@ import { AutomaticPostComponent } from './components/automatic-post/automatic-po
 import { ReviewPostComponent } from './components/review-post/review-post.component';
 import { ReviewDataDialogComponent } from './components/review-data-dialog/review-data-dialog.component';
 import { RatingModule } from 'primeng/rating';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RatingModule } from 'primeng/rating';
     PostComponent,
     AutomaticPostComponent,
     ReviewPostComponent,
-    ReviewDataDialogComponent
+    ReviewDataDialogComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,

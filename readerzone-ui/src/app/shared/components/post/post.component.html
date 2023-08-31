@@ -5,4 +5,5 @@
     <app-review-post 
         *ngIf="post.type === 'Review'"
         [post]="post"></app-review-post>
+    <app-comment [comments]="post.comments" [postId]="post.id"></app-comment>
 </mat-card>

@@ -65,4 +65,10 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 /******** PrimeNg Carousel ********/
 .mat-progress-spinner circle, .mat-spinner circle {
   stroke: rgb(250, 193, 120) !important;
-  }
+}
+
+
+/**** Comment textarea ****/
+/* .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: rgb(240, 240, 240) !important;  
+} */

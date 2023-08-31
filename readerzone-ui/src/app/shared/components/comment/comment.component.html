@@ -1,0 +1,35 @@
+<div class="comments-container">
+    <ng-container *ngFor="let c of comments">
+        <div class="comment">
+            <div class="main-data">
+                <div class="left-side">
+                    <div class="circular-container">
+                        <img matTooltip="Profile image" src="{{c.customerImageUrl}}" alt="User Photo" class="circular-image">                    
+                    </div>
+                    <div class="customer-name">
+                        <div>{{c.customerName}} {{c.customerSurname}} </div>
+                        <span> @{{c.customerUsername}}</span>
+                    </div>
+                </div>
+                <div class="date-time">
+                    {{getPostingTime(c)}}
+                </div>
+            </div>
+            <div class="main-text">
+                <div class="text">{{c.text}}</div>                
+                <div *ngIf="loggedUserId && loggedUserId === c.customerId" class="remove-button">
+                    <button matTooltip="Delete comment" mat-button (click)="removeComment(c.id)"><mat-icon>clear</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="comment-write">
+        <mat-form-field appearance="outline">
+            <mat-label>Your comment</mat-label>
+            <textarea style="resize: none;" matInput [formControl]="commentText"></textarea>
+        </mat-form-field>
+        <div class="comment-button">
+            <button [disabled]="commentText.value === ''" mat-flat-button (click)="comment()" color="primary">Comment</button>
+        </div>        
+    </div>
+</div>
