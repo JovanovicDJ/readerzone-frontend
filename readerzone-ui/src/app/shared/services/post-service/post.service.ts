@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
 import { Observable } from 'rxjs';
 import { PostResponse } from '../../model/PostResponse';
+import { Comment } from '../../model/Comment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,10 @@ export class PostService {
   commentPost(postId: number, text: string): Observable<Comment> {
     let url = `${environment.baseUrl}/${Paths.Post}/comment`;
     return this.http.post<Comment>(url, { text: text, postId: postId });
+  }
+
+  deleteComment(commentId: number): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Post}/comment/${commentId}`;
+    return this.http.delete<void>(url);
   }
 }

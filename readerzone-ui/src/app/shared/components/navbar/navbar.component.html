@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <span class="name" (click)="onLogoClick()">ReaderZone</span>
     <div *ngIf="user" class="navbar-options">
-        <button mat-button>Home</button>
+        <button mat-button routerLink="/home">Home</button>
         <button mat-button routerLink="/shop">Shop</button>
         <button mat-button routerLink="/customer/books">My Books</button>
         <button mat-button (click)="profile()">Profile</button>        

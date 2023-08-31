@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Comment } from '../../model/Comment';
 import { FormControl, Validators } from '@angular/forms';
 import { PostService } from '../../services/post-service/post.service';
-import { MessageService } from '../../services/message-service/message.service';
+import { MessageService, MessageType } from '../../services/message-service/message.service';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/login/services/auth-service/auth.service';
 
@@ -18,6 +18,14 @@ export class CommentComponent implements OnInit {
 
   @Input()
   postId: number = 0;
+
+  @Output()
+  commentAdded = new EventEmitter<Comment>();
+  newComment!: Comment;
+
+  @Output()
+  commentDeleted = new EventEmitter<number>();
+  deletedCommentId!: number;
 
   commentText: FormControl = new FormControl('');
 
@@ -39,11 +47,32 @@ export class CommentComponent implements OnInit {
   }
 
   comment() {
-  
+    this.postService
+      .commentPost(this.postId, this.commentText.value)
+      .subscribe({
+        next: (res: Comment) => {
+          this.newComment = res;                            
+          this.commentAdded.emit(this.newComment);
+          this.commentText.setValue('');
+        },
+        error: (err) => {
+          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+        }
+      });
   }
 
   removeComment(id: number) {
-
+    this.postService
+      .deleteComment(id)
+      .subscribe({
+        next: () => {
+          this.deletedCommentId = id;
+          this.commentDeleted.emit(this.deletedCommentId);
+        },
+        error: (err) => {
+          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+        }
+      });
   }
 
 }

@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./customer/customer.module').then((m) => m.CustomerModule)
   },
   {
+    path: 'home',
+    loadChildren: () => import('./homepage/homepage.module').then((m) => m.HomepageModule)
+  },
+  {
     path: 'image',
     component: ImageProbaComponent
   },
