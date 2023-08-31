@@ -10,6 +10,7 @@ import { ResetPassword } from 'src/app/shared/model/ResetPassword';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { CustomerService } from 'src/app/shared/services/customer-service/customer.service';
+import { FriendService } from 'src/app/shared/services/friend-service/friend.service';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
 import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
@@ -29,7 +30,8 @@ export class AuthService {
               private customerService: CustomerService,
               private messageService: MessageService,
               private cartService: CartService,
-              private router: Router) { }
+              private router: Router,
+              private friendService: FriendService) { }
 
   get token(): string | null {
     return localStorage.getItem('access-token');
@@ -53,22 +55,45 @@ export class AuthService {
     return this.isTokenPresent && !this.isTokenExpired;
   }
 
+  isFriend(friendId: number): boolean {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      const friendIds = JSON.parse(friends);
+      return friendIds.includes(friendId);
+    }
+    return false;
+  }
+
   setToken(token: string): void {
     localStorage.clear();
     localStorage.setItem('access-token', token);
     const decodedToken = this.jwt.decodeToken(token);    
     if (decodedToken[this.ROLE_CLAIM_KEY] === 'Customer') {
       this.customerService
-      .getCustomerByEmail(decodedToken[this.EMAIL_ADDRESS_CLAIM_KEY])      
-      .subscribe({
-        next: (res: Customer) => {          
-          localStorage.setItem('user', JSON.stringify(res));          
-          this.userSubject.next(this.user!);       
-        },
-        error: (err) => {          
-          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
-        },
-      });
+        .getCustomerByEmail(decodedToken[this.EMAIL_ADDRESS_CLAIM_KEY])      
+        .subscribe({
+          next: (res: Customer) => {          
+            localStorage.setItem('user', JSON.stringify(res));          
+            this.userSubject.next(this.user!);       
+          },
+          error: (err) => {          
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          },
+        });
+      
+      this.friendService
+        .getFriends()
+        .subscribe({
+          next: (res: Customer[]) => {
+            //localStorage.setItem('friends', JSON.stringify(res));
+            const idArray = res.map(customer => customer.id);
+            localStorage.setItem('friends', JSON.stringify(idArray));
+          },
+          error: (err) => {
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          }
+        });
+
     }
     //For Employee and Admin
     (decodedToken[this.ROLE_CLAIM_KEY]);

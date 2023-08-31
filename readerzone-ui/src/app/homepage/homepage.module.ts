@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HomepageRoutingModule } from './homepage-routing.module';
-import { SharedModule } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { SearchFriendsComponent } from './components/search-friends/search-friends.component';
 
 
 
 @NgModule({
   declarations: [
-    HomepageComponent
+    HomepageComponent,
+    SearchFriendsComponent
   ],
   imports: [
     CommonModule,

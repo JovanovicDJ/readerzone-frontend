@@ -17,6 +17,8 @@ export class PostsComponent implements OnInit {
   friendsPost: boolean = false;
   @Input()
   pageSize: number = 5;
+  @Input()
+  customerId: number = 0;
   pageNumber: number = 1;
   totalPosts: number = 0;
   posts: Post[] = []
@@ -39,7 +41,7 @@ export class PostsComponent implements OnInit {
 
   getCustomerPosts() {
     this.postService
-      .getCustomerPosts(this.pageNumber, this.pageSize)
+      .getCustomerPosts(this.pageNumber, this.pageSize, this.customerId)
       .subscribe({
         next: (res: PostResponse) => {
           this.posts = res.posts;
