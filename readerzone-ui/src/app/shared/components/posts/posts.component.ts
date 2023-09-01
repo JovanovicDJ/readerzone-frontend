@@ -33,10 +33,25 @@ export class PostsComponent implements OnInit {
 
   init() {
     if (this.friendsPost) {
-      // get logged user's friends posts
+      this.getFriendsPosts();
     } else {
       this.getCustomerPosts();
     }
+  }
+
+  getFriendsPosts() {
+    this.postService
+      .getFriendsPosts(this.pageNumber, this.pageSize)
+      .subscribe({
+        next: (res: PostResponse) => {
+          this.posts = res.posts;
+          this.totalPosts = res.totalPosts;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+        }
+      }); 
   }
 
   getCustomerPosts() {

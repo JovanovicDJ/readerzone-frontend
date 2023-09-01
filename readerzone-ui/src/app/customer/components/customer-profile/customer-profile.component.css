@@ -87,17 +87,16 @@ app-customer-tier {
 .posts-friends {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
 }
 
-.posts {
-    margin-top: 15px;
-    margin-right: 5px;
+.posts {    
+    margin-right: 7px;
     flex: 2;
 }
 
 .friends {
-    margin-top: 15px;
-    margin-left: 5px;
+    margin-left: 7px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -106,4 +105,9 @@ app-customer-tier {
 
 app-notifications {
     width: 100%;
+}
+
+app-friends {
+    width: 100%;
+    margin-top: 20px;
 }

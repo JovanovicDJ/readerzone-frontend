@@ -22,7 +22,6 @@
             <div class="add-button">
                 <button *ngIf="!isFriend(c.id) && !pending" matTooltip="Add Friend" (click)="addFriend(c.id)" mat-raised-button><mat-icon>person_add</mat-icon></button>
                 <button *ngIf="isFriend(c.id)" matTooltip="Already friends" [disabled]="true" mat-raised-button><mat-icon>how_to_reg</mat-icon></button>
-                <button *ngIf="!isFriend(c.id) && pending" matTooltip="Pending" [disabled]="true" mat-raised-button><mat-icon>person</mat-icon></button>
             </div>           
         </mat-card>
     </div>

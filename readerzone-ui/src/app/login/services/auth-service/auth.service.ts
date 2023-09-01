@@ -64,6 +64,24 @@ export class AuthService {
     return false;
   }
 
+  addFriend(friendId: number) {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      const friendIds = JSON.parse(friends);
+      friendIds.push(friendId);
+      localStorage.setItem('friends', JSON.stringify(friendIds));
+    }
+  }
+
+  deleteFriend(friendId: number) {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      let friendIds: number[] = JSON.parse(friends);
+      friendIds = friendIds.filter((id) => id !== friendId);
+      localStorage.setItem('friends', JSON.stringify(friendIds));
+    }
+  }
+
   setToken(token: string): void {
     localStorage.clear();
     localStorage.setItem('access-token', token);

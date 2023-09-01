@@ -3,7 +3,8 @@
         <app-search-friends></app-search-friends>
     </div>
     <div class="posts">
-        <mat-card></mat-card>
-        <!-- <app-posts [friendsPost]="false" [pageSize]="5" [title]="postsTitle"></app-posts> -->
+        <mat-card>
+            <app-posts [friendsPost]="true" [pageSize]="10" [title]="'Home'"></app-posts>
+        </mat-card>                    
     </div>    
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { NotificationService } from 'src/app/customer/services/notification.service';
 import { AuthService } from 'src/app/login/services/auth-service/auth.service';
 import { Customer } from 'src/app/shared/model/Customer';
 import { FriendService } from 'src/app/shared/services/friend-service/friend.service';
@@ -20,7 +21,8 @@ export class SearchFriendsComponent implements OnInit {
 
   constructor(private messageService: MessageService,
               private friendService: FriendService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -46,19 +48,18 @@ export class SearchFriendsComponent implements OnInit {
     }
   }
 
-  addFriend(friendId: number) {
-    this.pending = true;
-    // this.friendService
-    //   .addFriend(friendId)
-    //   .subscribe({
-    //     next: () => {
-    //       this.pending = true;
-    //       //dodati prijatelja u local storage da bi se class dugmeta izmenio
-    //     },
-    //     error: (err) => {
-    //       this.messageService.showMessage(err.error.detail, MessageType.ERROR);
-    //     }
-    //   });
+  addFriend(friendId: number) {    
+    this.notificationService
+      .sendFriendRequest(friendId)
+      .subscribe({
+        next: () => {
+          this.pending = true;
+          this.messageService.showMessage('Friend request has been sent.', MessageType.SUCCESS);
+        },
+        error: (err) => {
+          this.messageService.showMessage(err.error.detail, MessageType.WARNING);
+        }
+      });
   }
 
 

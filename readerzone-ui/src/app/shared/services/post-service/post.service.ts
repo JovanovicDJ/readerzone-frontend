@@ -22,6 +22,14 @@ export class PostService {
     return this.http.get<PostResponse>(url, { params: params });
   }
 
+  getFriendsPosts(pageNumber: number, pageSize: number): Observable<PostResponse> {
+    let url = `${environment.baseUrl}/${Paths.Post}/friend`;
+    const params = new HttpParams()
+                        .set('pageNumber', pageNumber)
+                        .set('pageSize', pageSize)                        
+    return this.http.get<PostResponse>(url, { params: params });
+  }
+
   commentPost(postId: number, text: string): Observable<Comment> {
     let url = `${environment.baseUrl}/${Paths.Post}/comment`;
     return this.http.post<Comment>(url, { text: text, postId: postId });

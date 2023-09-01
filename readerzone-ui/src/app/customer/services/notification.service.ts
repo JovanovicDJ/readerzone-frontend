@@ -19,4 +19,19 @@ export class NotificationService {
                         .set('pageSize', pageSize);                        
     return this.http.get<NotificationResponse>(url, { params: params });
   }
+
+  sendFriendRequest(customerId: number): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Friend}/request/${customerId}`;
+    return this.http.get<void>(url);
+  }
+
+  addFriend(friendId: number) : Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Friend}/add/${friendId}`;
+    return this.http.get<void>(url);
+  }
+
+  rejectFriendship(notificationId: number) {
+    let url = `${environment.baseUrl}/${Paths.Friend}/reject/${notificationId}`;
+    return this.http.get<void>(url);
+  }
 }

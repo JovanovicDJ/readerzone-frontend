@@ -5,7 +5,7 @@
 <div *ngIf="!loading && notifications.length !== 0">
     <div class="notification-list">
         <ng-container *ngFor="let n of notifications">
-            
+            <app-notification [notification]="n"></app-notification>
         </ng-container>        
     </div>
     <mat-paginator 
@@ -15,6 +15,6 @@
         aria-label="Select page">
     </mat-paginator>    
 </div>
-<div *ngIf="!loading && notifications.length === 0" class="no-notifications">
+<div *ngIf="!loading && notifications.length === 0" class="no-notifications">      
     No notifications
 </div>

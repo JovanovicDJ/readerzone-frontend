@@ -32,6 +32,7 @@
             </div>
             <div class="friends">
                 <app-notifications *ngIf="isCustomerLoggedIn"></app-notifications>
+                <app-friends *ngIf="customer" [customerId]="customer.id" [isCustomerLoggedIn]="isCustomerLoggedIn"></app-friends>
             </div>
         </div>
     </mat-card>

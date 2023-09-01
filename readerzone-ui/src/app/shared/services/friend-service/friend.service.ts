@@ -19,14 +19,19 @@ export class FriendService {
     return this.http.get<Customer[]>(url, { params: params });
   }
 
-  addFriend(friendId: number): Observable<void> {
-    let url = `${environment.baseUrl}/${Paths.Friend}/add/${friendId}`;
-    return this.http.get<void>(url);
-  }
-
   getFriends(): Observable<Customer[]> {
     let url = `${environment.baseUrl}/${Paths.Friend}`;
     return this.http.get<Customer[]>(url);
+  }
+
+  getFriendsForCustomer(customerId: number): Observable<Customer[]> {
+    let url = `${environment.baseUrl}/${Paths.Friend}/${customerId}`;
+    return this.http.get<Customer[]>(url);
+  }
+
+  deleteFriend(customerId: number): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Friend}/${customerId}`;
+    return this.http.delete<void>(url);
   }
 
 }
