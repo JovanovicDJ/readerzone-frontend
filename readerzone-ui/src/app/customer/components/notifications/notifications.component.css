@@ -1,0 +1,29 @@
+.section-title {
+    margin-top: 40px;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;    
+}
+
+.no-notifications {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    font-size: large;
+    color: black;
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

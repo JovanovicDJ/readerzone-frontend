@@ -31,7 +31,7 @@
                 <app-posts [customerId]="customer.id" [friendsPost]="false" [pageSize]="5" [title]="postsTitle"></app-posts>
             </div>
             <div class="friends">
-                
+                <app-notifications *ngIf="isCustomerLoggedIn"></app-notifications>
             </div>
         </div>
     </mat-card>
