@@ -1,0 +1,14 @@
+<mat-card class="customer-data">
+    <div class="left-side" [routerLink]="['/customer/profile', friend.id]">
+        <div class="circular-container">
+            <img matTooltip="Profile image" src="{{friend.imageUrl}}" alt="User Photo" class="circular-image">
+        </div>
+        <div class="customer-name">
+            <div>{{friend.name}} {{friend.surname}} </div>
+            <span> @{{friend.userAccount.username}}</span>
+        </div>          
+    </div>
+    <div *ngIf="isCustomerLoggedIn" class="delete-button">
+        <button matTooltip="Delete friend" mat-flat-button color="warn" (click)="deleteFriend()" ><mat-icon>close</mat-icon></button>
+    </div>           
+</mat-card>

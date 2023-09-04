@@ -1,0 +1,70 @@
+.friend-search-card {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.customer-data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.left-side {
+    display: flex;
+}
+
+.circular-container {
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgb(250, 193, 120);
+}
+  
+.circular-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    font-size: large;    
+}
+
+.customer-name:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.customer-name span {
+    color: gray;
+    font-weight: none;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}

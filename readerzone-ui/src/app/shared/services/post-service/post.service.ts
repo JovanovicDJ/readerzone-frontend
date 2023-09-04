@@ -13,11 +13,20 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getCustomerPosts(pageNumber: number, pageSize: number): Observable<PostResponse> {
+  getCustomerPosts(pageNumber: number, pageSize: number, customerId: number): Observable<PostResponse> {
     let url = `${environment.baseUrl}/${Paths.Post}`;
     const params = new HttpParams()
                         .set('pageNumber', pageNumber)
-                        .set('pageSize', pageSize);
+                        .set('pageSize', pageSize)
+                        .set('customerId', customerId);
+    return this.http.get<PostResponse>(url, { params: params });
+  }
+
+  getFriendsPosts(pageNumber: number, pageSize: number): Observable<PostResponse> {
+    let url = `${environment.baseUrl}/${Paths.Post}/friend`;
+    const params = new HttpParams()
+                        .set('pageNumber', pageNumber)
+                        .set('pageSize', pageSize)                        
     return this.http.get<PostResponse>(url, { params: params });
   }
 

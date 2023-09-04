@@ -28,10 +28,11 @@
         </div>
         <div class="posts-friends">
             <div class="posts">
-                <app-posts [friendsPost]="false" [pageSize]="5" [title]="postsTitle"></app-posts>
+                <app-posts [customerId]="customer.id" [friendsPost]="false" [pageSize]="5" [title]="postsTitle"></app-posts>
             </div>
             <div class="friends">
-                
+                <app-notifications *ngIf="isCustomerLoggedIn"></app-notifications>
+                <app-friends *ngIf="customer" [customerId]="customer.id" [isCustomerLoggedIn]="isCustomerLoggedIn"></app-friends>
             </div>
         </div>
     </mat-card>

@@ -11,6 +11,10 @@ import { ReviewDialogComponent } from './components/review-dialog/review-dialog.
 import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
 import { CustomerTierComponent } from './components/customer-tier/customer-tier.component';
 import { CustomerEditDialogComponent } from './components/customer-edit-dialog/customer-edit-dialog.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { FriendComponent } from './components/friend/friend.component';
 
 
 
@@ -22,7 +26,11 @@ import { CustomerEditDialogComponent } from './components/customer-edit-dialog/c
     ReviewDialogComponent,
     CustomerProfileComponent,
     CustomerTierComponent,
-    CustomerEditDialogComponent
+    CustomerEditDialogComponent,
+    NotificationsComponent,
+    NotificationComponent,
+    FriendsComponent,
+    FriendComponent
   ],
   imports: [
     CommonModule,

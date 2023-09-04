@@ -4,14 +4,11 @@ export enum Paths {
     EmployeeRegistration = 'register/employee',
     ForgotPassword = 'forgot/password',
     ResetPassword = 'reset/password',
-
     Customer = 'customer',
-
     Book = 'book',
-
     Order = 'order',
-
     Image = 'image',
-
-    Post = 'post'
+    Post = 'post',
+    Friend = 'friend',
+    Notification = 'notification'
 }

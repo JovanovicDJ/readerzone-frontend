@@ -34,8 +34,7 @@ export class CustomerProfileComponent implements OnInit {
         .getCustomerById(+id)
         .subscribe({
           next: (res: Customer) => {
-            this.customer = res;
-            console.log(this.customer);
+            this.customer = res;            
             this.loading = false;
           },
           error: (err) => {

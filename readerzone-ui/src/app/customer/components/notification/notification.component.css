@@ -1,0 +1,58 @@
+.notification-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+}
+
+.main-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side {
+    display: flex;
+}
+
+.customer-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.customer-name span {
+    color: gray;
+    font-weight: none;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.date-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+    color: #333;
+    font-size: 15px;
+}
+
+.main-text {
+    margin-top: 30px;
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.green-button {
+    background-color: rgb(21, 172, 21);
+    color: white;
+}
