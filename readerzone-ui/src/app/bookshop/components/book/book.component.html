@@ -1,13 +1,22 @@
 <div class="book-page">
-    <div class="book-container">
+    <div *ngIf="book" class="book-container">
         <mat-card class="book">
             <div class="image-container">
-                <img src="{{book.image}}" alt="Book Image">
+                <img src="{{book.imageUrl}}" alt="Book Image">
             </div>
             <div class="book-details">
                 <div class="title">{{book.title}}</div>
-                <div class="author">{{book.author}}</div>
-                <div class="price">{{book.price | currency:"EUR"}}</div>
+                <div class="author">{{authorNames}}</div>
+                <div class="{{book.discount === 0 ? 'price' : 'not-price'}}">
+                    {{book.price | currency:'EUR'}}
+                </div>
+                <div *ngIf="book.discount !== 0" class="discount-price">
+                    {{discountPrice | currency:'EUR'}}
+                </div>
+                <div class="rating">
+                    <div>Rating: <span> {{book.averageRating}}</span></div>
+                    <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+                </div>                
                 <div class="button-container">
                     <button mat-raised-button (click)="addToCart()"
                     class="{{buttonClicked ? 'button-clicked' : 'button' }}"
@@ -17,37 +26,37 @@
                     <div class="column">
                         <div class="row">
                             <span class="row-title">ISBN:</span>
-                            <span class="row-data">9781838959708</span>
+                            <span class="row-data">{{book.isbn}}</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Publisher:</span>
-                            <span class="row-data">Atlantic Books</span>
+                            <span class="row-data">{{book.publisher?.name}}</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Pub date:</span>
-                            <span class="row-data">15 Jun 2023</span>
+                            <span class="row-data">{{publishingDate}}</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Language:</span>
-                            <span class="row-data">English</span>
+                            <span class="row-data">{{book.language}}</span>
                         </div>
                     </div>
                     <div class="column">
                         <div class="row">
                             <span class="row-title">Number of pages:</span>
-                            <span class="row-data">736</span>
+                            <span class="row-data">{{book.pages}}</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Weight:</span>
-                            <span class="row-data">616g</span>
+                            <span class="row-data">{{book.weight}}g</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Height:</span>
-                            <span class="row-data">130mm</span>
+                            <span class="row-data">{{book.height}}cm</span>
                         </div>
                         <div class="row">
                             <span class="row-title">Width:</span>
-                            <span class="row-data">199mm</span>
+                            <span class="row-data">{{book.width}}cm</span>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,16 @@
+.homepage-container {
+    display: flex;
+    padding: 15px;
+}
+
+.posts {
+    margin-left: 15px;
+    margin-right: 10px;
+    flex: 2;
+}
+
+.friends-search {
+    flex: 1;
+    margin-left: 10px;
+    /* border-left: 0.5px solid rgb(27, 27, 27); */
+}

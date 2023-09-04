@@ -1,0 +1,20 @@
+<mat-card class="notification-container">
+    <div class="main-data">
+        <div class="left-side">
+            <div class="customer-name">
+                <div>From </div>
+                <span> @{{notification.fromCustomerUsername}}</span>
+            </div>
+        </div>
+        <div class="date-time">
+            {{sendingTime}}
+        </div>
+    </div>
+    <div class="main-text">
+        {{notification.text}}
+    </div>
+    <div *ngIf="notification.notificationType === 0" class="buttons">
+        <button mat-flat-button matTooltip="Accept friendship" [disabled]="buttonClicked" (click)="acceptFriendship()" class="green-button"><mat-icon>check</mat-icon></button>
+        <button mat-flat-button matTooltip="Reject friendship" [disabled]="buttonClicked" (click)="rejectFriendship()" color="warn"><mat-icon>close</mat-icon></button>
+    </div>
+</mat-card>

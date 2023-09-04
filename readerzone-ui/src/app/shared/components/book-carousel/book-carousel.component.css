@@ -1,0 +1,98 @@
+.section-title {
+    margin-top: 40px;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.no-books {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: large;
+}
+
+.book {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 90%;
+    min-height: 300px;
+    max-height: 300px;    
+    display: flex;
+}
+
+.cover {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    width: 80%;
+    height: 90%;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
+
+.product-image:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.book-data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.author {
+    font-size: larger;
+    text-align: center;
+    color: gray;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.status-0 {
+    background-color: #FEEDAF; 
+    color: #8a5340;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: large;
+    text-align: center;
+}
+
+.status-1 {
+    background-color: #c4c4f8; 
+    color: blue;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: large;
+    text-align: center;
+}
+
+.status-2 {
+    background-color: #C8E6C9; 
+    color: #256029;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: large;
+    text-align: center;
+}
+

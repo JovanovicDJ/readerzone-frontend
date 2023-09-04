@@ -24,24 +24,29 @@
         <mat-card class="table-header">
             <div class="header-column">Book</div>
             <div class="header-column">Title&Author</div>
-            <div class="header-column">Publisher</div>
+            <div class="header-column">Publisher</div>            
             <div class="header-column">Price</div>
             <div class="remove-button"></div>
         </mat-card>
         <ng-container *ngFor="let b of cart">
             <mat-card class="book">
                 <div class="image-title">
-                    <img src="{{b.image}}" alt="book-image">
+                    <img src="{{b.imageUrl}}" alt="book-image">
                 </div>
                 <div class="author">
                     <div class="title">{{b.title}}</div>
-                    <div class="name">{{b.author}}</div>
+                    <div class="name">{{getAuthorNames(b)}}</div>
                 </div>
                 <div class="publisher">
-                    Harper Collins
-                </div>
-                <div class="price">
-                    {{b.price | currency:"EUR"}}
+                    {{b.publisher?.name}}
+                </div>            
+                <div class="price-column">
+                    <div class="{{b.discount === 0 ? 'price' : 'not-price'}}">
+                        {{b.price | currency:'EUR'}}
+                    </div>
+                    <div *ngIf="b.discount !== 0" class="discount-price">
+                        {{getDiscountPrice(b) | currency:'EUR'}}
+                    </div>
                 </div>
                 <div class="remove-button">
                     <button mat-button (click)="removeBook(b)"><mat-icon>clear</mat-icon></button>
@@ -62,13 +67,17 @@
                         <span>Delivery:</span>
                         <span>Included</span>
                     </div>
+                    <div class="billing-item">
+                        <span>Members' discount:</span>
+                        <span class="members-discount">{{membersDiscount}}%</span>
+                    </div>
                     <hr />
                     <div class="billing-item">
                         <span>Total:</span>
-                        <span>{{totalPrice | currency:'EUR'}}</span>
+                        <span>{{finalPrice | currency:'EUR'}}</span>
                     </div>
                     <div class="checkout-button">
-                        <button mat-raised-button>Checkout</button>
+                        <button mat-raised-button (click)="checkout()">Checkout</button>
                     </div>
                     <div class="payment-options">
                         <img src="../../../../assets/payment-icons.jpg" alt="payment-options">

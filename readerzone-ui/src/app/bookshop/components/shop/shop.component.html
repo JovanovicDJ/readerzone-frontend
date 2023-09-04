@@ -1,11 +1,38 @@
 <div class="main-container-shop">
     <div class="filters">
-        <app-search-filter-card></app-search-filter-card>
+        <app-search-filter-card 
+            [pageNumber]="pageNumber"
+            (totalBooksChanged)="onTotalBooksChanged($event)"
+            (booksChanged)="onBooksChanged($event)"
+            ></app-search-filter-card>
     </div>
-    <div class="books-grid">
-        <ng-container *ngFor="let b of books">
-            <app-book-card [book]="b"></app-book-card>
-        </ng-container>
+    <div *ngIf="loading" class="books">
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>        
+    </div>
+    <div *ngIf="books.length !== 0" class="books">
+        <div class="books-grid">
+            <ng-container *ngFor="let b of books">
+                <app-book-card [book]="b"></app-book-card>
+            </ng-container>        
+        </div>
+        <mat-paginator 
+            [length]="totalBooks"
+            [pageSize]="pageSize"
+            (page)="onPageChange($event)"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+    <div *ngIf="!loading && books.length === 0" class="books">
+        <div class="no-books">
+            <div class="no-books-image">
+                <img src="../../../../assets/no-books.png" alt="empty-cart">
+            </div>
+            <div class="no-books-text">
+                Not a single books has been found. Reset those filters and try again.
+            </div>
+        </div>
     </div>
     <div class="cart">
         <app-cart></app-cart>

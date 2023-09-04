@@ -1,12 +1,12 @@
-import { Address } from "cluster";
+import { Address } from "./Address";
 import { UserAccount } from "./UserAccount";
 
 export interface User {
-    Id: number,
-    Name: string,
-    Surname: string,
-    Dob: Date,
-    UserAccount: UserAccount,
-    Address: Address,
-    PhoneNumber: string
+    id: number,
+    name: string,
+    surname: string,
+    dob: Date,
+    userAccount: UserAccount,
+    address: Address,
+    phoneNumber: string
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from 'src/app/shared/model/Customer';
@@ -9,6 +10,7 @@ import { ResetPassword } from 'src/app/shared/model/ResetPassword';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { CustomerService } from 'src/app/shared/services/customer-service/customer.service';
+import { FriendService } from 'src/app/shared/services/friend-service/friend.service';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
 import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
@@ -27,7 +29,9 @@ export class AuthService {
               private jwt: JwtHelperService,
               private customerService: CustomerService,
               private messageService: MessageService,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private router: Router,
+              private friendService: FriendService) { }
 
   get token(): string | null {
     return localStorage.getItem('access-token');
@@ -51,22 +55,63 @@ export class AuthService {
     return this.isTokenPresent && !this.isTokenExpired;
   }
 
+  isFriend(friendId: number): boolean {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      const friendIds = JSON.parse(friends);
+      return friendIds.includes(friendId);
+    }
+    return false;
+  }
+
+  addFriend(friendId: number) {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      const friendIds = JSON.parse(friends);
+      friendIds.push(friendId);
+      localStorage.setItem('friends', JSON.stringify(friendIds));
+    }
+  }
+
+  deleteFriend(friendId: number) {
+    let friends: string | null = localStorage.getItem('friends');
+    if (friends !== null) {
+      let friendIds: number[] = JSON.parse(friends);
+      friendIds = friendIds.filter((id) => id !== friendId);
+      localStorage.setItem('friends', JSON.stringify(friendIds));
+    }
+  }
+
   setToken(token: string): void {
     localStorage.clear();
     localStorage.setItem('access-token', token);
     const decodedToken = this.jwt.decodeToken(token);    
     if (decodedToken[this.ROLE_CLAIM_KEY] === 'Customer') {
       this.customerService
-      .getCustomerByEmail(decodedToken[this.EMAIL_ADDRESS_CLAIM_KEY])      
-      .subscribe({
-        next: (res: Customer) => {          
-          localStorage.setItem('user', JSON.stringify(res));          
-          this.userSubject.next(this.user!);       
-        },
-        error: (err) => {          
-          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
-        },
-      });
+        .getCustomerByEmail(decodedToken[this.EMAIL_ADDRESS_CLAIM_KEY])      
+        .subscribe({
+          next: (res: Customer) => {          
+            localStorage.setItem('user', JSON.stringify(res));          
+            this.userSubject.next(this.user!);       
+          },
+          error: (err) => {          
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          },
+        });
+      
+      this.friendService
+        .getFriends()
+        .subscribe({
+          next: (res: Customer[]) => {
+            //localStorage.setItem('friends', JSON.stringify(res));
+            const idArray = res.map(customer => customer.id);
+            localStorage.setItem('friends', JSON.stringify(idArray));
+          },
+          error: (err) => {
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          }
+        });
+
     }
     //For Employee and Admin
     (decodedToken[this.ROLE_CLAIM_KEY]);
@@ -80,6 +125,7 @@ export class AuthService {
     localStorage.clear();
     this.cartService.clearCart();    
     this.userSubject.next(this.user!);
+    this.router.navigate(['/shop']);
   }
 
   sendLoginRequest(data: LoginData): Observable<string> {

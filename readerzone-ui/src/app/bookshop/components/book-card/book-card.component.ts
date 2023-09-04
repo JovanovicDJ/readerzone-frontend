@@ -19,8 +19,7 @@ export class BookCardComponent implements OnInit, OnDestroy {
 
   buttonClicked: boolean = false;
 
-  constructor(private bookService: BookService,
-              private cartService: CartService,
+  constructor(private cartService: CartService,
               private router: Router
               ) { }
 
@@ -35,13 +34,23 @@ export class BookCardComponent implements OnInit, OnDestroy {
   }
 
   onBookClick() {
-    this.bookService.setBook(this.book);
-    this.router.navigate(['/shop/book']);
+    var url = `/shop/book/${this.book.isbn}`;
+    //this.router.navigate([url]);
+    window.location.href = url;
   }
 
   addToCart() {
     this.buttonClicked = true;
     this.cartService.addToCart(this.book);
+  }
+
+  get authorNames(): string {
+    return this.book.authors[0].name + ' ' + this.book.authors[0].surname;
+  }
+
+  get discountPrice(): number {
+    var discount = this.book.price * this.book.discount / 100;
+    return this.book.price - discount;
   }
 
 }

@@ -1,0 +1,14 @@
+<div class="section-title">Friends</div>
+<div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+</div>        
+<div *ngIf="!loading && friends.length !== 0">
+    <div class="friend-list">
+        <ng-container *ngFor="let f of friends">
+            <app-friend (friendDelete)="deleteFriend($event)" [friend]="f" [isCustomerLoggedIn]="isCustomerLoggedIn"></app-friend>
+        </ng-container>        
+    </div>  
+</div>
+<div *ngIf="!loading && friends.length === 0" class="no-friends">      
+    No friends
+</div>

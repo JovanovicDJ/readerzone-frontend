@@ -1,0 +1,117 @@
+.comments-container {
+    margin-top: 30px;
+}
+
+.comment {
+    width: 100%;
+    margin-top: 15px;
+    background-color: rgb(240, 240, 240);
+    padding: 15px;
+    border-radius: 5px;    
+    display: flex;
+    flex-direction: column;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+}
+
+.main-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side {
+    display: flex;
+}
+
+.circular-container {
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgb(250, 193, 120);
+}
+  
+.circular-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.customer-name span {
+    color: gray;
+    font-weight: none;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.date-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+    color: #333;
+}
+
+.main-text {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-text .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-button button:hover {
+    background-color: red;
+    color: white;
+}
+
+/* .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(240, 240, 240) !important;  
+} */
+
+mat-form-field {
+    margin-top: 15px;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 18px;
+    transition: all .2s ease-in-out;
+}
+
+textarea:focus {
+    height: 150px;
+    resize: none;
+}
+
+.comment-button {
+    display: flex;
+    justify-content: flex-end;
+}

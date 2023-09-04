@@ -44,9 +44,9 @@ export class ResetPasswordComponent implements OnInit {
 
   sendResetRequest(): void {
     let resetPassword: ResetPassword = {
-      Password: this.form.controls['Password'].value,
-      ConfirmPassword: this.form.controls['ConfirmPassword'].value,
-      Token: this.token,
+      password: this.form.controls['Password'].value,
+      confirmPassword: this.form.controls['ConfirmPassword'].value,
+      token: this.token,
     };
     this.authService
       .sendResetPasswordRequest(resetPassword)    

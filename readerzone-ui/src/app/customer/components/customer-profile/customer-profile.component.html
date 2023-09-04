@@ -1,0 +1,40 @@
+<div class="profile-container">
+    <div *ngIf="loading" class="books">
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>        
+    </div>
+    <mat-card *ngIf="!loading" class="profile-card">
+        <div class="main-container">
+            <div *ngIf="customer" class="customer-data">
+                <div class="circular-container">
+                    <img matTooltip="Profile image" src="{{customer.imageUrl}}" alt="User Photo" class="circular-image">                    
+                </div>
+                <div class="name">
+                    <div class="full-name">{{customer.name}} {{customer.surname}}</div>
+                    <div class="username">@{{customer.userAccount.username}}</div>
+                </div>
+                <div class="side-container">
+                    <app-customer-tier *ngIf="customer" [tier]="customer.tier" [points]="customer.points"></app-customer-tier>
+                </div>
+                <div *ngIf="isCustomerLoggedIn" class="edit-button">
+                    <button mat-flat-button (click)="openEditDialog()" color="primary"><mat-icon>edit</mat-icon> Edit profile</button>
+                </div>                
+            </div>
+            <hr/>
+        </div>
+        <div class="carousel-container">
+            <app-book-carousel [numVisible]="3" [books]="booksData" [showStatus]="true" [title]="carouselTitle"></app-book-carousel>
+        </div>
+        <div class="posts-friends">
+            <div class="posts">
+                <app-posts [customerId]="customer.id" [friendsPost]="false" [pageSize]="5" [title]="postsTitle"></app-posts>
+            </div>
+            <div class="friends">
+                <app-notifications *ngIf="isCustomerLoggedIn"></app-notifications>
+                <app-friends *ngIf="customer" [customerId]="customer.id" [isCustomerLoggedIn]="isCustomerLoggedIn"></app-friends>
+            </div>
+        </div>
+    </mat-card>
+</div>
+

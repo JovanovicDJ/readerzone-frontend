@@ -1,0 +1,9 @@
+<mat-card class="post-card">
+    <app-automatic-post 
+        *ngIf="post.type === 'Automatic'"
+        [post]="post"></app-automatic-post>
+    <app-review-post 
+        *ngIf="post.type === 'Review'"
+        [post]="post"></app-review-post>
+    <app-comment (commentAdded)="addComment($event)" (commentDeleted)="deleteComment($event)" [comments]="post.comments" [postId]="post.id"></app-comment>
+</mat-card>

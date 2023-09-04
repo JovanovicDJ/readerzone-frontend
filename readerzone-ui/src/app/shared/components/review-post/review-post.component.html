@@ -1,0 +1,27 @@
+<div class="review-post-container">
+    <div class="main-data">
+        <div class="left-side">
+            <div class="circular-container">
+                <img matTooltip="Profile image" src="{{post.customerImageUrl}}" alt="User Photo" class="circular-image">                    
+            </div>
+            <div class="customer-name">
+                <div>{{post.customerName}} {{post.customerSurname}} </div>
+                <span> @{{post.customerUsername}}</span>
+            </div>
+        </div>  
+        <div class="date-time">
+            {{postingTime}}
+        </div>
+    </div>
+    <div class="main-text">{{genericReviewText}}</div>
+    <div class="review-data">
+        <div class="cover">
+            <img src="{{post.bookImageUrl}}" alt="Book Cover" class="product-image" />
+        </div>
+        <div class="book-data">
+            <div class="title">{{post.bookTitle}}</div>
+            <div class="author">{{author}}</div>
+            <button matTooltip="Beware of spoilers!" (click)="openReviewDataDialog()" mat-flat-button>See review</button>
+        </div>  
+    </div>
+</div>

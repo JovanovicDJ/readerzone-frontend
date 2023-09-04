@@ -1,0 +1,22 @@
+.tier-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;    
+}
+
+img {
+    max-width: 160px;
+    max-height: 160px;
+}
+
+.tier-container div {
+    text-align: center;
+    margin-top: 15px;
+    font-size: large;       
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+}
+
+.tier-container div span {
+    font-weight: bold;
+}

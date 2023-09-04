@@ -1,0 +1,76 @@
+.edit-card {
+    display: flex;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}
+
+.circular-container {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgb(250, 193, 120);
+}
+  
+.circular-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-top: 20px;
+}
+
+.data {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.data form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-label {
+    font-size: large;
+    font-weight: bolder;       
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+    margin-bottom: 15px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.edit-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+.buttons button {
+    width: 100%;
+}

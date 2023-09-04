@@ -1,0 +1,12 @@
+mat-card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+}
+
+mat-card div {
+    flex: 1;
+    font-size: 16px;
+    color: gray;
+}

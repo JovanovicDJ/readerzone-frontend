@@ -25,7 +25,7 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule,
+    FontAwesomeModule,    
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

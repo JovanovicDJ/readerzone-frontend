@@ -50,7 +50,7 @@ export class RegisterPageComponent implements OnInit {
       callingCode: '+381',
       name: 'Serbia',
       numericCode: '688'
-    });
+    });    
   }
 
   registerRequest() {
@@ -77,19 +77,19 @@ export class RegisterPageComponent implements OnInit {
     const year = parsedDate.getFullYear();
     var formattedDate = `${day}.${month}.${year}.`;          
     var crr: CustomerRegistrationRequest = {
-      Username: this.form.get('Username')?.value,
-      Email: this.form.get('Email')?.value,
-      Password: this.form.get('Password')?.value,
-      ConfirmPassword: this.form.get('ConfirmPassword')?.value,
-      Name: this.form.get('Name')?.value,
-      Surname: this.form.get('Surname')?.value,
-      PhoneNumber: this.form.get('PhoneNumber')?.value,
-      Street: this.form.get('Street')?.value,
-      Number: this.form.get('Number')?.value,
-      City: this.form.get('City')?.value,
-      Country: this.form.get('Country')?.value.name,
-      PostalCode: this.form.get('PostalCode')?.value,
-      Dob: formattedDate
+      username: this.form.get('Username')?.value,
+      email: this.form.get('Email')?.value,
+      password: this.form.get('Password')?.value,
+      confirmPassword: this.form.get('ConfirmPassword')?.value,
+      name: this.form.get('Name')?.value,
+      surname: this.form.get('Surname')?.value,
+      phoneNumber: this.form.get('PhoneNumber')?.value,
+      street: this.form.get('Street')?.value,
+      number: this.form.get('Number')?.value,
+      city: this.form.get('City')?.value,
+      country: this.form.get('Country')?.value.name,
+      postalCode: this.form.get('PostalCode')?.value,
+      dob: formattedDate
     };
     return crr;
   }

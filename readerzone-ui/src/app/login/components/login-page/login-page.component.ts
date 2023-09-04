@@ -16,15 +16,15 @@ import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-
 export class LoginPageComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    Email: new FormControl('', Validators.required),
-    Password: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
   constructor(private authService: AuthService,
               private messageService: MessageService,
               private router: Router,
               private route: ActivatedRoute,
-              private dialog: MatDialog,) { }
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.authService.isUserLoggedId) {
@@ -66,9 +66,9 @@ export class LoginPageComponent implements OnInit {
   }
   
   redirectLoggedUser() {
-    if (this.authService.user?.UserAccount.Role === Role.Customer) {
+    if (this.authService.user?.userAccount.role === Role.Customer) {
       this.router.navigateByUrl('shop');
-    } else if (this.authService.user?.UserAccount.Role === Role.Manager) {
+    } else if (this.authService.user?.userAccount.role === Role.Manager) {
       this.router.navigateByUrl('shop');  // Manager won't be routered to /shop 
     } else {  //Admin
       this.router.navigateByUrl('shop');  // Admin won't be routered to /shop

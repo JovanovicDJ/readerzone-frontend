@@ -1,15 +1,15 @@
 export interface CustomerRegistrationRequest {
-    Username: string,
-    Email: string,
-    Password: string,
-    ConfirmPassword: string,
-    Name: string,
-    Surname: string,
-    PhoneNumber: string,
-    Dob: string | null,
-    Street: string,
-    Number: string,
-    City: string,
-    PostalCode: string,
-    Country: string
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    name: string,
+    surname: string,
+    phoneNumber: string,
+    dob: string | null,
+    street: string,
+    number: string,
+    city: string,
+    postalCode: string,
+    country: string
 }

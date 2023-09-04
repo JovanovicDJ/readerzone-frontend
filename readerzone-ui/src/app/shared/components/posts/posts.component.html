@@ -1,0 +1,20 @@
+<div class="section-title">{{title}}</div>
+<div *ngIf="loading" class="loading">
+    <mat-spinner></mat-spinner>
+</div>        
+<div *ngIf="!loading && posts.length !== 0">
+    <div class="post-list">
+        <ng-container *ngFor="let p of posts">
+            <app-post [post]="p"></app-post>
+        </ng-container>        
+    </div>
+    <mat-paginator 
+        [length]="totalPosts"
+        [pageSize]="pageSize"
+        (page)="onPageChange($event)"
+        aria-label="Select page">
+    </mat-paginator>    
+</div>
+<div *ngIf="!loading && posts.length === 0" class="no-posts">
+    No posts yet
+</div>

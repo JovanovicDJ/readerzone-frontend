@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../../model/Book';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Paths } from 'src/environments/paths';
+import { BookPagination } from '../../model/BookPagination';
+import { PaginationQuery } from '../../model/PaginationQuery';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +14,20 @@ export class BookService {
 
   private book!: Book;
 
-  constructor() {
-    const storedBook = localStorage.getItem('book');
-    if (storedBook) {
-      this.book = JSON.parse(storedBook);
-    }
-   }
+  constructor(private http: HttpClient) { }
 
-  setBook(book: Book) {
-    this.book = book;
-    localStorage.setItem('book', JSON.stringify(this.book));
+  getBookByIsbn(isbn: string): Observable<Book> {
+    let url = `${environment.baseUrl}/${Paths.Book}/${isbn}`;
+    return this.http.get<Book>(url);
   }
 
-  getBook(): Book {
-    return this.book;
+  getRecommendedBooks(): Observable<Book[]> {
+    let url = `${environment.baseUrl}/${Paths.Book}/recommended`;
+    return this.http.get<Book[]>(url);
+  }
+
+  getBooks(pq: PaginationQuery): Observable<BookPagination> {
+    let url =  `${environment.baseUrl}/${Paths.Book}/books`;
+    return this.http.post<BookPagination>(url, pq);
   }
 }

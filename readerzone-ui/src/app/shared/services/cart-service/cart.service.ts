@@ -5,8 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-
+export class CartService {  
   private cart: Book[] = [];
   private cartSubject: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(this.cart);
   private logoutSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -26,7 +25,7 @@ export class CartService {
   }
 
   removeFromCart(book: Book) {
-    const index = this.cart.findIndex((item) => item.title === book.title);
+    const index = this.cart.findIndex((item) => item.isbn === book.isbn);
     if (index !== -1) {
       this.cart.splice(index, 1);
       this.saveCartToLocalStorage();
@@ -47,7 +46,17 @@ export class CartService {
   }
 
   getTotalPrice(): number {
-    return this.cart.reduce((total, book) => total + book.price, 0);
+    var total = 0;
+    for (var b of this.cart) {
+      if (b.discount !== 0) {
+        var discount = b.price * b.discount / 100;
+        total += b.price - discount;
+      } else {
+        total += b.price;
+      }
+    }
+    return total;
+    //return this.cart.reduce((total, book) => total + book.price, 0);
   }
 
   private saveCartToLocalStorage(): void {
@@ -56,7 +65,30 @@ export class CartService {
 
   clearCart(): void {
     this.cart = [];
+    this.saveCartToLocalStorage();
     this.cartSubject.next(this.cart);
     this.logoutSubject.next(false);
+  }
+
+  saveFinalPriceToLocalStorage(price: number): void {
+    var num = Math.round(price * 100) / 100
+    localStorage.setItem('final-price', num.toString());
+  }
+
+  get finalPrice(): number {
+    const storedEndPrice = localStorage.getItem('final-price');
+    if (storedEndPrice) {
+      return +storedEndPrice;
+    } else {
+      return 0;
+    }
+  }
+
+  getBooksIsbn(): Array<string> {
+    var isbns: Array<string> = [];    
+    for (var b of this.cart) {
+      isbns.push(b.isbn);
+    }    
+    return isbns;
   }
 }
