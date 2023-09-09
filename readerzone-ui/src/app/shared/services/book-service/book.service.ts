@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
 import { BookPagination } from '../../model/BookPagination';
 import { PaginationQuery } from '../../model/PaginationQuery';
+import { BookRequest } from '../../model/BookRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class BookService {
   getBooks(pq: PaginationQuery): Observable<BookPagination> {
     let url =  `${environment.baseUrl}/${Paths.Book}/books`;
     return this.http.post<BookPagination>(url, pq);
+  }
+
+  addBook(book: BookRequest): Observable<Book> {
+    let url = `${environment.baseUrl}/${Paths.Book}`;
+    return this.http.post<Book>(url, book);
   }
 }

@@ -16,7 +16,7 @@ export class BookComponent implements OnInit {
   book!: Book;
 
   buttonClicked: boolean = false;
-  isbn: string = '';
+  // isbn: string = '';
 
   books: Book[] = [];
 

@@ -1,0 +1,62 @@
+<div class="edit-books-container">
+    <div class="books">
+        <div class="title-container">
+            <div class="title">Books</div>
+        </div>        
+        <div *ngIf="loading" class="books">
+            <div class="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+        </div>
+        <div *ngIf="!loading" class="books-table">
+            <mat-card class="table-header">
+                <div class="header-column">Cover</div>
+                <div class="header-column">Title&Author</div>
+                <div class="header-column">ISBN</div>
+                <div class="header-column">Rating</div>
+                <div class="header-column-small">Price</div>            
+                <div class="header-column-small">Stocks</div>
+                <div class="header-column-small">Discount</div>
+                <div class="edit-button-column"></div>
+            </mat-card>
+
+            <ng-container *ngFor="let book of books">
+                <mat-card class="book">
+                    <div class="cover">
+                        <img src="{{book.imageUrl}}" alt="book-image">
+                    </div>
+                    <div class="title-author">
+                        <div class="book-title">{{book.title}}</div>
+                        <div class="author">{{getAuthorNames(book)}}</div>
+                    </div>
+                    <div class="isbn">
+                        {{book.isbn}}
+                    </div>
+                    <div class="rating">
+                        {{book.averageRating}}
+                        <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+                    </div>
+                    <div class="price">
+                        {{book.price | currency:'EUR'}}
+                    </div>
+                    <div class="stocks">
+                        {{book.stocks}}
+                    </div>
+                    <div class="discount">
+                        {{book.discount}}%
+                    </div>
+                    <div class="edit-button">
+                        <button mat-flat-button (click)="edit(book)">Edit</button>
+                    </div>
+                </mat-card>
+            </ng-container>
+
+            <mat-paginator 
+                [length]="totalBooks"
+                [pageSize]="pageSize"
+                (page)="onPageChange($event)"
+                aria-label="Select page">
+            </mat-paginator>
+        </div>    
+    </div>
+</div>

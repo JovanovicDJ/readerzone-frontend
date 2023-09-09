@@ -1,0 +1,145 @@
+<div class="register-employee-container">
+    <mat-card class="register-employee-card">
+      <form [formGroup]="form">
+        <div id="register-employee-label">Add new employee</div>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            formControlName="username"            
+            name="username"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>E-mail address</mat-label>
+            <input
+              matInput
+              formControlName="email"            
+              name="email"
+            />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            type="password"            
+            name="password"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm password</mat-label>
+            <input
+              matInput
+              formControlName="confirmPassword"
+              type="password"            
+              name="confirmPassword"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Employee role</mat-label>
+            <mat-select [(value)]="selectedRole" (selectionChange)="onOptionSelect($event)">               
+              <mat-option [value]="option" *ngFor="let option of roles">{{ option }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              formControlName="name"            
+              name="name"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input
+              matInput
+              formControlName="surname"            
+              name="surname"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              formControlName="phoneNumber"            
+              name="phoneNumber"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Date of birth</mat-label>
+            <input 
+              matInput
+              [matDatepicker]="picker"
+              formControlName="dob"
+              name="dob">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field style="margin-top: 15px;" appearance="outline">
+            <mat-label>Street</mat-label>
+            <input
+              matInput
+              formControlName="street"  
+              name="street"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Street number</mat-label>
+            <input
+              matInput
+              formControlName="number"            
+              name="number"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input
+              matInput
+              formControlName="city"
+              name="city"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Postal code</mat-label>
+            <input
+              matInput
+              formControlName="postalCode"            
+              name="postalCode"
+            />
+        </mat-form-field>
+
+        <mat-select-country appearance="outline"
+                    label="Country"
+                    formControlName="country"
+                    (onCountrySelected)="onCountrySelected($event)">
+        </mat-select-country>
+  
+        <button
+          mat-raised-button
+          type="button"
+          id="register-employee-button"
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="addEmployee()"    
+        >
+          Add
+        </button>       
+      </form>
+  </mat-card>    
+</div>
+

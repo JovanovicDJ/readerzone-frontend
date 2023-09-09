@@ -1,0 +1,78 @@
+<mat-card class="add-publisher-card">
+    <div class="publisher-form">
+        <div class="edit-label">Add new publisher</div>
+        <form [formGroup]="form">                          
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  formControlName="name"            
+                  name="name"
+                />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Street</mat-label>
+                <input
+                  matInput
+                  formControlName="street"
+                  name="street"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Number</mat-label>
+                <input
+                  matInput
+                  formControlName="number"
+                  name="number"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input
+                  matInput
+                  formControlName="city"
+                  name="city"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Postal code</mat-label>
+                <input
+                  matInput
+                  formControlName="postalCode"
+                  name="postalCode"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input
+                  matInput
+                  formControlName="country"
+                  name="country"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Established</mat-label>
+                <input 
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="established"
+                  name="established">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </form>
+        <div class="buttons">
+            <button class="add-publisher-button" [disabled]="!form.valid" mat-flat-button (click)="addPublisher()">Add</button>
+            <button (click)="onCancelClick()" mat-stroked-button>Cancel</button>
+        </div>
+    </div>
+</mat-card>
+
+

@@ -7,6 +7,7 @@ import { Role } from 'src/app/shared/model/enums/Role';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -28,21 +29,22 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isUserLoggedId) {
-      this.redirectLoggedUser();
+      if (this.authService.user) {
+        this.redirectLoggedUser(this.authService.user?.userAccount.role.toString());
+      }      
     }
     let activationStatus = this.route.snapshot.paramMap.get('status');
     if (activationStatus !== null)
       this.showActivationStatusMessage(activationStatus);
   }  
 
-  loginRequest() {
+  loginRequest() {    
     let data: LoginData = this.form.getRawValue();
     this.authService
       .sendLoginRequest(data)      
       .subscribe({
-        next: (res: string) => {          
-          this.authService.setToken(res);
-          this.redirectLoggedUser();
+        next: (res: string) => {                              
+          this.redirectLoggedUser(this.authService.setToken(res));
         },
         error: (err) => {          
           this.messageService.showMessage(err.error.detail, MessageType.ERROR);
@@ -65,13 +67,14 @@ export class LoginPageComponent implements OnInit {
       });
   }
   
-  redirectLoggedUser() {
-    if (this.authService.user?.userAccount.role === Role.Customer) {
+  redirectLoggedUser(role: string) {
+    if (role === '0' || role === 'Customer') {
       this.router.navigateByUrl('shop');
-    } else if (this.authService.user?.userAccount.role === Role.Manager) {
-      this.router.navigateByUrl('shop');  // Manager won't be routered to /shop 
-    } else {  //Admin
-      this.router.navigateByUrl('shop');  // Admin won't be routered to /shop
+    } else if (role === '1' || role === 'Manager') {
+      this.router.navigateByUrl('employee');
+    } else {  // Admin
+      this.router.navigateByUrl('employee');
+      console.log(this.authService.user?.userAccount.role);
     }
   }
 

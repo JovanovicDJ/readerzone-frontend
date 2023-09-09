@@ -28,7 +28,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   onLogoClick() {
-    this.router.navigate(['/shop']);
+    if (this.authService.isUserLoggedId && this.authService.user?.userAccount.role !== 0) {      
+      this.router.navigate(['/employee']);
+    } else {
+      this.router.navigate(['/shop']);
+    }
   }
 
   profile() {

@@ -14,7 +14,7 @@ import { MessageService, MessageType } from 'src/app/shared/services/message-ser
 })
 export class SearchFilterCardComponent implements OnInit, OnChanges {
 
-  @ViewChild(CategoriesListComponent) childComponent!: CategoriesListComponent;
+  @ViewChild(CategoriesListComponent) categoriesComponent!: CategoriesListComponent;
 
   rangeValues: number[] = [0, 100];
 
@@ -64,7 +64,7 @@ export class SearchFilterCardComponent implements OnInit, OnChanges {
   resetParams() {
     this.search.setValue('');
     this.selectedGenres = [];
-    this.childComponent.uncheckCheckboxes();
+    this.categoriesComponent.uncheckCheckboxes();
     this.minValue = 0;
     this.maxValue = 100;
     this.rangeValues = [0, 100];

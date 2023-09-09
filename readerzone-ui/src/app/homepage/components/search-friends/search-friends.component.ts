@@ -15,7 +15,7 @@ export class SearchFriendsComponent implements OnInit {
   
   search: FormControl = new FormControl('');
 
-  pending: boolean = false;
+  // pending: boolean = false;
 
   customers: Customer[] = [];
 
@@ -53,7 +53,7 @@ export class SearchFriendsComponent implements OnInit {
       .sendFriendRequest(friendId)
       .subscribe({
         next: () => {
-          this.pending = true;
+          // this.pending = true;
           this.messageService.showMessage('Friend request has been sent.', MessageType.SUCCESS);
         },
         error: (err) => {

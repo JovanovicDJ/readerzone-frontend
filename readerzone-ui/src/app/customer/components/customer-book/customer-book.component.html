@@ -19,7 +19,7 @@
             <mat-select [disabled]="isRead" [(value)]="selectedStatus" (selectionChange)="onOptionSelect($event)">               
               <mat-option [value]="option.value" *ngFor="let option of status">{{ option.viewValue }}</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
     </div>
     <div class="review">
         <button (click)="openReviewDialog()" matTooltip="Review can only be writen once for read book." mat-flat-button [disabled]="disableReviewButton">Review</button>

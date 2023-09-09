@@ -1,0 +1,185 @@
+<div class="new-book-container">
+    <mat-card class="new-book-card">
+        <h1 class="title">Add new book</h1>
+        <div class="new-book-form">
+            <div class="book-image-categories">
+                <div class="book-cover">
+                    <img [src]="bookCover" />
+                    <button mat-button
+                        class="upload-button"           
+                        (click)="openFileInput()">
+                        Upload book cover</button>
+                    <input type="file" #fileInput
+                        style="display: none"
+                        accept="image/*"    
+                        (change)="uploadImage()"/>
+                </div>                
+                <div class="categories-container">
+                    <div class="name">Categories</div>
+                    <app-categories-list (selectionChanged)="onSelectionChanged($event)"></app-categories-list>
+                </div>
+            </div>
+            <div class="book-data">
+                <form [formGroup]="form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>ISBN</mat-label>
+                        <input
+                          matInput
+                          formControlName="isbn"
+                          name="isbn"
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input
+                          matInput
+                          formControlName="title"
+                          name="title"
+                        />
+                    </mat-form-field>
+                    
+                    <div class="add-author-publisher">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Authors</mat-label>
+                            <mat-chip-list #authorsChipList aria-label="Add authors">
+                              <mat-chip
+                                *ngFor="let author of authors"
+                                (removed)="removeAuthor(author)">
+                                {{author.name}} {{author.surname}}
+                                <button matChipRemove>
+                                  <mat-icon>cancel</mat-icon>
+                                </button>
+                              </mat-chip>
+                              <input
+                                placeholder="Add author"
+                                #authorInput
+                                [formControl]="authorControl"
+                                [matAutocomplete]="auto"
+                                [matChipInputFor]="authorsChipList" 
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                (matChipInputTokenEnd)="addAuthor($event)">
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedAuthor($event)">
+                              <mat-option *ngFor="let author of filteredAuthors | async" [value]="author">
+                                {{author.name}} {{author.surname}}
+                              </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <div class="add-button-container">
+                            <button type="button" (click)="openAddAuthorDialog()" mat-flat-button class="add-author-button">Add author</button>
+                        </div>                        
+                    </div>                
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Publishing date</mat-label>
+                        <input 
+                          matInput
+                          [matDatepicker]="picker"
+                          formControlName="publishingDate"
+                          name="publishingDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <div class="add-author-publisher">
+                        <mat-form-field appearance="outline" style="margin-top: 15px;">
+                            <mat-label>Publisher</mat-label>
+                            <mat-select [(value)]="selectedPublisher" (selectionChange)="onOptionSelect($event)">               
+                              <mat-option [value]="publisher.id" *ngFor="let publisher of publishers">{{ publisher.name }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="add-button-container">
+                            <button type="button" (click)="openAddPublisherDialog()" mat-flat-button class="add-publisher-button">Add publisher</button>
+                        </div>    
+                    </div>
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Price</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        step="0.01"
+                        formControlName="price"
+                        name="price"
+                        min="0"
+                      />
+                      <span matSuffix>€&nbsp;</span>
+                    </mat-form-field>                    
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Pages</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="pages"
+                          name="pages"
+                          min="0"
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Language</mat-label>
+                        <input
+                          matInput                          
+                          formControlName="language"
+                          name="language"
+                        />
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Weight</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="weight"
+                          name="weight"
+                          min="0"
+                        />
+                        <span matSuffix>g</span>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Height</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="height"
+                          name="height"
+                          min="0"
+                        />
+                        <span matSuffix>mm</span>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Width</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          formControlName="width"
+                          name="width"
+                          min="0"
+                        />
+                        <span matSuffix>mm</span>
+                    </mat-form-field> 
+                    
+                    <mat-form-field appearance="outline">
+                      <mat-label>Stocks</mat-label>
+                      <input
+                        matInput
+                        type="number"
+                        formControlName="stocks"
+                        name="stocks"
+                        min="0"
+                      />
+                    </mat-form-field>
+
+                    <div class="add-book-button-container">
+                      <button class="add-book-button" [disabled]="!form.valid" mat-flat-button (click)="addBook()">Add book</button>
+                    </div>
+                </form>                
+            </div>
+        </div>                
+    </mat-card>
+</div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
@@ -15,7 +15,7 @@ export class CategoriesListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {        
   }
 
   toggleCheckbox(genre: string) {
@@ -29,6 +29,16 @@ export class CategoriesListComponent implements OnInit {
 
   uncheckCheckboxes() {
     this.checkboxes.forEach(checkbox => checkbox.checked = false);
+  }
+
+  checkCheckboxes(genres: Array<string>) {
+    this.selectedGenres = genres;
+    this.checkboxes.forEach(checkbox => {
+      let name = checkbox.name;
+      if (name && genres.includes(name)) {
+        checkbox.checked = true;
+      }
+    });
   }
 
 }

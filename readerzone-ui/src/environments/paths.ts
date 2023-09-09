@@ -10,5 +10,8 @@ export enum Paths {
     Image = 'image',
     Post = 'post',
     Friend = 'friend',
-    Notification = 'notification'
+    Notification = 'notification',
+    Employee = 'employee',
+    Publisher = 'publisher',
+    Author = 'author'
 }

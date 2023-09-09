@@ -27,12 +27,12 @@ export class RegisterPageComponent implements OnInit {
   createFormGroup(): FormGroup {
     return new FormGroup({
       Username: new FormControl('', Validators.required),
-      Email: new FormControl('', Validators.pattern('^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$')),
-      Password: new FormControl('', Validators.compose([Validators.minLength(8),Validators.maxLength(30)])),
+      Email: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$')]),
+      Password: new FormControl('', Validators.compose([Validators.minLength(8), Validators.maxLength(30), Validators.required])),
       ConfirmPassword: new FormControl('', Validators.required),
       Name: new FormControl('', Validators.required),
       Surname: new FormControl('', Validators.required),
-      PhoneNumber: new FormControl('', Validators.pattern('^[0-9]{9,12}$')),
+      PhoneNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{9,12}$')]),
       Dob: new FormControl('', Validators.required),
       Street: new FormControl('', Validators.required),
       Number: new FormControl(''),
@@ -55,7 +55,7 @@ export class RegisterPageComponent implements OnInit {
 
   registerRequest() {
     this.authService
-      .senCustomerRegistrationRequest(this.createCustomerRegistartionRequest())
+      .sendCustomerRegistrationRequest(this.createCustomerRegistartionRequest())
       .subscribe({
         next: () => {
           this.messageService.showMessage(

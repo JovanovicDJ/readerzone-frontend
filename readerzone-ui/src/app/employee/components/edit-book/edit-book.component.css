@@ -1,0 +1,95 @@
+.new-book-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-book-card {
+    width: 70%;
+    margin-top: 15px;
+}
+
+.title {
+    margin: 15px;
+    font-family: "Lexend Peta", "Arial", sans-serif;        
+    color: #333;
+    font-size: larger;
+    font-weight: bolder; 
+}
+
+.new-book-form {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.book-image-categories {
+    display: flex;
+    flex-direction: column;   
+}
+
+.book-cover {
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 300px;
+    max-height: 500px;
+}
+
+.upload-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-top: 20px;
+}
+
+.book-data {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+mat-form-field {
+    width: 95%;
+}
+
+.add-button-container {
+    display: flex;    
+}
+
+.add-author-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-top: 6px;
+    margin-bottom: 28px;
+}
+
+.add-publisher-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-top: 21px;
+    margin-bottom: 28px;
+}
+
+.categories-container {
+    margin-top: 75px;
+}
+
+.name {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.add-book-button-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.add-book-button {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    width: 95%;
+    min-height: 60px;
+}

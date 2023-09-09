@@ -1,10 +1,18 @@
 <mat-toolbar color="primary">
     <span class="name" (click)="onLogoClick()">ReaderZone</span>
     <div *ngIf="user" class="navbar-options">
-        <button mat-button routerLink="/home">Home</button>
-        <button mat-button routerLink="/shop">Shop</button>
-        <button mat-button routerLink="/customer/books">My Books</button>
-        <button mat-button (click)="profile()">Profile</button>        
+        <div *ngIf="user.userAccount.role === 0" class="navbar-options">
+            <button mat-button routerLink="/home">Home</button>
+            <button mat-button routerLink="/shop">Shop</button>
+            <button mat-button routerLink="/customer/books">My Books</button>
+            <button mat-button (click)="profile()">Profile</button>        
+        </div>
+        <div *ngIf="user.userAccount.role === 1 || user.userAccount.role === 2" class="navbar-options">
+            <button mat-button routerLink="/employee">Orders</button>
+            <button mat-button routerLink="/employee/add-book">Add book</button>
+            <button mat-button routerLink="/employee">Edit books</button>
+            <button *ngIf="user.userAccount.role === 2" mat-button routerLink="/employee/add-employee">Add employee</button>
+        </div>
     </div>
     <div *ngIf="user" class="navbar-logout">
         <button (click)="logout()" class="logout-button" mat-icon-button>

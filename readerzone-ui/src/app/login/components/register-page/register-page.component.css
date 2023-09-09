@@ -1,20 +1,20 @@
 .register-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .register-card {
-    min-width: 35%;    
-    text-align: center;
+  min-width: 35%;    
+  text-align: center;
 }
 
 #register-label {
-    font-family: "Lexend Peta", "Arial", sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
+  font-family: "Lexend Peta", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
 }
   
 mat-form-field {
@@ -38,7 +38,7 @@ mat-form-field:focus {
 }
 
 ::ng-deep mat-form-field {
-    width: 100%;
+  width: 100%;
 }
 
 
