@@ -1,7 +1,4 @@
-import { Book } from "./Book";
-
-export interface Order {
-    id: number,
+export interface OrderRequest {
     name: string,
     surname: string,
     email: string,
@@ -12,6 +9,5 @@ export interface Order {
     postalCode: string,
     country: string,
     price: number,
-    orderStatus: number,
-    books: Array<Book>
+    books: Array<string>
 }

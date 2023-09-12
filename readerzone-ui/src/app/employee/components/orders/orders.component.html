@@ -1,0 +1,80 @@
+<div class="orders-container">
+    <div class="orders">
+        <div class="title-container">
+            <div class="title">Orders</div>
+        </div>        
+        <div *ngIf="loading" class="orders">
+            <div class="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+        </div>
+        <div *ngIf="!loading" class="orders-table">
+            <mat-card class="table-header">
+                <div class="header-column-id">ID</div>
+                <div class="header-column">User data</div>
+                <div class="header-column">Books</div>                
+                <div class="header-column-small">Price</div>
+                <div class="header-column">Status</div>            
+            </mat-card>
+
+            <ng-container *ngFor="let order of orders">
+                <mat-card class="order">
+                    <div class="id">
+                        {{order.id}}
+                    </div>
+                    <div class="user-data">
+                        <button class="dialog-button" mat-flat-button (click)="userDataDialog(order)">User data</button>
+                    </div>
+                    <div class="books">
+                        <button class="dialog-button" mat-flat-button (click)="booksDialog(order.books)">Books</button>
+                    </div>
+                    <div class="price">
+                        {{order.price | currency:'EUR'}}
+                    </div>
+                    <div class="status">
+                        <mat-form-field appearance="outline">
+                            <mat-label></mat-label>
+                            <mat-select [(value)]="selectedStatus" (selectionChange)="onOptionSelect($event)">               
+                              <mat-option [value]="option.value" *ngFor="let option of status">{{ option.viewValue }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="cover">
+                        <img src="{{book.imageUrl}}" alt="book-image">
+                    </div>
+                    <div class="title-author">
+                        <div class="book-title">{{book.title}}</div>
+                        <div class="author">{{getAuthorNames(book)}}</div>
+                    </div>
+                    <div class="isbn">
+                        {{book.isbn}}
+                    </div>
+                    <div class="rating">
+                        {{book.averageRating}}
+                        <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+                    </div>
+                    <div class="price">
+                        {{book.price | currency:'EUR'}}
+                    </div>
+                    <div class="stocks">
+                        {{book.stocks}}
+                    </div>
+                    <div class="discount">
+                        {{book.discount}}%
+                    </div>
+                    <div class="edit-button">
+                        <button mat-flat-button (click)="edit(book)">Edit</button>
+                    </div> -->
+                </mat-card>
+            </ng-container>
+
+            <mat-paginator 
+                [length]="totalOrders"
+                [pageSize]="pageSize"
+                (page)="onPageChange($event)"
+                aria-label="Select page">
+            </mat-paginator>
+        </div>    
+    </div>
+</div>
+

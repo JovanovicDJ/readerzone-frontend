@@ -36,4 +36,9 @@ export class BookService {
     let url = `${environment.baseUrl}/${Paths.Book}`;
     return this.http.post<Book>(url, book);
   }
+
+  editBook(book: BookRequest): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Book}`;
+    return this.http.put<void>(url, book);
+  }
 }

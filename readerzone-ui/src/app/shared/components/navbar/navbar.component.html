@@ -8,7 +8,7 @@
             <button mat-button (click)="profile()">Profile</button>        
         </div>
         <div *ngIf="user.userAccount.role === 1 || user.userAccount.role === 2" class="navbar-options">
-            <button mat-button routerLink="/employee">Orders</button>
+            <button mat-button routerLink="/employee/orders">Orders</button>
             <button mat-button routerLink="/employee/add-book">Add book</button>
             <button mat-button routerLink="/employee">Edit books</button>
             <button *ngIf="user.userAccount.role === 2" mat-button routerLink="/employee/add-employee">Add employee</button>

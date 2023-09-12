@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/services/auth-service/auth.service';
-import { Order } from 'src/app/shared/model/Order';
+import { OrderRequest } from 'src/app/shared/model/OrderRequest';
 import { User } from 'src/app/shared/model/User';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
@@ -65,7 +65,7 @@ export class CheckoutComponent implements OnInit {
       },
       onApprove: (data: any, actions: any) => {        
         return actions.order.capture().then((details: any) => {
-          var data: Order = {
+          var data: OrderRequest = {
             name: this.form.get('name')?.value,
             surname: this.form.get('surname')?.value,
             email: this.form.get('email')?.value,

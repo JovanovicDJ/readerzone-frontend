@@ -11,6 +11,7 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { EditBooksComponent } from './components/edit-books/edit-books.component';
 import { RatingModule } from 'primeng/rating';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -21,7 +22,8 @@ import { RatingModule } from 'primeng/rating';
     AddAuthorDialogComponent,
     AddPublisherDialogComponent,
     AddEmployeeComponent,
-    EditBooksComponent
+    EditBooksComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

@@ -12,5 +12,6 @@ export interface BookRequest {
     width: number,
     price: number,
     publisherId: number,
-    imageUrl: string
+    imageUrl: string,
+    discount?: number
 }

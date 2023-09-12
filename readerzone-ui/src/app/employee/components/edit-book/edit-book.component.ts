@@ -10,6 +10,7 @@ import { Observable, map, startWith } from 'rxjs';
 import { CategoriesListComponent } from 'src/app/shared/components/categories-list/categories-list.component';
 import { Author } from 'src/app/shared/model/Author';
 import { Book } from 'src/app/shared/model/Book';
+import { BookRequest } from 'src/app/shared/model/BookRequest';
 import { Publisher } from 'src/app/shared/model/Publisher';
 import { AuthorService } from 'src/app/shared/services/author-service/author.service';
 import { BookService } from 'src/app/shared/services/book-service/book.service';
@@ -205,12 +206,30 @@ export class EditBookComponent implements OnInit {
       this.messageService.showMessage('Publisher is not selected!', MessageType.WARNING);
       return;
     }
-    else if (this.originalBook === this.book) {
-      this.messageService.showMessage('Book was not changed!', MessageType.WARNING);
-      return;
-    } else {
-      this.messageService.showMessage('GOOD!', MessageType.SUCCESS);
+    else {
+      const parsedDate = new Date(this.form.get('publishingDate')?.value);
+      const day = String(parsedDate.getDate()).padStart(2, '0');
+      const month = String(parsedDate.getMonth() + 1).padStart(2, '0');
+      const year = parsedDate.getFullYear();
+      var formattedDate = `${day}.${month}.${year}.`;
+      let book: BookRequest = {
+        ...this.form.getRawValue(),
+        publishingDate: formattedDate,
+        authorIds: this.authors.map(author => author.id),
+        genres: this.selectedGenres,
+        publisherId: this.selectedPublisher,
+        imageUrl: this.bookCover
+      };
+      this.bookService
+        .editBook(book)
+        .subscribe({
+          next: () => {
+            this.messageService.showMessage('Book updated.', MessageType.SUCCESS);
+          },
+          error: (err) => {
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          }
+        });
     }
   }
-
 }
