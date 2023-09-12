@@ -26,4 +26,9 @@ export class OrderService {
                         .set('pageSize', pageSize);                        
     return this.http.get<OrderResponse>(url, { params: params });
   }
+
+  completeOrder(id: number): Observable<void> {
+    let url = `${environment.baseUrl}/${Paths.Order}/${id}`;
+    return this.http.get<void>(url);
+  }
 }

@@ -1,0 +1,36 @@
+.customer-data-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: large;    
+}
+
+.customer-data {
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-between;
+    height: 100%;
+}
+
+.main-title {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.title {
+    font-weight: bold;
+    flex: 2;
+}
+
+.customer-data-item {
+    display: flex;
+}
+
+.value {
+    flex: 3;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;    
+}

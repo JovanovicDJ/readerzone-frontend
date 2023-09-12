@@ -14,9 +14,7 @@ import { Paths } from 'src/environments/paths';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,    

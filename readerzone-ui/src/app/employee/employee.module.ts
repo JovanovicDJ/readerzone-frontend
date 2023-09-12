@@ -12,6 +12,9 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
 import { EditBooksComponent } from './components/edit-books/edit-books.component';
 import { RatingModule } from 'primeng/rating';
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrderComponent } from './components/order/order.component';
+import { CustomerDataDialogComponent } from './components/customer-data-dialog/customer-data-dialog.component';
+import { CustomerBooksDialogComponent } from './components/customer-books-dialog/customer-books-dialog.component';
 
 
 
@@ -23,7 +26,10 @@ import { OrdersComponent } from './components/orders/orders.component';
     AddPublisherDialogComponent,
     AddEmployeeComponent,
     EditBooksComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderComponent,
+    CustomerDataDialogComponent,
+    CustomerBooksDialogComponent
   ],
   imports: [
     CommonModule,

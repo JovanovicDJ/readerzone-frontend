@@ -7,11 +7,6 @@ import { OrderResponse } from 'src/app/shared/model/OrderResponse';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
 import { OrderService } from 'src/app/shared/services/order-service/order.service';
 
-interface OrderStatus {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -26,12 +21,6 @@ export class OrdersComponent implements OnInit {
 
   loading: boolean = true;
 
-  selectedStatus: string = '0';
-  status: OrderStatus[] = [
-    {value: '0', viewValue: 'Pending'},
-    {value: '1', viewValue: 'Completed'},  
-  ];
-
   constructor(private orderService: OrderService,
               private messageService: MessageService) { }
 
@@ -44,10 +33,19 @@ export class OrdersComponent implements OnInit {
     this.getOrders();
   }
 
-  onOptionSelect(event: MatSelectChange) {
-    if (+event.value === 1) {
-      console.log("COMPLETED!");
-    }
+  orderCompleted(id: number) {
+    console.log(id);
+    this.orderService
+      .completeOrder(id)
+      .subscribe({
+        next: () => {
+          this.messageService.showMessage(`Order ${id} is completed.`, MessageType.SUCCESS);
+          this.orders = this.orders.filter(o => o.id !== id);
+        },
+        error: (err) => {
+          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+        }
+      })
   }
 
   getOrders() {
@@ -64,14 +62,4 @@ export class OrdersComponent implements OnInit {
         }
       })
   }
-
-  userDataDialog(order: Order) {
-
-  }
-
-  booksDialog(books: Book[]) {
-
-  }
-
-
 }

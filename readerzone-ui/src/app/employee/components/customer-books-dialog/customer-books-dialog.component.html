@@ -1,0 +1,29 @@
+<div class="customer-books-container">
+    <div class="customer-books">
+        <ng-container *ngFor="let book of data">
+            <mat-card class="book">            
+                <div class="cover">
+                    <img src="{{book.imageUrl}}" alt="Book Cover" class="product-image" />
+                </div>
+                <div class="book-data">
+                    <div class="customer-book-item">
+                        <div class="title">Title:</div>
+                        <div class="value book-title">{{book.title}}</div>
+                    </div>
+                    <div class="customer-book-item">
+                        <div class="title">Author:</div>
+                        <div class="value author">{{getAuthor(book)}}</div>
+                    </div>
+                    <div class="customer-book-item">
+                        <div class="title">ISBN:</div>
+                        <div class="value isbn">{{book.isbn}}</div>
+                    </div>                                                            
+                </div>  
+            </mat-card>
+        </ng-container>
+    </div>
+    <div class="button">
+        <button (click)="onExitClick()" mat-stroked-button>Exit</button>
+    </div>
+</div>
+

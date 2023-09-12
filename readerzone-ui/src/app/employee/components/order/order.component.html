@@ -1,0 +1,48 @@
+<mat-card class="order">
+    <div class="id">
+        {{order.id}}
+    </div>
+    <div class="customer-data">
+        <button class="dialog-button" mat-flat-button (click)="customerDataDialog()">Customer data</button>
+    </div>
+    <div class="books">
+        <button class="dialog-button" mat-flat-button (click)="booksDialog()">Books</button>
+    </div>
+    <div class="price">
+        {{order.price | currency:'EUR'}}
+    </div>
+    <div class="status">
+        <mat-form-field appearance="outline">
+            <mat-label></mat-label>
+            <mat-select [(value)]="selectedStatus" (selectionChange)="onOptionSelect($event)">               
+              <mat-option [value]="option.value" *ngFor="let option of status">{{ option.viewValue }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <!-- <div class="cover">
+        <img src="{{book.imageUrl}}" alt="book-image">
+    </div>
+    <div class="title-author">
+        <div class="book-title">{{book.title}}</div>
+        <div class="author">{{getAuthorNames(book)}}</div>
+    </div>
+    <div class="isbn">
+        {{book.isbn}}
+    </div>
+    <div class="rating">
+        {{book.averageRating}}
+        <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+    </div>
+    <div class="price">
+        {{book.price | currency:'EUR'}}
+    </div>
+    <div class="stocks">
+        {{book.stocks}}
+    </div>
+    <div class="discount">
+        {{book.discount}}%
+    </div>
+    <div class="edit-button">
+        <button mat-flat-button (click)="edit(book)">Edit</button>
+    </div> -->
+</mat-card>

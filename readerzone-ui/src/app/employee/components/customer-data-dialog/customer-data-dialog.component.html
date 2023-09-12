@@ -1,0 +1,46 @@
+<mat-card class="customer-data-container">
+    <div class="customer-data">
+        <div class="main-title">Personal data</div>
+        <div class="customer-data-item">
+            <div class="title">Name:</div>
+            <div class="value">{{data.name}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Surname:</div>
+            <div class="value">{{data.surname}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Email:</div>
+            <div class="value">{{data.email}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Phone number:</div>
+            <div class="value">{{data.phoneNumber}}</div>
+        </div>
+        <hr />
+        <div class="main-title">Address</div>
+        <div class="customer-data-item">
+            <div class="title">Street:</div>
+            <div class="value">{{data.street}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Street number:</div>
+            <div class="value">{{data.number}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">City:</div>
+            <div class="value">{{data.city}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Postal code:</div>
+            <div class="value">{{data.postalCode}}</div>
+        </div>
+        <div class="customer-data-item">
+            <div class="title">Country:</div>
+            <div class="value">{{data.country}}</div>
+        </div>        
+    </div>
+    <div class="button">
+        <button (click)="onExitClick()" mat-stroked-button>Exit</button>
+    </div>
+</mat-card>

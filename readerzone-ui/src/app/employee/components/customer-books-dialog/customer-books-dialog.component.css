@@ -1,0 +1,84 @@
+.customer-books-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: large;    
+}
+
+.customer-books {
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-between;
+    height: 100%;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;    
+}
+
+.book {    
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 150px;
+    max-height: 200px;    
+    transition: all .2s ease-in-out;
+}
+
+.book-data {
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;    
+    /* align-items: center; */
+    justify-content: space-evenly;
+}
+
+.book-title {
+    font-size: large;    
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.author {
+    font-size: large;    
+    color: gray;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.isbn {
+    font-size: large;
+}
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    flex: 1;
+}
+
+.customer-book-item {
+    display: flex;
+}
+
+.value {
+    flex: 3;
+}
