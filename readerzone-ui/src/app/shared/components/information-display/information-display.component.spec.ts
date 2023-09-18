@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageProbaComponent } from './image-proba.component';
+import { InformationDisplayComponent } from './information-display.component';
 
-describe('ImageProbaComponent', () => {
-  let component: ImageProbaComponent;
-  let fixture: ComponentFixture<ImageProbaComponent>;
+describe('InformationDisplayComponent', () => {
+  let component: InformationDisplayComponent;
+  let fixture: ComponentFixture<InformationDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageProbaComponent ]
+      declarations: [ InformationDisplayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageProbaComponent);
+    fixture = TestBed.createComponent(InformationDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,8 +2,7 @@ import { Comment } from "./Comment";
 
 export interface Post {
     id: number,
-    postingTime: Date,
-    likes: number,
+    postingTime: Date,    
     customerId: number,
     customerUsername: string,
     customerName: string,

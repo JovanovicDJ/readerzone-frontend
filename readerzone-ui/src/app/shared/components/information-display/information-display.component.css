@@ -1,0 +1,14 @@
+.information {
+    background-image: url('../../../../assets/nav.jpg');
+    color: white;
+    height: 50px;
+    font-family: "Lexend Peta", "Arial", sans-serif;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.information div {
+    margin-right: 10px;
+}

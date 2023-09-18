@@ -51,9 +51,10 @@ img {
 .author {
     width: 100%;
     font-size: x-large;
-    color: #444444;
+    color: gray;
     text-align: left;
     margin-top: 15px;
+    text-decoration: none;
 }
 
 .author:hover {
@@ -123,7 +124,7 @@ img {
 }
 
 .button-container .button {
-    width: 40%;
+    width: 60%;
     color: white;
     background-color: rgb(44, 44, 44);
 }
@@ -131,7 +132,7 @@ img {
 .button-container .button-clicked {
     background-color: rgb(250, 193, 120);
     color: black;
-    width: 40%;
+    width: 60%;
 }
 
 .book-information {
@@ -172,6 +173,10 @@ img {
     font-size: large;
 }
 
+.recommendations-header span {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+}
+
 .recommendations-main {
     display: flex;
     justify-content: space-between;
@@ -179,4 +184,26 @@ img {
 
 .cart {
     flex: 2;
+}
+
+.publisher {
+    text-decoration: none;
+}
+
+.publisher:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.sold-out-button:disabled {
+    width: 60%;
+    color: white;
+    background-color: rgb(62, 62, 201);
 }

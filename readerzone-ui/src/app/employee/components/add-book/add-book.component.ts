@@ -113,13 +113,11 @@ export class AddBookComponent implements OnInit {
           error: (err) => {
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);
           }
-        });
-      console.log(book);
+        });      
     }
   }
 
-  addAuthor(event: MatChipInputEvent): void {    
-    console.log(event);
+  addAuthor(event: MatChipInputEvent): void {        
     if (event.value) {
       //this.authors.push(event.value);
     }
@@ -151,8 +149,7 @@ export class AddBookComponent implements OnInit {
     }    
   }
 
-  onOptionSelect(event: MatSelectChange) {
-    console.log(event);
+  onOptionSelect(event: MatSelectChange) {    
     this.selectedPublisher = event.value;
   }
 
@@ -163,8 +160,7 @@ export class AddBookComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result.data);
+      if (result) {        
         this.authors.push(result.data);
         this.allAuthors.push(result.data);
       }
@@ -178,8 +174,7 @@ export class AddBookComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result.data);
+      if (result) {        
         this.publishers.push(result.data);
         this.selectedPublisher = result.data.id;
       }
@@ -195,19 +190,36 @@ export class AddBookComponent implements OnInit {
   }
 
   uploadImage() {
+    const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
     const formData = new FormData();
-    formData.append('imageFile', this.fileInput.nativeElement.files[0]);
-    this.imageService
-      .postImage(formData)
-      .subscribe({
-        next: (response) => {
-          this.bookCover = response.url;
-          this.imageSelected = true;
-        },
-        error: (error) => {
-          console.error('Error uploading image:', error);
+    const selectedFiles = this.fileInput.nativeElement.files;
+
+    if (selectedFiles.length === 1) {
+      const selectedFile = this.fileInput.nativeElement.files[0];
+      if (selectedFile.type.startsWith('image/') && selectedFile.size <= MAX_IMAGE_SIZE_BYTES) {                
+        formData.append('imageFile', selectedFile);              
+        this.imageService
+          .postImage(formData)
+          .subscribe({
+            next: (response) => {
+              this.bookCover = response.url;
+              this.imageSelected = true;
+            },
+            error: (error) => {            
+              this.messageService.showMessage(error.err.detail, MessageType.ERROR);
+            }
+        });
+
+      } else {        
+        if (!selectedFile.type.startsWith('image/')) {
+          this.messageService.showMessage('Invalid file type. Please select an image.', MessageType.WARNING);
+        } else {          
+          this.messageService.showMessage('File size exceeds the maximum allowed size.', MessageType.WARNING);
         }
-      });
+      }
+    } else {
+      this.messageService.showMessage('Please select one image file.', MessageType.WARNING);
+    }
   }
 
   getAuthors() {

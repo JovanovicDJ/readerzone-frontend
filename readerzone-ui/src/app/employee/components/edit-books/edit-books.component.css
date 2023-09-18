@@ -90,7 +90,9 @@ img {
 
 .author {
     margin-top: 15px;
-    font-size: larger;
+    font-size: large;
+    text-decoration: none;
+    color: gray;
 }
 
 .author:hover {

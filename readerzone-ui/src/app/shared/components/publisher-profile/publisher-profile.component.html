@@ -1,0 +1,19 @@
+<div class="profile-container">
+    <div *ngIf="loading" class="books">
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>        
+    </div>
+    <mat-card *ngIf="!loading" class="profile-card">
+        <div class="main-container">
+            <div class="name">
+                <div class="full-name">{{publisher.name}}</div>
+            </div>
+            <hr/>
+        </div>
+        <div class="carousel-container">
+            <app-book-carousel [numVisible]="3" [books]="booksData" [showStatus]="false"></app-book-carousel>
+        </div>
+    </mat-card>
+</div>
+

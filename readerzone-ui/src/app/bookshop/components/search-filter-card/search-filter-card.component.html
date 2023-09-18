@@ -2,7 +2,7 @@
     <div class="search-container">
         <mat-form-field appearance="outline">
             <mat-label>Search</mat-label>
-            <input matInput type="text" [formControl]="search" />
+            <input matInput type="text" (keydown.enter)="onSearch()" [formControl]="search" />
             <button mat-icon-button matSuffix (click)="onSearch()">
               <mat-icon>search</mat-icon>
             </button>

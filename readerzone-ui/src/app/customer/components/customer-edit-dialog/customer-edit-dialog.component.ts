@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Customer } from 'src/app/shared/model/Customer';
 import { CustomerService } from 'src/app/shared/services/customer-service/customer.service';
 import { ImageService } from 'src/app/shared/services/image-service/image.service';
+import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
 
 @Component({
   selector: 'app-customer-edit-dialog',
@@ -20,7 +21,8 @@ export class CustomerEditDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Customer,
               public dialogRef: MatDialogRef<CustomerEditDialogComponent>,
               private imageService: ImageService,
-              private customerService: CustomerService) { }
+              private customerService: CustomerService,
+              private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.customer = JSON.parse(JSON.stringify(this.data));
@@ -31,18 +33,35 @@ export class CustomerEditDialogComponent implements OnInit {
   } 
 
   uploadImage() {
+    const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
     const formData = new FormData();
-    formData.append('imageFile', this.fileInput.nativeElement.files[0]);
-    this.imageService
-      .postImage(formData)
-      .subscribe({
-        next: (response) => {
-          this.customer.imageUrl = response.url;
-        },
-        error: (error) => {
-          console.error('Error uploading image:', error);
+    const selectedFiles = this.fileInput.nativeElement.files;
+
+    if (selectedFiles.length === 1) {
+      const selectedFile = this.fileInput.nativeElement.files[0];
+      if (selectedFile.type.startsWith('image/') && selectedFile.size <= MAX_IMAGE_SIZE_BYTES) {                
+        formData.append('imageFile', selectedFile);              
+        this.imageService
+          .postImage(formData)
+          .subscribe({
+            next: (response) => {
+              this.customer.imageUrl = response.url;
+            },
+            error: (error) => {            
+              this.messageService.showMessage(error.err.detail, MessageType.ERROR);
+            }
+        });
+
+      } else {        
+        if (!selectedFile.type.startsWith('image/')) {
+          this.messageService.showMessage('Invalid file type. Please select an image.', MessageType.WARNING);
+        } else {          
+          this.messageService.showMessage('File size exceeds the maximum allowed size.', MessageType.WARNING);
         }
-      });
+      }
+    } else {
+      this.messageService.showMessage('Please select one image file.', MessageType.WARNING);
+    }
   }
 
   editProfile() {
@@ -54,7 +73,7 @@ export class CustomerEditDialogComponent implements OnInit {
           this.dialogRef.close({ data: this.customer});
         },
         error: (error) => {
-          console.log(error);
+          this.messageService.showMessage(error.err.detail, MessageType.ERROR);
         }
       });
 

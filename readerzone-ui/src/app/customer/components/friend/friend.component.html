@@ -1,5 +1,6 @@
 <mat-card class="customer-data">
-    <div class="left-side" [routerLink]="['/customer/profile', friend.id]">
+    <!-- <div class="left-side" [routerLink]="['/customer/profile', friend.id]"> -->
+    <div class="left-side" (click)="routeToFriend()">
         <div class="circular-container">
             <img matTooltip="Profile image" src="{{friend.imageUrl}}" alt="User Photo" class="circular-image">
         </div>

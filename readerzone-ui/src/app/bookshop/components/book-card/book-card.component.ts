@@ -26,7 +26,7 @@ export class BookCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.logoutSubscription = this.cartService.getLogoutSubject().subscribe((bool) => {
       this.buttonClicked = bool;
-    })
+    })    
   }
 
   ngOnDestroy(): void {
@@ -35,18 +35,14 @@ export class BookCardComponent implements OnInit, OnDestroy {
 
   onBookClick() {
     var url = `/shop/book/${this.book.isbn}`;
-    //this.router.navigate([url]);
-    window.location.href = url;
+    this.router.navigate([url]);
+    //window.location.href = url;
   }
 
   addToCart() {
     this.buttonClicked = true;
     this.cartService.addToCart(this.book);
-  }
-
-  get authorNames(): string {
-    return this.book.authors[0].name + ' ' + this.book.authors[0].surname;
-  }
+  }  
 
   get discountPrice(): number {
     var discount = this.book.price * this.book.discount / 100;

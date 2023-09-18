@@ -11,6 +11,10 @@
     width: 65%;
 }
 
+.no-orders {
+    font-family: "Lexend Peta", "Arial", sans-serif;
+}
+
 .loading {
     display: flex;
     justify-content: center;

@@ -60,7 +60,17 @@ mat-card {
 .author {
     margin-top: 10px;
     color: rgb(99, 99, 99);
-    text-align: center;
+    text-align: center;    
+}
+
+.author a {
+    text-decoration: none;
+    color: gray;
+}
+
+.author:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .price {
@@ -90,12 +100,17 @@ mat-card {
 
 .button-container .button {
     width: 80%;
-    background-color: rgb(44, 44, 44);
-    /*or primary color*/
+    background-color: rgb(44, 44, 44);    
 }
 
 .button-container .button-clicked {
     background-color: rgb(250, 193, 120);
     color: black;
     width: 80%;
+}
+
+.sold-out-button:disabled {
+    width: 80%;
+    color: white;
+    background-color: rgb(62, 62, 201);
 }

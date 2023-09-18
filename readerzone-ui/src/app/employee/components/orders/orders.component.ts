@@ -33,8 +33,7 @@ export class OrdersComponent implements OnInit {
     this.getOrders();
   }
 
-  orderCompleted(id: number) {
-    console.log(id);
+  orderCompleted(id: number) {    
     this.orderService
       .completeOrder(id)
       .subscribe({

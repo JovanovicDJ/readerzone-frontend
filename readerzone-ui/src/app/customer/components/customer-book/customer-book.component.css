@@ -25,6 +25,8 @@ img {
 
 .author .name {
     margin-top: 15px;
+    text-decoration: none;
+    color: gray;
 }
 
 .author .name:hover {
@@ -35,6 +37,9 @@ img {
 .publisher {
     flex: 1;
     font-size: large;
+    margin-right: 6px;
+    text-decoration: none;
+    color: black;
 }
 
 .publisher:hover {

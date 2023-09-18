@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
 import { LoginData } from 'src/app/shared/model/LoginData';
@@ -7,14 +7,16 @@ import { Role } from 'src/app/shared/model/enums/Role';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
-import { concatMap } from 'rxjs';
+import { Subscription, concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
+
+  private userSubscription!: Subscription;
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -36,20 +38,33 @@ export class LoginPageComponent implements OnInit {
     let activationStatus = this.route.snapshot.paramMap.get('status');
     if (activationStatus !== null)
       this.showActivationStatusMessage(activationStatus);
-  }  
+    this.userSubscription = this.authService.getUserSubject().subscribe((user) => {
+      if (user)
+        this.redirectLoggedUser(user.userAccount.role.toString());
+    });
+  }
 
-  loginRequest() {    
-    let data: LoginData = this.form.getRawValue();
-    this.authService
-      .sendLoginRequest(data)      
-      .subscribe({
-        next: (res: string) => {                              
-          this.redirectLoggedUser(this.authService.setToken(res));
-        },
-        error: (err) => {          
-          this.messageService.showMessage(err.error.detail, MessageType.ERROR);
-        },
-      });
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
+
+  loginRequest() {
+    if (this.form.valid) {
+      let data: LoginData = this.form.getRawValue();
+      this.authService
+        .sendLoginRequest(data)      
+        .subscribe({
+          next: (res: string) => {    
+            this.authService.setToken(res);                          
+            //this.redirectLoggedUser(this.authService.setToken(res));
+          },
+          error: (err) => {          
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          },
+        });
+    } else {
+      this.messageService.showMessage('Fill log in form correctly', MessageType.INFO);
+    }
   }
 
   openForgotPasswordDialog() {
@@ -67,14 +82,15 @@ export class LoginPageComponent implements OnInit {
       });
   }
   
-  redirectLoggedUser(role: string) {
+  redirectLoggedUser(role: string) {    
     if (role === '0' || role === 'Customer') {
       this.router.navigateByUrl('shop');
     } else if (role === '1' || role === 'Manager') {
       this.router.navigateByUrl('employee');
-    } else {  // Admin
-      this.router.navigateByUrl('employee');
-      console.log(this.authService.user?.userAccount.role);
+    } else if (role === '2' || role == 'Admin') {
+      this.router.navigateByUrl('employee');      
+    } else {
+      this.router.navigateByUrl('shop');
     }
   }
 

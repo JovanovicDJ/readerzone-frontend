@@ -8,9 +8,16 @@
                 <img src="{{book.imageUrl}}" alt="Book Cover" class="product-image" />
             </div>            
             <div class="book-data">
-                <div class="title">{{book.title}}</div>
+                <div class="title">
+                    <a
+                        [routerLink]="['/shop/book', book.isbn]"
+                        class="title"                        
+                    >
+                        {{book.title}}
+                    </a>                    
+                </div>
                 <div class="author">{{book.author}}</div>
-                <div class="{{getStatusClass(book.bookStatus)}}">{{getBookStatus(book.bookStatus)}}</div>
+                <div *ngIf="showStatus" class="{{getStatusClass(book.bookStatus)}}">{{getBookStatus(book.bookStatus)}}</div>
             </div>            
         </mat-card>
     </ng-template>

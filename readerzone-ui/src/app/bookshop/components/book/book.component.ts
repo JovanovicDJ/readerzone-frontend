@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import * as moment from 'moment';
+import { filter } from 'rxjs';
 import { Book } from 'src/app/shared/model/Book';
 import { BookService } from 'src/app/shared/services/book-service/book.service';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
@@ -15,8 +16,8 @@ export class BookComponent implements OnInit {
 
   book!: Book;
 
-  buttonClicked: boolean = false;
-  // isbn: string = '';
+  buttonClicked: boolean = false; 
+  loading: boolean = true;
 
   books: Book[] = [];
 
@@ -25,14 +26,6 @@ export class BookComponent implements OnInit {
               private route: ActivatedRoute,
               private messageService: MessageService,
               private router: Router) { }  
-
-  get authorNames(): string {
-    var fullnames: string[] = [];
-    for (let author of this.book.authors) {
-      fullnames.push(author.name + ' ' + author.surname);
-    }
-    return fullnames.join(' ,');
-  }
 
   get publishingDate(): string {
     const dateTimeString = this.book.publishingDate;
@@ -45,14 +38,25 @@ export class BookComponent implements OnInit {
     return this.book.price - discount;
   }
 
-  ngOnInit(): void {    
-    let isbn = this.route.snapshot.paramMap.get('isbn');
+  ngOnInit(): void {
+    this.getData();
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        if (event.url.includes('/shop/book/'))
+          this.getData();        
+      });
+  }
+
+  getData() {
+    let isbn = this.route.snapshot.paramMap.get('isbn');    
     if (isbn !== null) {
       this.bookService
         .getBookByIsbn(isbn)
         .subscribe({
           next: (res: Book) => {
             this.book = res;
+            this.loading = false;
           },
           error: (err) => {
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);

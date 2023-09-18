@@ -82,9 +82,8 @@ export class CheckoutComponent implements OnInit {
             .sendOrderRequest(data)      
             .subscribe({
             next: () => {          
-              this.messageService.showMessage('Transaction completed successfully!', MessageType.SUCCESS);
-              this.cartService.clearCart();
-              //this.router.navigateByUrl('shop');              
+              this.messageService.showMessage(`Transaction ${details.id} completed successfully!`, MessageType.SUCCESS);
+              this.cartService.clearCart();          
             },
             error: (err) => {          
               this.messageService.showMessage(err.error.detail, MessageType.ERROR);

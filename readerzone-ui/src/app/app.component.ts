@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './login/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {  
   title = 'readerzone-ui';
 
+  constructor(private authService: AuthService) { }
+
   ngOnInit(): void {
-    console.log('AAAAAAAAAAAAAAAAAAAAAA');
+    if (!this.authService.isUserLoggedId) {
+      this.authService.logout();
+    }    
   }
 }

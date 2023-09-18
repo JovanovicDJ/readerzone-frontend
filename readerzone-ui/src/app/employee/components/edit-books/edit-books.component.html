@@ -27,7 +27,17 @@
                     </div>
                     <div class="title-author">
                         <div class="book-title">{{book.title}}</div>
-                        <div class="author">{{getAuthorNames(book)}}</div>
+                        <div class="author">
+                            <ng-container *ngFor="let author of book.authors; let last = last">
+                                <a
+                                  [routerLink]="['/author', author.id]"
+                                  class="author"                   
+                                >
+                                  {{ author.name }} {{ author.surname }}
+                                </a>
+                                <ng-container *ngIf="!last">, </ng-container>
+                            </ng-container>
+                        </div>
                     </div>
                     <div class="isbn">
                         {{book.isbn}}

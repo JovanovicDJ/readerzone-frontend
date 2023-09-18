@@ -1,0 +1,39 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 90%;    
+}
+
+.main-container {        
+    padding: 15px;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    justify-content: center;
+}
+
+.full-name {
+    font-size: x-large;
+    font-weight: bolder;       
+    font-family: "Lexend Peta", "Arial", sans-serif; 
+}
+
+.carousel-container {
+    width: 100%;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

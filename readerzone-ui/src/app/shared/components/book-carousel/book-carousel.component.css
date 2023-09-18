@@ -30,6 +30,7 @@
 
 .product-image {
     width: 80%;
+    max-width: 200px;
     height: 90%;
     transition: all .2s ease-in-out;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
@@ -53,9 +54,16 @@
     text-align: center;
     margin-bottom: 5px;
     overflow: hidden;
+    text-decoration: none;
+    color: black;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.title:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .author {
@@ -64,9 +72,16 @@
     color: gray;
     margin-bottom: 10px;
     overflow: hidden;
+    text-decoration: none;
+    color: gray;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.author:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .status-0 {

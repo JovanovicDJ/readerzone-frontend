@@ -57,14 +57,6 @@ export class EditBooksComponent implements OnInit {
       });
   }
 
-  getAuthorNames(book: Book): string {
-    var fullnames: string[] = [];
-    for (let author of book.authors) {
-      fullnames.push(author.name + ' ' + author.surname);
-    }
-    return fullnames.join(' ,');
-  }
-
   edit(book: Book) {
     let url = `/employee/edit/${book.isbn}`;
     this.router.navigate([url]);

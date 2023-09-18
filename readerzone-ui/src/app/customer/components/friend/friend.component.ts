@@ -38,4 +38,9 @@ export class FriendComponent implements OnInit {
       });
   }
 
+  routeToFriend() {
+    var url = `/customer/profile/${this.friend.id}`;
+    window.location.href = url;
+  }
+
 }

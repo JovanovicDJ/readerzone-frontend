@@ -5,6 +5,7 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { EditBooksComponent } from './components/edit-books/edit-books.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AdminGuard } from '../shared/guards/admin/admin.guard';
 
 const routes: Routes = [
     {
@@ -25,6 +26,7 @@ const routes: Routes = [
     },
     {
       path: 'add-employee',
+      canActivate: [AdminGuard],
       component: AddEmployeeComponent
     }
 ];

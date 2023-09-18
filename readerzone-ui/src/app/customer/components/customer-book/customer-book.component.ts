@@ -60,14 +60,6 @@ export class CustomerBookComponent implements OnInit {
     }
   }
 
-  get authorNames(): string {
-    var fullnames: string[] = [];
-    for (let author of this.book.book.authors) {
-      fullnames.push(author.name + ' ' + author.surname);
-    }
-    return fullnames.join(' ,');    
-  }
-
   onOptionSelect(event: MatSelectChange) {
     if (+event.value !== this.book.bookStatus) {
       var statusChanged: StatusChanged = {

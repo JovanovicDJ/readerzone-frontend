@@ -8,7 +8,11 @@
         {{book.title}}
     </div>
     <div class="author">
-        {{authorNames}}
+        <a
+            [routerLink]="['/author', book.authors[0].id]"
+        >
+            {{ book.authors[0].name }} {{ book.authors[0].surname }}
+        </a>        
     </div>
     <div class="{{book.discount === 0 ? 'price' : 'not-price'}}">
         {{book.price | currency:'EUR'}}
@@ -16,10 +20,13 @@
     <div *ngIf="book.discount !== 0" class="discount-price">
         {{discountPrice | currency:'EUR'}}
     </div>
-    <div class="button-container">
+    <div class="button-container" *ngIf="book.stocks !== 0">
         <button mat-raised-button color="primary" (click)="addToCart()"
         class="{{buttonClicked ? 'button-clicked' : 'button' }}"
         >{{ buttonClicked ? 'Added to Cart' : 'Add to Cart' }}</button>
+    </div>
+    <div class="button-container" *ngIf="book.stocks === 0">
+        <button mat-raised-button [disabled]="true" class="sold-out-button">Sold Out</button>
     </div>
 </mat-card>
 <!-- </div> -->

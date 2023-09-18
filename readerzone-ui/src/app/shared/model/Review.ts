@@ -7,7 +7,6 @@ export interface Review {
     rating: number,
     purchasedBookId: number,
     postingTime: Date,
-    likes: number,
     customerId: number,
     customer?: Customer,
     comments?: Array<string>  // Type Comment needed

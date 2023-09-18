@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Author } from '../../model/Author';
 import { environment } from 'src/environments/environment';
 import { Paths } from 'src/environments/paths';
+import { BookData } from '../../model/BookData';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,15 @@ export class AuthorService {
   addAuthor(author: object): Observable<Author> {
     let url = `${environment.baseUrl}/${Paths.Author}`;
     return this.http.post<Author>(url, author);
+  }
+
+  getAuthor(id: number): Observable<Author> {
+    let url = `${environment.baseUrl}/${Paths.Author}/${id}`;
+    return this.http.get<Author>(url);
+  }
+
+  getAuthorBooks(id: number): Observable<BookData[]> {
+    let url = `${environment.baseUrl}/${Paths.Author}/books/${id}`;
+    return this.http.get<BookData[]>(url);
   }
 }

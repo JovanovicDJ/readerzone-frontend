@@ -1,0 +1,32 @@
+footer {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-image: url('../../../../assets/footer.jpg');
+  height: 75px;
+  font-family: "Lexend Peta", "Arial", sans-serif;
+  font-size: smaller;
+}
+
+button {
+  background-color: white;
+  color: black;
+}
+
+button:hover {
+  color: white;
+  background-color: red;
+}
+
+.footer a {
+  margin-left: 10px;
+}

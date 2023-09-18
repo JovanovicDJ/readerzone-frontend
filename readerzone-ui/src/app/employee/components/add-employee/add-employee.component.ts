@@ -41,8 +41,7 @@ export class AddEmployeeComponent implements OnInit {
         role: this.selectedRole,
         country: this.form.get('country')?.value.name,
         dob: formattedDate
-      }
-      console.log(employeeRegRequest);
+      }      
       this.authService
         .sendEmployeeRegistrationRequest(employeeRegRequest)
         .subscribe({
@@ -56,8 +55,7 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
-  onOptionSelect(event: MatSelectChange) {
-    console.log(event.value);
+  onOptionSelect(event: MatSelectChange) {    
     this.selectedRole = event.value;
   }
 

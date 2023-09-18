@@ -63,8 +63,7 @@ export class EditBookComponent implements OnInit {
         .subscribe({
           next: (res: Book) => {
             this.originalBook = res;            
-            this.book = JSON.parse(JSON.stringify(this.originalBook));;
-            console.log(this.book);
+            this.book = JSON.parse(JSON.stringify(this.originalBook));            
             this.form = this.createFormGroup();
             this.bookCover = this.book.imageUrl;
             this.authors = this.book.authors;
@@ -89,8 +88,7 @@ export class EditBookComponent implements OnInit {
     }
   }
 
-  addAuthor(event: MatChipInputEvent): void {    
-    console.log(event);
+  addAuthor(event: MatChipInputEvent): void {        
     if (event.value) {
       //this.authors.push(event.value);
     }
@@ -122,8 +120,7 @@ export class EditBookComponent implements OnInit {
     }    
   }
 
-  onOptionSelect(event: MatSelectChange) {
-    console.log(event);
+  onOptionSelect(event: MatSelectChange) {    
     this.selectedPublisher = event.value;
   }
 
@@ -132,23 +129,39 @@ export class EditBookComponent implements OnInit {
   }
 
   onSelectionChanged(selectedGenres: Array<string>) {
-    this.selectedGenres = selectedGenres;
-    console.log(this.selectedGenres);  
+    this.selectedGenres = selectedGenres;     
   }
 
   uploadImage() {
+    const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
     const formData = new FormData();
-    formData.append('imageFile', this.fileInput.nativeElement.files[0]);
-    this.imageService
-      .postImage(formData)
-      .subscribe({
-        next: (response) => {
-          this.bookCover = response.url;        
-        },
-        error: (error) => {
-          console.error('Error uploading image:', error);
+    const selectedFiles = this.fileInput.nativeElement.files;
+
+    if (selectedFiles.length === 1) {
+      const selectedFile = this.fileInput.nativeElement.files[0];
+      if (selectedFile.type.startsWith('image/') && selectedFile.size <= MAX_IMAGE_SIZE_BYTES) {                
+        formData.append('imageFile', selectedFile);              
+        this.imageService
+          .postImage(formData)
+          .subscribe({
+            next: (response) => {
+              this.bookCover = response.url; 
+            },
+            error: (error) => {            
+              this.messageService.showMessage(error.err.detail, MessageType.ERROR);
+            }
+        });
+
+      } else {        
+        if (!selectedFile.type.startsWith('image/')) {
+          this.messageService.showMessage('Invalid file type. Please select an image.', MessageType.WARNING);
+        } else {          
+          this.messageService.showMessage('File size exceeds the maximum allowed size.', MessageType.WARNING);
         }
-      });
+      }
+    } else {
+      this.messageService.showMessage('Please select one image file.', MessageType.WARNING);
+    }
   }
 
   getAuthors() {

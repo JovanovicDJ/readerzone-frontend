@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MessageComponent } from './services/message-service/message.service';
-import { ImageProbaComponent } from './components/image-proba/image-proba.component';
 import { BookCarouselComponent } from './components/book-carousel/book-carousel.component';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
@@ -18,20 +17,27 @@ import { ReviewPostComponent } from './components/review-post/review-post.compon
 import { ReviewDataDialogComponent } from './components/review-data-dialog/review-data-dialog.component';
 import { RatingModule } from 'primeng/rating';
 import { CommentComponent } from './components/comment/comment.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { InformationDisplayComponent } from './components/information-display/information-display.component';
+import { AuthorProfileComponent } from './components/author-profile/author-profile.component';
+import { PublisherProfileComponent } from './components/publisher-profile/publisher-profile.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     CategoriesListComponent,
-    MessageComponent,
-    ImageProbaComponent,
+    MessageComponent,    
     BookCarouselComponent,
     PostsComponent,
     PostComponent,
     AutomaticPostComponent,
     ReviewPostComponent,
     ReviewDataDialogComponent,
-    CommentComponent
+    CommentComponent,
+    FooterComponent,
+    InformationDisplayComponent,
+    AuthorProfileComponent,
+    PublisherProfileComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +55,9 @@ import { CommentComponent } from './components/comment/comment.component';
     NavbarComponent,
     CategoriesListComponent,
     BookCarouselComponent,
-    PostsComponent
+    PostsComponent,
+    FooterComponent,
+    InformationDisplayComponent
   ]
 })
 export class SharedModule { }

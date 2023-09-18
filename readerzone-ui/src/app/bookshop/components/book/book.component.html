@@ -1,12 +1,27 @@
 <div class="book-page">
-    <div *ngIf="book" class="book-container">
+    <div *ngIf="loading" class="book-container">
+        <div class="loading">
+            <mat-spinner></mat-spinner>
+        </div>        
+    </div>
+    <div *ngIf="book" class="book-container">        
         <mat-card class="book">
             <div class="image-container">
                 <img src="{{book.imageUrl}}" alt="Book Image">
             </div>
             <div class="book-details">
                 <div class="title">{{book.title}}</div>
-                <div class="author">{{authorNames}}</div>
+                <div class="author">                    
+                    <ng-container *ngFor="let author of book.authors; let last = last">
+                        <a
+                          [routerLink]="['/author', author.id]"
+                          class="author"                        
+                        >
+                          {{ author.name }} {{ author.surname }}
+                        </a>
+                        <ng-container *ngIf="!last">, </ng-container>
+                    </ng-container>
+                </div>
                 <div class="{{book.discount === 0 ? 'price' : 'not-price'}}">
                     {{book.price | currency:'EUR'}}
                 </div>
@@ -17,10 +32,13 @@
                     <div>Rating: <span> {{book.averageRating}}</span></div>
                     <p-rating [(ngModel)]="book.averageRating" [readonly]="true" [cancel]="false"></p-rating>
                 </div>                
-                <div class="button-container">
+                <div class="button-container" *ngIf="book.stocks !== 0">
                     <button mat-raised-button (click)="addToCart()"
                     class="{{buttonClicked ? 'button-clicked' : 'button' }}"
                     >{{ buttonClicked ? 'Added to Cart' : 'Add to Cart' }}</button>
+                </div>
+                <div class="button-container" *ngIf="book.stocks === 0">
+                    <button mat-raised-button [disabled]="true" class="sold-out-button">Sold Out</button>
                 </div>
                 <div class="book-information">
                     <div class="column">
@@ -29,8 +47,12 @@
                             <span class="row-data">{{book.isbn}}</span>
                         </div>
                         <div class="row">
-                            <span class="row-title">Publisher:</span>
-                            <span class="row-data">{{book.publisher?.name}}</span>
+                            <span class="row-title">Publisher:</span>                            
+                            <span *ngIf="book.publisher" class="row-data publisher">
+                                <a class="row-data publisher" [routerLink]="['/publisher', book.publisher.id]">
+                                {{ book.publisher.name }}
+                                </a>
+                            </span>
                         </div>
                         <div class="row">
                             <span class="row-title">Pub date:</span>

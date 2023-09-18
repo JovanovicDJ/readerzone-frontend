@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ImageProbaComponent } from './shared/components/image-proba/image-proba.component';
+import { CustomerGuard } from './shared/guards/customer/customer.guard';
+import { EmployeeGuard } from './shared/guards/employee/employee.guard';
+import { AuthorProfileComponent } from './shared/components/author-profile/author-profile.component';
+import { PublisherProfileComponent } from './shared/components/publisher-profile/publisher-profile.component';
 
 const routes: Routes = [
   {
@@ -18,19 +21,26 @@ const routes: Routes = [
   },
   {
     path: 'customer',
+    canActivateChild: [CustomerGuard],
     loadChildren: () => import('./customer/customer.module').then((m) => m.CustomerModule)
   },
   {
     path: 'employee',
+    canActivateChild: [EmployeeGuard],
     loadChildren: () => import('./employee/employee.module').then((m) => m.EmployeeModule)
   },
   {
     path: 'home',
+    canActivateChild: [CustomerGuard],
     loadChildren: () => import('./homepage/homepage.module').then((m) => m.HomepageModule)
   },
   {
-    path: 'image',
-    component: ImageProbaComponent
+    path: 'author/:id',
+    component: AuthorProfileComponent
+  },
+  {
+    path: 'publisher/:id',
+    component: PublisherProfileComponent
   },
   { 
     path: '**',
