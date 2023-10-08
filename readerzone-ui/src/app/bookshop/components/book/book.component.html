@@ -84,9 +84,29 @@
                 </div>
             </div>
         </mat-card>
+        <mat-card *ngIf="reviews.length !== 0" class="reviews">
+            <div class="reviews-header">
+                <span>Reviews</span>
+                <span><hr /></span>
+            </div>
+            <div class="reviews-main">
+                <ng-container *ngFor="let r of reviews">
+                    <mat-card class="review-data-card">
+                        <div class="review-title">
+                            {{r.title}}
+                        </div>
+                        <div class="review-rating">
+                            <p-rating [(ngModel)]="r.rating" [readonly]="true" [cancel]="false"></p-rating>
+                        </div>
+                        <div class="review-text">
+                            {{r.text}}
+                        </div>                        
+                    </mat-card>
+                </ng-container>
+            </div>
+        </mat-card>
         <mat-card class="recommendations">
             <div class="recommendations-header">
-                <span><hr /></span>
                 <span>We recommend</span>
                 <span><hr /></span>
             </div>

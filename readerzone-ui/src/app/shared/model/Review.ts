@@ -9,5 +9,5 @@ export interface Review {
     postingTime: Date,
     customerId: number,
     customer?: Customer,
-    comments?: Array<string>  // Type Comment needed
+    comments?: Array<string>
 }

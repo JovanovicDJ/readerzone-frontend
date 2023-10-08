@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import * as moment from 'moment';
 import { filter } from 'rxjs';
 import { Book } from 'src/app/shared/model/Book';
+import { Review } from 'src/app/shared/model/Review';
 import { BookService } from 'src/app/shared/services/book-service/book.service';
 import { CartService } from 'src/app/shared/services/cart-service/cart.service';
 import { MessageService, MessageType } from 'src/app/shared/services/message-service/message.service';
@@ -20,6 +21,7 @@ export class BookComponent implements OnInit {
   loading: boolean = true;
 
   books: Book[] = [];
+  reviews: Review[] = [];
 
   constructor(private bookService: BookService,
               private cartService: CartService,
@@ -56,7 +58,7 @@ export class BookComponent implements OnInit {
         .subscribe({
           next: (res: Book) => {
             this.book = res;
-            this.loading = false;
+            this.loading = false;            
           },
           error: (err) => {
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);
@@ -67,6 +69,16 @@ export class BookComponent implements OnInit {
         .subscribe({
           next: (res: Book[]) => {
             this.books = res;
+          },
+          error: (err) => {
+            this.messageService.showMessage(err.error.detail, MessageType.ERROR);
+          }
+        });
+      this.bookService
+        .getBookReviews(isbn)
+        .subscribe({
+          next: (res: Review[]) => {
+            this.reviews = res;            
           },
           error: (err) => {
             this.messageService.showMessage(err.error.detail, MessageType.ERROR);

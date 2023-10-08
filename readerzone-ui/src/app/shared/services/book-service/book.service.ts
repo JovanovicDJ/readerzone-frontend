@@ -7,6 +7,7 @@ import { Paths } from 'src/environments/paths';
 import { BookPagination } from '../../model/BookPagination';
 import { PaginationQuery } from '../../model/PaginationQuery';
 import { BookRequest } from '../../model/BookRequest';
+import { Review } from '../../model/Review';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,11 @@ export class BookService {
   getRecommendedBooks(): Observable<Book[]> {
     let url = `${environment.baseUrl}/${Paths.Book}/recommended`;
     return this.http.get<Book[]>(url);
+  }
+
+  getBookReviews(isbn: string): Observable<Review[]> {
+    let url = `${environment.baseUrl}/${Paths.Book}/reviews/${isbn}`;
+    return this.http.get<Review[]>(url);
   }
 
   getBooks(pq: PaginationQuery): Observable<BookPagination> {
